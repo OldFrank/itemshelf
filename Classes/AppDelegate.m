@@ -71,6 +71,18 @@ static AppDelegate *sharedAppDelegate;
     [self performSelectorInBackground:@selector(reportAppOpenToAdMob) withObject:nil];
 }
 
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+}
+
 - (void)dealloc {
     [[DataModel sharedDataModel] release];
     [Database shutdown];
