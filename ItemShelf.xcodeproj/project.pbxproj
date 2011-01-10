@@ -1310,7 +1310,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelf;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1334,7 +1334,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelf;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1364,7 +1364,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelfLite;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1389,7 +1389,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelfLite;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1414,7 +1414,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelfLite;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "AppStore Distribution";
@@ -1440,7 +1440,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelfLite;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6020BB8D-8A9F-4FE6-90D0-D6D14B965EC4";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Adhoc Distribution";
@@ -1462,7 +1462,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				PRODUCT_NAME = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Adhoc Distribution";
@@ -1487,7 +1487,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelf;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6020BB8D-8A9F-4FE6-90D0-D6D14B965EC4";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Adhoc Distribution";
@@ -1508,7 +1508,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				PRODUCT_NAME = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "AppStore Distribution";
@@ -1532,7 +1532,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelf;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "AppStore Distribution";
@@ -1544,7 +1544,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PREBINDING = NO;
 				PRODUCT_NAME = Zebla;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1554,7 +1554,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				PREBINDING = NO;
 				PRODUCT_NAME = Zebla;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -1564,7 +1564,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				PREBINDING = NO;
 				PRODUCT_NAME = Zebla;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = "AppStore Distribution";
 		};
@@ -1574,7 +1574,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				PREBINDING = NO;
 				PRODUCT_NAME = Zebla;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = "Adhoc Distribution";
 		};
@@ -1595,7 +1595,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				PRODUCT_NAME = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1616,7 +1616,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				PRODUCT_NAME = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
