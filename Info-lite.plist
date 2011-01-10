@@ -13,6 +13,7 @@
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon-lite.png</string>
+		<string>Icon-lite@2x.png</string>
 		<string>Icon-lite-ipad.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
