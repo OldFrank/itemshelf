@@ -99,7 +99,7 @@
     }
 }
 
-extern CGImageRef UIGetScreenImage(); // undocumented
+//extern CGImageRef UIGetScreenImage(); // undocumented
 
 /**
  Timer Handler
@@ -109,14 +109,25 @@ extern CGImageRef UIGetScreenImage(); // undocumented
     //NSLog(@"timer");
 
     // バーコードキャプチャ
+#if 0 // UIGetScreenImage は undocumented なので使用しない
     CGImageRef capture = UIGetScreenImage();
     CGImageRef clipped = CGImageCreateWithImageInRect(capture, CGRectMake(0, 240-30, 320, 60));
-    
+
     UIImage *image = [UIImage imageWithCGImage:clipped];
     
     CGImageRelease(capture);
     CGImageRelease(clipped);
-    
+#else
+    UIGraphicsBeginImageContext(self.view.bounds.size);
+
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *full = UIGraphicsGetImageFromCurrentImageContext();
+    CGImageRef clipped = CGImageCreateWithImageInRect(full.CGImage, CGRectMake(0, 240-30, 320, 60));
+    UIImage *image = [UIImage imageWithCGImage:clipped];
+
+    UIGraphicsEndImageContext();
+#endif
+        
     if ([reader recognize:image]) {
         NSString *code = reader.data;
         NSLog(@"Code = %@", code);
