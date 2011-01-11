@@ -1,3 +1,4 @@
+// -*-  Mode:ObjC; c-basic-offset:4; tab-width:8; indent-tabs-mode:nil -*-
 //
 //  CameraImageHelper.h
 //  HelloWorld
@@ -11,8 +12,8 @@
 
 @interface CameraImageHelper : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate>
 {
-	AVCaptureSession *session;
-	UIImage *image;
+    AVCaptureSession *session;
+    UIImage *image;
 }
 @property (retain) AVCaptureSession *session;
 @property (retain) UIImage *image;

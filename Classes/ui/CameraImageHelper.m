@@ -1,3 +1,4 @@
+// -*-  Mode:ObjC; c-basic-offset:4; tab-width:8; indent-tabs-mode:nil -*-
 //
 //  CameraImageHelper.m
 //  HelloWorld
@@ -17,7 +18,7 @@ static CameraImageHelper *sharedInstance = nil;
 // Autorelease pool added thanks to suggestion by Josh Snyder
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
     CVPixelBufferLockBaseAddress(imageBuffer,0); 
     uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddress(imageBuffer); 
@@ -28,14 +29,14 @@ static CameraImageHelper *sharedInstance = nil;
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB(); 
     CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst); 
     CGImageRef newImage = CGBitmapContextCreateImage(context); 
-	CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
 	
-	self.image = [UIImage imageWithCGImage:newImage scale:1.0 orientation:UIImageOrientationRight];
+    self.image = [UIImage imageWithCGImage:newImage scale:1.0 orientation:UIImageOrientationRight];
 	
     CGContextRelease(context); 
     CGColorSpaceRelease(colorSpace);
-	CGImageRelease(newImage);
-	[pool drain];
+    CGImageRelease(newImage);
+    [pool drain];
 }
 
 - (void) initialize
