@@ -271,8 +271,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     }
 
     // iOS 4.x
-    BarcodeScannerController *scanner = [[[BarcodeScannerController alloc] init] autorelease];
-    scanner.delegate = self;
+    BarcodeScannerController *scanner = [BarcodeScannerController barcodeScannerController:self];
     [self presentModalViewController:scanner animated:YES];
 }
 

@@ -48,11 +48,17 @@
 
 @interface BarcodeScannerController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate>
 {
+    IBOutlet UIView *readerArea;
+    
     AVCaptureSession *captureSession;
     BarcodeReader *reader;
 }
 
 @property(nonatomic,assign) id<BarcodeScannerControllerDelegate> delegate;
+
++ (BarcodeScannerController *)barcodeScannerController:(id<BarcodeScannerControllerDelegate>)delegate;
+
+- (IBAction)onCancel:(id)sender;
 
 - (BOOL)isValidBarcode:(NSString *)code;
 

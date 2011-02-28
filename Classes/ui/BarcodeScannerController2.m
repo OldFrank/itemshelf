@@ -39,10 +39,21 @@
 
 @synthesize delegate;
 
++ (BarcodeScannerController *)barcodeScannerController:(id<BarcodeScannerControllerDelegate>)delegate
+{
+    BarcodeScannerController *vc;
+    
+    vc = [[[BarcodeScannerController alloc] init] autorelease];
+    vc.delegate = delegate;
+    return vc;
+}
+
 - (id)init
 {
-    self = [super init];
-    reader = [[BarcodeReader alloc] init];
+    self = [super initWithNibName:@"BarcodeScannerView" bundle:nil];
+    if (self) {
+        reader = [[BarcodeReader alloc] init];
+    }
     return self;
 }
 
@@ -91,14 +102,17 @@
     [captureSession commitConfiguration];
 
     // プレビュー用のビューを作成
-    UIView *base = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
+#if 0
+    UIView *base = [[[UIView alloc] init] autorelease];
+    base.frame = readerArea.bounds;
     base.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:base];
+    [readerArea addSubview:base];
+#endif
     
     AVCaptureVideoPreviewLayer *preview = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-    preview.frame = base.bounds;
+    preview.frame = readerArea.bounds;
     preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    [base.layer addSublayer:preview];
+    [readerArea.layer addSublayer:preview];
     
     // バーコード用ビューをオーバーレイする
 #if 0
@@ -196,6 +210,12 @@
 
     // UPC or other code...
     return YES;
+}
+
+- (IBAction)onCancel:(id)sender
+{
+    [captureSession stopRunning];
+    [[self parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
