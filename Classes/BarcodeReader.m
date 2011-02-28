@@ -68,6 +68,7 @@ static void data_handler(zebra_image_t *zimage, const void *userdata);
 */
 - (BOOL)recognize:(UIImage *)uimage
 {
+    self.type = -1;
     self.data = nil;
 	
     zebra_image_t *zimage = [self UIImageToZImage:uimage];
