@@ -48,6 +48,7 @@
 
 - (void)dealloc
 {
+    [captureSession stopRunning];
     [captureSession release];
     [reader release];
 
@@ -60,22 +61,33 @@
     [super viewDidAppear:animated];
 
     // Capture 設定
-    AVCaptureDeviceInput *capIn = [AVCaptureDeviceInput deviceInputWithDevice:[AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo] error:NULL];
+    AVCaptureDevice *dev = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if ([dev isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
+        NSError *error;
+        if ([dev lockForConfiguration:&error]) {
+            dev.focusMode = AVCaptureFocusModeContinuousAutoFocus;
+            [dev unlockForConfiguration];
+        } else {
+            // TBD
+        }
+    }
+    AVCaptureDeviceInput *capIn = [AVCaptureDeviceInput deviceInputWithDevice:dev error:NULL];
     if (!capIn) {
         // TBD
     }
 
     AVCaptureVideoDataOutput *capOut = [[[AVCaptureVideoDataOutput alloc] init] autorelease];
+    capOut.alwaysDiscardsLateVideoFrames = YES;
     [capOut setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
     NSDictionary *videoSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA] forKey:(NSString *)kCVPixelBufferPixelFormatTypeKey];
     [capOut setVideoSettings:videoSettings];
-    capOut.minFrameDuration = CMTimeMake(1, 2); // 1/2 sec.
+    //capOut.minFrameDuration = CMTimeMake(1, 8);
 
     captureSession = [[AVCaptureSession alloc] init];
     [captureSession addInput:capIn];
     [captureSession addOutput:capOut];
     [captureSession beginConfiguration];
-    captureSession.sessionPreset = AVCaptureSessionPresetLow;
+    captureSession.sessionPreset = AVCaptureSessionPresetMedium;
     [captureSession commitConfiguration];
 
     // プレビュー用のビューを作成
@@ -89,10 +101,14 @@
     [base.layer addSublayer:preview];
     
     // バーコード用ビューをオーバーレイする
+#if 0
     UIImage *overlayImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BarcodeReader" ofType:@"png"]];
     CALayer *overlay = [CALayer layer];
     overlay.contents = overlayImage;
     [base.layer addSublayer:overlay];
+#endif
+    
+    [captureSession startRunning];
 }
 
 #pragma mark AVCaptureVideoDataOutputSampleBufferDelegate
@@ -106,6 +122,7 @@
         NSLog(@"Code = %@", code);
 
         if ([self isValidBarcode:code]) {
+            [captureSession stopRunning];
             [self.delegate barcodeScannerController:(BarcodeScannerController*)self didRecognizeBarcode:(NSString*)code];
         } else {
             NSLog(@"Invalid code");
@@ -113,6 +130,7 @@
     } else {
         NSLog(@"No code");
     }
+    [image release];
 }
 
 - (UIImage *)_UIImageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
@@ -132,6 +150,7 @@
     CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
 
     UIImage *image = [UIImage imageWithCGImage:newImage scale:1.0 orientation:UIImageOrientationRight];
+    [image retain];
     CGContextRelease(context);
     CGColorSpaceRelease(colorSpace);
     CGImageRelease(newImage);
@@ -174,7 +193,7 @@
         }
         return NO;
     }
-    
+
     // UPC or other code...
     return YES;
 }
