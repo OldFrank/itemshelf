@@ -9,12 +9,12 @@
 	<key>CFBundleExecutable</key>
 	<string>ItemShelfLite</string>
 	<key>CFBundleIconFile</key>
-	<string>Icon-lite.png</string>
+	<string>Icon.png</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Icon-lite.png</string>
-		<string>Icon-lite@2x.png</string>
-		<string>Icon-lite-ipad.png</string>
+		<string>Icon.png</string>
+		<string>Icon@2x.png</string>
+		<string>Icon-72.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.dreamhosters.bcmashup.ItemShelf-Lite</string>
