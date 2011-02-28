@@ -261,14 +261,19 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     if (!isCameraAvailable) {
         // abort
         // TBD
-        return NO;
+        return;
     }
 	
+    // for iOS 3.x
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 4.0) {
+        [self scanFromLibrary:UIImagePickerControllerSourceTypeCamera];
+        return;
+    }
+
+    // iOS 4.x
     BarcodeScannerController2 *scanner = [[[BarcodeScannerController alloc] init] autorelease];
     scanner.delegate = self;
     [self presentModalViewController:scanner animated:YES];
-
-    return YES;
 }
 
 - (IBAction)scanFromLibrary:(id)sender
