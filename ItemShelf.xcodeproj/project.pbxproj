@@ -77,6 +77,8 @@
 		3E3A0A5E118BD6CB007F56DD /* ShelfListView-ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3A0A5D118BD6CB007F56DD /* ShelfListView-ipad.xib */; };
 		3E3A0A5F118BD6CB007F56DD /* ShelfListView-ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3A0A5D118BD6CB007F56DD /* ShelfListView-ipad.xib */; };
 		3E3AA5AD0EE02EF200339BAB /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AA5AC0EE02EF200339BAB /* AboutView.xib */; };
+		3E3C9E60131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9E5F131BCC0D005CC671 /* BarcodeScannerController2.m */; };
+		3E3C9E61131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9E5F131BCC0D005CC671 /* BarcodeScannerController2.m */; };
 		3E3EA1510ED9A072006892E9 /* ConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EA1500ED9A072006892E9 /* ConfigView.xib */; };
 		3E427BC10EDC2A320028E633 /* NumPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E427BC00EDC2A320028E633 /* NumPadView.xib */; };
 		3E427BDB0EDC2F7B0028E633 /* NumPadButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E427BDA0EDC2F7B0028E633 /* NumPadButton.png */; };
@@ -130,8 +132,8 @@
 		3EB6F10D114505F000C859C7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB6F10C114505F000C859C7 /* MessageUI.framework */; };
 		3EB779C911429491001C3F1F /* libGoogleAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB779C811429491001C3F1F /* libGoogleAds.a */; };
 		3EB779CA11429491001C3F1F /* libGoogleAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB779C811429491001C3F1F /* libGoogleAds.a */; };
-		3EB779D311429519001C3F1F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB779D211429519001C3F1F /* AVFoundation.framework */; };
-		3EB779EC114295A1001C3F1F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB779D211429519001C3F1F /* AVFoundation.framework */; };
+		3EB779D311429519001C3F1F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB779D211429519001C3F1F /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3EB779EC114295A1001C3F1F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB779D211429519001C3F1F /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3EB7A9F00EF66601009B038F /* EditShelfView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB7A9EF0EF66601009B038F /* EditShelfView.xib */; };
 		3EBC16FA0EDA822B00A35747 /* EnterCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC16F70EDA822B00A35747 /* EnterCode.png */; };
 		3EBC16FB0EDA822B00A35747 /* PhotoLibrary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC16F80EDA822B00A35747 /* PhotoLibrary.png */; };
@@ -156,7 +158,6 @@
 		3EC9AB24105E57B30096AB90 /* StringArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB14105E57B30096AB90 /* StringArray.m */; };
 		3EC9AB57105E57D30096AB90 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB2E105E57D30096AB90 /* AboutViewController.m */; };
 		3EC9AB58105E57D30096AB90 /* AdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB30105E57D30096AB90 /* AdCell.m */; };
-		3EC9AB59105E57D30096AB90 /* BarcodeScannerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB32105E57D30096AB90 /* BarcodeScannerController.m */; };
 		3EC9AB5A105E57D30096AB90 /* ConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB34105E57D30096AB90 /* ConfigViewController.m */; };
 		3EC9AB5B105E57D30096AB90 /* EditMemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB36105E57D30096AB90 /* EditMemoVC.m */; };
 		3EC9AB5C105E57D30096AB90 /* EditShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB38105E57D30096AB90 /* EditShelfViewController.m */; };
@@ -177,7 +178,6 @@
 		3EC9AB6B105E57D30096AB90 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB56105E57D30096AB90 /* WebViewController.m */; };
 		3EC9AB6C105E57D30096AB90 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB2E105E57D30096AB90 /* AboutViewController.m */; };
 		3EC9AB6D105E57D30096AB90 /* AdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB30105E57D30096AB90 /* AdCell.m */; };
-		3EC9AB6E105E57D30096AB90 /* BarcodeScannerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB32105E57D30096AB90 /* BarcodeScannerController.m */; };
 		3EC9AB6F105E57D30096AB90 /* ConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB34105E57D30096AB90 /* ConfigViewController.m */; };
 		3EC9AB70105E57D30096AB90 /* EditMemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB36105E57D30096AB90 /* EditMemoVC.m */; };
 		3EC9AB71105E57D30096AB90 /* EditShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB38105E57D30096AB90 /* EditShelfViewController.m */; };
@@ -337,6 +337,7 @@
 		3E36E1AD0F309A9500AB3C64 /* config.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = config.png; sourceTree = "<group>"; };
 		3E3A0A5D118BD6CB007F56DD /* ShelfListView-ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "ShelfListView-ipad.xib"; sourceTree = "<group>"; };
 		3E3AA5AC0EE02EF200339BAB /* AboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
+		3E3C9E5F131BCC0D005CC671 /* BarcodeScannerController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeScannerController2.m; sourceTree = "<group>"; };
 		3E3EA1500ED9A072006892E9 /* ConfigView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigView.xib; sourceTree = "<group>"; };
 		3E427BC00EDC2A320028E633 /* NumPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumPadView.xib; sourceTree = "<group>"; };
 		3E427BDA0EDC2F7B0028E633 /* NumPadButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NumPadButton.png; sourceTree = "<group>"; };
@@ -408,8 +409,6 @@
 		3EC9AB2E105E57D30096AB90 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		3EC9AB2F105E57D30096AB90 /* AdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdCell.h; sourceTree = "<group>"; };
 		3EC9AB30105E57D30096AB90 /* AdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdCell.m; sourceTree = "<group>"; };
-		3EC9AB31105E57D30096AB90 /* BarcodeScannerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeScannerController.h; sourceTree = "<group>"; };
-		3EC9AB32105E57D30096AB90 /* BarcodeScannerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeScannerController.m; sourceTree = "<group>"; };
 		3EC9AB33105E57D30096AB90 /* ConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigViewController.h; sourceTree = "<group>"; };
 		3EC9AB34105E57D30096AB90 /* ConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigViewController.m; sourceTree = "<group>"; };
 		3EC9AB35105E57D30096AB90 /* EditMemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMemoVC.h; sourceTree = "<group>"; };
@@ -791,12 +790,11 @@
 				3EC9AB42105E57D30096AB90 /* ItemCell.m */,
 				3EC9AB43105E57D30096AB90 /* ItemCell4.h */,
 				3EC9AB44105E57D30096AB90 /* ItemCell4.m */,
+				3E3C9E5F131BCC0D005CC671 /* BarcodeScannerController2.m */,
 				3EC9AB2D105E57D30096AB90 /* AboutViewController.h */,
 				3EC9AB2E105E57D30096AB90 /* AboutViewController.m */,
 				3EC9AB2F105E57D30096AB90 /* AdCell.h */,
 				3EC9AB30105E57D30096AB90 /* AdCell.m */,
-				3EC9AB31105E57D30096AB90 /* BarcodeScannerController.h */,
-				3EC9AB32105E57D30096AB90 /* BarcodeScannerController.m */,
 				3EC9AB33105E57D30096AB90 /* ConfigViewController.h */,
 				3EC9AB34105E57D30096AB90 /* ConfigViewController.m */,
 				3EC9AB35105E57D30096AB90 /* EditMemoVC.h */,
@@ -1160,7 +1158,6 @@
 				3EC9AB24105E57B30096AB90 /* StringArray.m in Sources */,
 				3EC9AB6C105E57D30096AB90 /* AboutViewController.m in Sources */,
 				3EC9AB6D105E57D30096AB90 /* AdCell.m in Sources */,
-				3EC9AB6E105E57D30096AB90 /* BarcodeScannerController.m in Sources */,
 				3EC9AB6F105E57D30096AB90 /* ConfigViewController.m in Sources */,
 				3EC9AB70105E57D30096AB90 /* EditMemoVC.m in Sources */,
 				3EC9AB71105E57D30096AB90 /* EditShelfViewController.m in Sources */,
@@ -1199,6 +1196,7 @@
 				3E9935A611465B54005386D0 /* unzip.c in Sources */,
 				3E9935A711465B54005386D0 /* zip.c in Sources */,
 				3E9935AB11465B5F005386D0 /* ZipArchive.mm in Sources */,
+				3E3C9E60131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1216,7 +1214,6 @@
 				3EC9AB1C105E57B30096AB90 /* StringArray.m in Sources */,
 				3EC9AB57105E57D30096AB90 /* AboutViewController.m in Sources */,
 				3EC9AB58105E57D30096AB90 /* AdCell.m in Sources */,
-				3EC9AB59105E57D30096AB90 /* BarcodeScannerController.m in Sources */,
 				3EC9AB5A105E57D30096AB90 /* ConfigViewController.m in Sources */,
 				3EC9AB5B105E57D30096AB90 /* EditMemoVC.m in Sources */,
 				3EC9AB5C105E57D30096AB90 /* EditShelfViewController.m in Sources */,
@@ -1255,6 +1252,7 @@
 				3E9935A211465B54005386D0 /* unzip.c in Sources */,
 				3E9935A311465B54005386D0 /* zip.c in Sources */,
 				3E9935AA11465B5F005386D0 /* ZipArchive.mm in Sources */,
+				3E3C9E61131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

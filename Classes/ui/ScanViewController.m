@@ -299,7 +299,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     return YES;
 }
 
-@pragma mark BarcodeScannerControllerDelegate
+#pragma mark BarcodeScannerControllerDelegate
 
 - (void)barcodeScannerController:(BarcodeScannerController*)scanner didRecognizeBarcode:(NSString*)code
 {
@@ -307,11 +307,9 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     [self _didRecognizeBarcode:code];
 }
 
-@pragma mark UIImagePickerControllerDelegate
+#pragma mark UIImagePickerControllerDelegate
 
 // 画像取得完了
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = (UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
@@ -348,7 +346,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     [[picker parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
-@pragma mark SearchControllerDelegate
+#pragma mark SearchControllerDelegate
 
 - (void)searchControllerFinish:(SearchController*)controller result:(BOOL)result
 {
@@ -359,7 +357,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
 ////////////////////////////////////////////////////////////////////////////////////////////
 // マニュアル入力処理
 
-@pragma mark -
+#pragma mark -
 
 // コード入力
 - (void)enterIdentifier:(id)sender
