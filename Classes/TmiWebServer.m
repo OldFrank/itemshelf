@@ -34,6 +34,8 @@
 
 #import <arpa/inet.h>
 #import <fcntl.h>
+#import <sys/uio.h>
+#import <unistd.h>
 
 #import "TmiWebServer.h"
 

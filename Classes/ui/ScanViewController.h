@@ -36,7 +36,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Common.h"
-#import "BarcodeScannerController.h"
+#import "BarcodeScannerController2.h"
 #import "GenSelectListViewController.h"
 #import "NumPadViewController.h"
 //#import "KeywordViewController.h"
@@ -45,7 +45,9 @@
 #import "SearchController.h"
 
 @interface ScanViewController : UITableViewController 
-<BarcodeScannerControllerDelegate, GenSelectListViewDelegate, SearchControllerDelegate>
+<BarcodeScannerControllerDelegate,
+UIImagePickerControllerDelegate, UINavigationControllerDelegate,
+GenSelectListViewDelegate, SearchControllerDelegate>
 {
     UIActivityIndicatorView *activityIndicator;
     Shelf *selectedShelf;
@@ -58,13 +60,14 @@
 
 - (void)doneAction:(id)sender;
 
-- (void)scanWithCamera:(id)sender;
-- (void)scanFromLibrary:(id)sender;
+- (IBAction)scanWithCamera:(id)sender;
+- (IBAction)scanFromLibrary:(id)sender;
+- (BOOL)scanWithImagePicker:(UIImagePickerControllerSourceType)type;
 - (void)enterIdentifier:(id)sender;
 - (void)enterKeyword:(id)sender;
 - (void)enterManual:(id)sender;
 
-- (BOOL)execScan:(UIImagePickerControllerSourceType)type;
+//- (BOOL)execScan:(UIImagePickerControllerSourceType)type;
 - (void)selectService;
 
 - (void)_didRecognizeBarcode:(NSString*)code;

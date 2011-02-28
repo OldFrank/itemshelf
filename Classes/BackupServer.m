@@ -36,6 +36,8 @@
 #import <fcntl.h>
 #import <sys/types.h>
 #import <sys/stat.h>
+#import <sys/uio.h>
+#import <unistd.h>
 
 #import "TmiWebServer.h"
 #import "BackupServer.h"
