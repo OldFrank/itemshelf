@@ -31,6 +31,10 @@
 		3E0C0D85101AD45800F18D86 /* Star5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E0C0D77101AD45800F18D86 /* Star5.png */; };
 		3E15190F0EDAB7C100F510E9 /* ItemCellBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E15190E0EDAB7C100F510E9 /* ItemCellBack.png */; };
 		3E1C73E41168647E00CCCC22 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDCFFFB11684765009D99C2 /* SystemConfiguration.framework */; };
+		3E1CC99C131BD43E00AB59BA /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1CC99B131BD43E00AB59BA /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3E1CC9A0131BD44900AB59BA /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1CC99F131BD44900AB59BA /* CoreVideo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3E1CC9B0131BD47000AB59BA /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1CC99B131BD43E00AB59BA /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3E1CC9BB131BD47500AB59BA /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1CC99F131BD44900AB59BA /* CoreVideo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3E23100B0F4D9ED0006E24AF /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
 		3E23100C0F4D9ED0006E24AF /* ItemListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282CCBFD0DB6C98000C4EA27 /* ItemListView.xib */; };
 		3E23100D0F4D9ED0006E24AF /* ScanView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7FFEBB0ECC487B000164D4 /* ScanView.xib */; };
@@ -295,6 +299,8 @@
 		3E0C0D77101AD45800F18D86 /* Star5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star5.png; sourceTree = "<group>"; };
 		3E15190E0EDAB7C100F510E9 /* ItemCellBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ItemCellBack.png; sourceTree = "<group>"; };
 		3E1CC8F7131BCEC100AB59BA /* BarcodeScannerController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeScannerController2.h; sourceTree = "<group>"; };
+		3E1CC99B131BD43E00AB59BA /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		3E1CC99F131BD44900AB59BA /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		3E1FDD230ECEF5FA00915E3E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		3E1FDD240ECEF60600915E3E /* zebra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zebra.h; sourceTree = "<group>"; };
 		3E1FDD450ECEF78200915E3E /* config.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = config.c; sourceTree = "<group>"; };
@@ -506,6 +512,8 @@
 				3E7F605E1084CD210040A615 /* Foundation.framework in Frameworks */,
 				3E7F60181084CABA0040A615 /* CoreLocation.framework in Frameworks */,
 				3EB779C911429491001C3F1F /* libGoogleAds.a in Frameworks */,
+				3E1CC9B0131BD47000AB59BA /* CoreMedia.framework in Frameworks */,
+				3E1CC9BB131BD47500AB59BA /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +535,8 @@
 				3EB6F10D114505F000C859C7 /* MessageUI.framework in Frameworks */,
 				3E9935B911465BD1005386D0 /* libz.dylib in Frameworks */,
 				3EDCFFFC11684765009D99C2 /* SystemConfiguration.framework in Frameworks */,
+				3E1CC99C131BD43E00AB59BA /* CoreMedia.framework in Frameworks */,
+				3E1CC9A0131BD44900AB59BA /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +625,8 @@
 				3EB779D211429519001C3F1F /* AVFoundation.framework */,
 				3E9935B811465BD1005386D0 /* libz.dylib */,
 				3EDCFFFB11684765009D99C2 /* SystemConfiguration.framework */,
+				3E1CC99B131BD43E00AB59BA /* CoreMedia.framework */,
+				3E1CC99F131BD44900AB59BA /* CoreVideo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
