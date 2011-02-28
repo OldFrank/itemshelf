@@ -36,7 +36,7 @@
 #import "ScanViewController.h"
 #import "ItemViewController.h"
 #import "BarcodeReader.h"
-#import "BarcodeScannerController.h"
+#import "BarcodeScannerController2.h"
 #import "NumPadViewController.h"
 #import "DataModel.h"
 #import "SearchController.h"
@@ -258,15 +258,25 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
 
 - (IBAction)scanWithCamera:(id)sender
 {
-    [self execScan:UIImagePickerControllerSourceTypeCamera];
+    if (!isCameraAvailable) {
+        // abort
+        // TBD
+        return NO;
+    }
+	
+    BarcodeScannerController2 *scanner = [[[BarcodeScannerController alloc] init] autorelease];
+    scanner.delegate = self;
+    [self presentModalViewController:scanner animated:YES];
+
+    return YES;
 }
 
 - (IBAction)scanFromLibrary:(id)sender
 {
-    [self execScan:UIImagePickerControllerSourceTypePhotoLibrary];
+    [self scanWithImagePicker:UIImagePickerControllerSourceTypePhotoLibrary];
 }
 
-- (BOOL)execScan:(UIImagePickerControllerSourceType)type
+- (BOOL)scanWithImagePicker:(UIImagePickerControllerSourceType)type
 {
     if (![UIImagePickerController isSourceTypeAvailable:type]) {
         // abort
@@ -274,15 +284,17 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
         return NO;
     }
 	
-    BarcodeScannerController *scanner = [[BarcodeScannerController alloc] init];
-    scanner.sourceType = type;
-    scanner.delegate = self;
-    scanner.allowsEditing = YES;
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.sourceType = type;
+    picker.delegate = self;
+    picker.allowsEditing = YES;
 	
-    [self presentModalViewController:scanner animated:YES];
-    [scanner release];
+    [self presentModalViewController:picker animated:YES];
+    [picker release];
     return YES;
 }
+
+@pragma mark BarcodeScannerControllerDelegate
 
 - (void)barcodeScannerController:(BarcodeScannerController*)scanner didRecognizeBarcode:(NSString*)code
 {
@@ -290,9 +302,15 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     [self _didRecognizeBarcode:code];
 }
 
+@pragma mark UIImagePickerControllerDelegate
+
 // 画像取得完了
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    UIImage *image = (UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
+
     [[picker parentViewController] dismissModalViewControllerAnimated:YES];
 
     // バーコード解析
@@ -320,19 +338,23 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     [api release];
 }
 
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
+}
+
+@pragma mark SearchControllerDelegate
 
 - (void)searchControllerFinish:(SearchController*)controller result:(BOOL)result
 {
     // TBD : 再度開始する？？？
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 // マニュアル入力処理
+
+@pragma mark -
 
 // コード入力
 - (void)enterIdentifier:(id)sender

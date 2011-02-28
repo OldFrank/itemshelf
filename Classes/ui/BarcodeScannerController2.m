@@ -103,23 +103,6 @@
     [base.layer addSublayer:overlay];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    NSLog(@"BarcodeScannerController: viewDidDisappear");
-    [super viewDidDisappear:animated];
- 
-    [self _stopTimer];
-}
-
-- (void)_stopTimer
-{
-    if (timer) {
-        [timer invalidate];
-        [timer release];
-        timer = nil;
-    }
-}
-
 #pragma mark AVCaptureVideoDataOutputSampleBufferDelegate
 
 - (void)captureOutput:(AVCaptureOutput *)capOut didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection*)connection

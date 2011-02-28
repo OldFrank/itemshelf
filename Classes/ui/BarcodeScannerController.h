@@ -37,7 +37,7 @@
 
 @class BarcodeScannerController;
 
-@protocol BarcodeScannerControllerDelegate <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@protocol BarcodeScannerControllerDelegate <UIImagePickerControllerDelegate>
 - (void)barcodeScannerController:(BarcodeScannerController*)self didRecognizeBarcode:(NSString*)code;
 @end
 
