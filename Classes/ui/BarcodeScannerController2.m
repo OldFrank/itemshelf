@@ -73,23 +73,23 @@
         // TBD
     }
 
-    AVCaptureDeviceOutput *capOut = [[AVCaptureVideoDataOutput alloc] init];
+    AVCaptureVideoDataOutput *capOut = [[[AVCaptureVideoDataOutput alloc] init] autorelease];
     [capOut setSampleBufferDelegate:self queue:dipatch_get_main_queue()];
     NSDictionary *videoSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA] forKey:(NSString *)kCVPixelBufferPixelFormatTypeKey];
     [capOut setVideoSettings:videoSettings];
-    
+    capOut.minFrameDuration = CMTimeMake(1 / 2); // 1/2 sec.
+
     captureSession = [[AVCaptureSession alloc] init];
     [captureSession addInput:capIn];
     [captureSession addOutput:capOut];
     [captureSession beginConfiguration];
-    [captureSession setSessionPreset:AVCaptureSessionPresetLow];
+    captureSession.sessionPreset = AVCaptureSessionPresetLow;
     [captureSession commitConfiguration];
 
     // プレビュー用のビューを作成
-    UIView *base = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    UIView *base = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
     base.backgroundColor = [UIColor blackColor];
     [self.view addSubview:base];
-    [base release];
     
     AVCaptureVideoPreviewLayer preview = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
     preview.frame = base.bounds;
@@ -97,17 +97,10 @@
     [base.layer addSublayer:preview];
     
     // バーコード用ビューをオーバーレイする
-#if 0
-    UIImage *overlay = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BarcodeReader" ofType:@"png"]];
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    [view.layer addSublayer:imgView.layer];
-#endif
-
-    // バーコード認識用タイマ
-#if 0
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(timerHandler:) userInfo:nil repeats:YES];
-    [timer retain];
-#endif
+    UIImage *overlayImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BarcodeReader" ofType:@"png"]];
+    CALayer *overlay = [CALayer layer];
+    overlay.contents = overlayImage;
+    [base.layer addSublayer:overlay];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
