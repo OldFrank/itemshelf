@@ -2,7 +2,7 @@
 /*
   ItemShelf for iPhone/iPod touch
 
-  Copyright (c) 2008-2009, ItemShelf Development Team. All rights reserved.
+  Copyright (c) 2008-2011, ItemShelf Development Team. All rights reserved.
 
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions are
@@ -32,10 +32,10 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import "BarcodeScannerController.h"
+#import "BarcodeScannerController2.h"
 #import "BarcodeReader.h"
 
-@implementation BarcodeScannerController
+@implementation BarcodeScannerController2
 
 - (id)init
 {
@@ -46,40 +46,68 @@
 
 - (void)dealloc
 {
-    [self _stopTimer];
+    [captureSession release];
     [reader release];
 
     [super dealloc];
 }
 
-- (void)setDelegate:(id<BarcodeScannerControllerDelegate>)delegate
+- (void)setDelegate:(id<BarcodeScannerControllerDelegate2>)delegate
 {
     [super setDelegate:delegate];
 }
 
-- (id<BarcodeScannerControllerDelegate>)delegate
+- (id<BarcodeScannerControllerDelegate2>)delegate
 {
-    return (id<BarcodeScannerControllerDelegate>)[super delegate];
+    return (id<BarcodeScannerControllerDelegate2>)[super delegate];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"BarcodeScannerController: viewDidAppear");
     [super viewDidAppear:animated];
-    
-    if (self.sourceType == UIImagePickerControllerSourceTypeCamera) {
-        // バーコード用ビューをオーバーレイする
-        UIImage *overlay = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BarcodeReader" ofType:@"png"]];
-        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-        imgView.image = overlay;
 
-        // iPhone OS 3.1
-        self.cameraOverlayView = imgView;
-        [imgView release];
+    // Capture 設定
+    AVCaptureDeviceInput *capIn = [AVCaptureDeviceInput deviceInputWithDevice:[AVCaptureDevice defaultDeviceWithMeditType:AVMediaTypeVideo] error:NULL];
+    if (!capIn) {
+        // TBD
     }
 
+    AVCaptureDeviceOutput *capOut = [[AVCaptureVideoDataOutput alloc] init];
+    [capOut setSampleBufferDelegate:self queue:dipatch_get_main_queue()];
+    NSDictionary *videoSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA] forKey:(NSString *)kCVPixelBufferPixelFormatTypeKey];
+    [capOut setVideoSettings:videoSettings];
+    
+    captureSession = [[AVCaptureSession alloc] init];
+    [captureSession addInput:capIn];
+    [captureSession addOutput:capOut];
+    [captureSession beginConfiguration];
+    [captureSession setSessionPreset:AVCaptureSessionPresetLow];
+    [captureSession commitConfiguration];
+
+    // プレビュー用のビューを作成
+    UIView *base = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    base.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:base];
+    [base release];
+    
+    AVCaptureVideoPreviewLayer preview = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
+    preview.frame = base.bounds;
+    preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    [base.layer addSublayer:preview];
+    
+    // バーコード用ビューをオーバーレイする
+#if 0
+    UIImage *overlay = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BarcodeReader" ofType:@"png"]];
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    [view.layer addSublayer:imgView.layer];
+#endif
+
+    // バーコード認識用タイマ
+#if 0
     timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(timerHandler:) userInfo:nil repeats:YES];
     [timer retain];
+#endif
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -99,41 +127,17 @@
     }
 }
 
-//extern CGImageRef UIGetScreenImage(); // undocumented
+#pragma mark AVCaptureVideoDataOutputSampleBufferDelegate
 
-/**
- Timer Handler
- */
-- (void)timerHandler:(NSTimer*)timer
+- (void)captureOutput:(AVCaptureOutput *)capOut didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection*)connection
 {
-    //NSLog(@"timer");
-
-    // バーコードキャプチャ
-#if 0 // UIGetScreenImage は undocumented なので使用しない
-    CGImageRef capture = UIGetScreenImage();
-    CGImageRef clipped = CGImageCreateWithImageInRect(capture, CGRectMake(0, 240-30, 320, 60));
-
-    UIImage *image = [UIImage imageWithCGImage:clipped];
+    UIImage *image = [self _UIImageFromSampleBuffer:sampleBuffer];
     
-    CGImageRelease(capture);
-    CGImageRelease(clipped);
-#else
-    UIGraphicsBeginImageContext(self.view.bounds.size);
-
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *full = UIGraphicsGetImageFromCurrentImageContext();
-    CGImageRef clipped = CGImageCreateWithImageInRect(full.CGImage, CGRectMake(0, 240-30, 320, 60));
-    UIImage *image = [UIImage imageWithCGImage:clipped];
-
-    UIGraphicsEndImageContext();
-#endif
-        
     if ([reader recognize:image]) {
         NSString *code = reader.data;
         NSLog(@"Code = %@", code);
 
         if ([self isValidBarcode:code]) {
-            [self _stopTimer];
             [self.delegate barcodeScannerController:(BarcodeScannerController*)self didRecognizeBarcode:(NSString*)code];
         } else {
             NSLog(@"Invalid code");
@@ -141,6 +145,31 @@
     } else {
         NSLog(@"No code");
     }
+}
+
+- (void)_UIImageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CVPixelBufferLockBaseAddress(imageBuffer, 0);
+    uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddress(imageBuffer);
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipledFirst);
+    CGImageRef newImage = CGBitmapContexCreateImage(context);
+    CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
+
+    UIImage *image = [UIImage imageWithCGImage:newImage scale:1.0 orientation:UIImageOrientationRight];
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+    CGImageRelease(newImage);
+    [pool drain];
+
+    return image;
 }
 
 - (BOOL)isValidBarcode:(NSString *)code

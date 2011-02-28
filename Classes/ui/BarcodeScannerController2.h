@@ -2,7 +2,7 @@
 /*
   ItemShelf for iPhone/iPod touch
 
-  Copyright (c) 2008-2009, ItemShelf Development Team. All rights reserved.
+  Copyright (c) 2008-2011, ItemShelf Development Team. All rights reserved.
 
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions are
@@ -33,24 +33,27 @@
 */
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import <CoreVideo/CoreVideo.h>
+#import <CoreMedia/CoreMedia.h>
+
 #import "BarcodeReader.h"
 
-@class BarcodeScannerController;
+@class BarcodeScannerController2;
 
-@protocol BarcodeScannerControllerDelegate <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@protocol BarcodeScannerControllerDelegate2 <UINavigationControllerDelegate>
 - (void)barcodeScannerController:(BarcodeScannerController*)self didRecognizeBarcode:(NSString*)code;
 @end
 
-@interface BarcodeScannerController : UIImagePickerController
+@interface BarcodeScannerController2 : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate>
 {
+    AVCaptureSession *captureSession;
     BarcodeReader *reader;
-    NSTimer *timer;
 }
 
-@property(nonatomic,assign) id<BarcodeScannerControllerDelegate> delegate;
+@property(nonatomic,assign) id<BarcodeScannerControllerDelegate2> delegate;
 
-- (void)_stopTimer;
-- (void)timerHandler:(NSTimer*)timer;
 - (BOOL)isValidBarcode:(NSString *)code;
 @end
 
