@@ -294,6 +294,7 @@
 		3E0C0D76101AD45800F18D86 /* Star4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star4.png; sourceTree = "<group>"; };
 		3E0C0D77101AD45800F18D86 /* Star5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star5.png; sourceTree = "<group>"; };
 		3E15190E0EDAB7C100F510E9 /* ItemCellBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ItemCellBack.png; sourceTree = "<group>"; };
+		3E1CC8F7131BCEC100AB59BA /* BarcodeScannerController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeScannerController2.h; sourceTree = "<group>"; };
 		3E1FDD230ECEF5FA00915E3E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		3E1FDD240ECEF60600915E3E /* zebra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zebra.h; sourceTree = "<group>"; };
 		3E1FDD450ECEF78200915E3E /* config.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = config.c; sourceTree = "<group>"; };
@@ -790,6 +791,7 @@
 				3EC9AB42105E57D30096AB90 /* ItemCell.m */,
 				3EC9AB43105E57D30096AB90 /* ItemCell4.h */,
 				3EC9AB44105E57D30096AB90 /* ItemCell4.m */,
+				3E1CC8F7131BCEC100AB59BA /* BarcodeScannerController2.h */,
 				3E3C9E5F131BCC0D005CC671 /* BarcodeScannerController2.m */,
 				3EC9AB2D105E57D30096AB90 /* AboutViewController.h */,
 				3EC9AB2E105E57D30096AB90 /* AboutViewController.m */,

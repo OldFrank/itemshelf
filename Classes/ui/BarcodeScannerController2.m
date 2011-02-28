@@ -35,7 +35,9 @@
 #import "BarcodeScannerController2.h"
 #import "BarcodeReader.h"
 
-@implementation BarcodeScannerController2
+@implementation BarcodeScannerController
+
+@synthesize delegate;
 
 - (id)init
 {
@@ -52,32 +54,22 @@
     [super dealloc];
 }
 
-- (void)setDelegate:(id<BarcodeScannerControllerDelegate2>)delegate
-{
-    [super setDelegate:delegate];
-}
-
-- (id<BarcodeScannerControllerDelegate2>)delegate
-{
-    return (id<BarcodeScannerControllerDelegate2>)[super delegate];
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"BarcodeScannerController: viewDidAppear");
     [super viewDidAppear:animated];
 
     // Capture 設定
-    AVCaptureDeviceInput *capIn = [AVCaptureDeviceInput deviceInputWithDevice:[AVCaptureDevice defaultDeviceWithMeditType:AVMediaTypeVideo] error:NULL];
+    AVCaptureDeviceInput *capIn = [AVCaptureDeviceInput deviceInputWithDevice:[AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo] error:NULL];
     if (!capIn) {
         // TBD
     }
 
     AVCaptureVideoDataOutput *capOut = [[[AVCaptureVideoDataOutput alloc] init] autorelease];
-    [capOut setSampleBufferDelegate:self queue:dipatch_get_main_queue()];
+    [capOut setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
     NSDictionary *videoSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA] forKey:(NSString *)kCVPixelBufferPixelFormatTypeKey];
     [capOut setVideoSettings:videoSettings];
-    capOut.minFrameDuration = CMTimeMake(1 / 2); // 1/2 sec.
+    capOut.minFrameDuration = CMTimeMake(1, 2); // 1/2 sec.
 
     captureSession = [[AVCaptureSession alloc] init];
     [captureSession addInput:capIn];
@@ -91,7 +83,7 @@
     base.backgroundColor = [UIColor blackColor];
     [self.view addSubview:base];
     
-    AVCaptureVideoPreviewLayer preview = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
+    AVCaptureVideoPreviewLayer *preview = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
     preview.frame = base.bounds;
     preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [base.layer addSublayer:preview];
@@ -123,7 +115,7 @@
     }
 }
 
-- (void)_UIImageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
+- (UIImage *)_UIImageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
@@ -135,8 +127,8 @@
     size_t height = CVPixelBufferGetHeight(imageBuffer);
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipledFirst);
-    CGImageRef newImage = CGBitmapContexCreateImage(context);
+    CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    CGImageRef newImage = CGBitmapContextCreateImage(context);
     CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
 
     UIImage *image = [UIImage imageWithCGImage:newImage scale:1.0 orientation:UIImageOrientationRight];

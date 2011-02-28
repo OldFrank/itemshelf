@@ -40,20 +40,22 @@
 
 #import "BarcodeReader.h"
 
-@class BarcodeScannerController2;
+@class BarcodeScannerController;
 
-@protocol BarcodeScannerControllerDelegate2 <UINavigationControllerDelegate>
+@protocol BarcodeScannerControllerDelegate
 - (void)barcodeScannerController:(BarcodeScannerController*)self didRecognizeBarcode:(NSString*)code;
 @end
 
-@interface BarcodeScannerController2 : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface BarcodeScannerController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate>
 {
     AVCaptureSession *captureSession;
     BarcodeReader *reader;
 }
 
-@property(nonatomic,assign) id<BarcodeScannerControllerDelegate2> delegate;
+@property(nonatomic,assign) id<BarcodeScannerControllerDelegate> delegate;
 
 - (BOOL)isValidBarcode:(NSString *)code;
+
+- (UIImage *)_UIImageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 @end
 
