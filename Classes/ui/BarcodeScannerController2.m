@@ -52,16 +52,16 @@
 {
     self = [super initWithNibName:@"BarcodeScannerView" bundle:nil];
     if (self) {
-        reader = [[BarcodeReader alloc] init];
+        mBarcodeReader = [[BarcodeReader alloc] init];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [captureSession stopRunning];
-    [captureSession release];
-    [reader release];
+    [mCaptureSession stopRunning];
+    [mCaptureSession release];
+    [mBarcodeReader release];
 
     [super dealloc];
 }
@@ -94,35 +94,37 @@
     [capOut setVideoSettings:videoSettings];
     //capOut.minFrameDuration = CMTimeMake(1, 8);
 
-    captureSession = [[AVCaptureSession alloc] init];
-    [captureSession addInput:capIn];
-    [captureSession addOutput:capOut];
-    [captureSession beginConfiguration];
-    captureSession.sessionPreset = AVCaptureSessionPresetMedium;
-    [captureSession commitConfiguration];
+    mCaptureSession = [[AVCaptureSession alloc] init];
+    [mCaptureSession addInput:capIn];
+    [mCaptureSession addOutput:capOut];
+    [mCaptureSession beginConfiguration];
+    mCaptureSession.sessionPreset = AVCaptureSessionPresetMedium;
+    [mCaptureSession commitConfiguration];
 
     // プレビュー用のビューを作成
 #if 0
     UIView *base = [[[UIView alloc] init] autorelease];
-    base.frame = readerArea.bounds;
+    base.frame = mReaderArea.bounds;
     base.backgroundColor = [UIColor blackColor];
-    [readerArea addSubview:base];
+    [mReaderArea addSubview:base];
 #endif
     
-    AVCaptureVideoPreviewLayer *preview = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-    preview.frame = readerArea.bounds;
+    AVCaptureVideoPreviewLayer *preview = [AVCaptureVideoPreviewLayer layerWithSession:mCaptureSession];
+    preview.frame = mReaderArea.bounds;
     preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    [readerArea.layer addSublayer:preview];
+    [mReaderArea.layer addSublayer:preview];
     
     // バーコード用ビューをオーバーレイする
 #if 0
     UIImage *overlayImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BarcodeReader" ofType:@"png"]];
     CALayer *overlay = [CALayer layer];
-    overlay.contents = overlayImage;
+    overlay.contents = overlayImage.CGImage;
+    overlay.frame = mReaderArea.bounds;
+    // TODO: overlayImage retain
     [base.layer addSublayer:overlay];
 #endif
     
-    [captureSession startRunning];
+    [mCaptureSession startRunning];
 }
 
 #pragma mark AVCaptureVideoDataOutputSampleBufferDelegate
@@ -131,12 +133,12 @@
 {
     UIImage *image = [self _UIImageFromSampleBuffer:sampleBuffer];
     
-    if ([reader recognize:image]) {
-        NSString *code = reader.data;
+    if ([mBarcodeReader recognize:image]) {
+        NSString *code = mBarcodeReader.data;
         NSLog(@"Code = %@", code);
 
         if ([self isValidBarcode:code]) {
-            [captureSession stopRunning];
+            [mCaptureSession stopRunning];
             [self.delegate barcodeScannerController:(BarcodeScannerController*)self didRecognizeBarcode:(NSString*)code];
         } else {
             NSLog(@"Invalid code");
@@ -214,7 +216,7 @@
 
 - (IBAction)onCancel:(id)sender
 {
-    [captureSession stopRunning];
+    [mCaptureSession stopRunning];
     [[self parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
