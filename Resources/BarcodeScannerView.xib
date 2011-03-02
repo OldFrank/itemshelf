@@ -99,7 +99,7 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">readerArea</string>
+						<string key="label">mReaderArea</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="141802625"/>
 					</object>
@@ -228,13 +228,13 @@
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">readerArea</string>
+						<string key="NS.key.0">mReaderArea</string>
 						<string key="NS.object.0">UIView</string>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">readerArea</string>
+						<string key="NS.key.0">mReaderArea</string>
 						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">readerArea</string>
+							<string key="name">mReaderArea</string>
 							<string key="candidateClassName">UIView</string>
 						</object>
 					</object>
