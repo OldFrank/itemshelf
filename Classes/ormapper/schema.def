@@ -1,7 +1,7 @@
 Shelf:ShelfBase
         name :TEXT
         sorder :INTEGER
-        type :INTEGER
+        shelfType => type :INTEGER
         titleFilter :TEXT
         authorFilter :TEXT
         manufacturerFilter :TEXT
@@ -11,13 +11,13 @@ Shelf:ShelfBase
 Item:ItemBase
 	date :TEXT
 	shelfId => itemState :INTEGER
-	idType :INTEGER
+	serviceId => idType :INTEGER
 	idString :TEXT
 	asin :TEXT
 	name :TEXT
 	author :TEXT
 	manufacturer :TEXT
-	productGroup :TEXT
+	category => productGroup :TEXT
 	detailURL :TEXT
 	price :TEXT
 	tags :TEXT
