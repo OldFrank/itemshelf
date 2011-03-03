@@ -34,225 +34,46 @@
 
 #import "AppDelegate.h"
 #import "DateFormatter2.h"
-
-#pragma mark dbstmt implementation
-
-@implementation dbstmt
-
-@synthesize handle;
-
-/**
-   Initialize with sqlite3_stmt
-*/
-- (id)initWithStmt:(sqlite3_stmt *)st
-{
-    self = [super init];
-    if (self != nil) {
-        stmt = st;
-        db = [Database instance];
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    if (stmt) {
-        sqlite3_finalize(stmt);
-    }
-    [super dealloc];
-}
-
-/**
-   Execute step (sqlite3_step)
-*/
-- (int)step
-{
-    int ret = sqlite3_step(stmt);
-    if (ret != SQLITE_OK && ret != SQLITE_ROW && ret != SQLITE_DONE) {
-        NSLog(@"sqlite3_step error:%d (%s)", ret, sqlite3_errmsg(handle));
-    }
-    return ret;
-}
-
-/**
-   Reset statement (sqlite3_reset)
-*/
-- (void)reset
-{
-    sqlite3_reset(stmt);
-}
-
-/**
-   Bind integer value
-*/
-- (void)bindInt:(int)idx val:(int)val
-{
-    sqlite3_bind_int(stmt, idx+1, val);
-}
-
-/**
-   Bind double value
-*/
-- (void)bindDouble:(int)idx val:(double)val
-{
-    sqlite3_bind_double(stmt, idx+1, val);
-}
-
-/**
-   Bind C-string value
-*/
-- (void)bindCString:(int)idx val:(const char *)val
-{
-    sqlite3_bind_text(stmt, idx+1, val, -1, SQLITE_TRANSIENT);
-}
-
-/**
-   Bind stringvalue
-*/
-- (void)bindString:(int)idx val:(NSString*)val
-{
-    sqlite3_bind_text(stmt, idx+1, [val UTF8String], -1, SQLITE_TRANSIENT);
-}
-
-/**
-   Bind date value
-*/
-- (void)bindDate:(int)idx val:(NSDate*)date
-{
-    NSString *str;
-    
-    if (date != NULL) {
-        str = [db stringFromDate:date];
-        sqlite3_bind_text(stmt, idx+1, [str UTF8String], -1, SQLITE_TRANSIENT);
-    }
-}
-
-/**
-   Get integer value
-*/
-- (int)colInt:(int)idx
-{
-    return sqlite3_column_int(stmt, idx);
-}
-
-/**
-   Get double value
-*/
-- (double)colDouble:(int)idx
-{
-    return sqlite3_column_double(stmt, idx);
-}
-
-/**
-   Get C-string value
-*/
-- (const char *)colCString:(int)idx
-{
-    const char *s = (const char*)sqlite3_column_text(stmt, idx);
-    return s;
-}
-
-/**
-   Get stringvalue
-*/
-- (NSString*)colString:(int)idx
-{
-    const char *s = (const char*)sqlite3_column_text(stmt, idx);
-    if (!s) {
-        return @"";
-    }
-    NSString *ns = [NSString stringWithCString:s encoding:NSUTF8StringEncoding];
-    return ns;
-}
-
-/**
-   Get date value
-*/
-- (NSDate*)colDate:(int)idx
-{
-    NSDate *date = nil;
-    NSString *ds = [self colString:idx];
-    if (ds && [ds length] > 0) {
-        date = [db dateFromString:ds];
-    }
-    return date;
-}
-
-@end
-
-
-/////////////////////////////////////////////////////////////////////////
-
-#pragma mark -
-#pragma mark Database implementation
+#import "Database.h"
 
 @implementation Database
 
-@synthesize handle, needFixDateFormat;
+@synthesize handle;
 
-static Database *theDatabase = nil;
+/** Singleton */
+static Database *sDatabase = nil;
 
 /**
    Return the database instance (singleton)
 */
 + (Database *)instance
 {
-    if (!theDatabase) {
-        theDatabase = [[Database alloc] init];
-    }
-    return theDatabase;
+    return sDatabase;
 }
 
 + (void)shutdown
 {
-    [theDatabase release];
-    theDatabase = nil;
-
-    //sqlite3_shutdown();
+    [sDatabase release];
+    sDatabase = nil;
 }
 
 - (id)init
 {
     self = [super init];
     if (self != nil) {
-        handle = 0;
+        mHandle = nil;
     }
-    
-    needFixDateFormat = false;
-	
-    dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-    [dateFormatter setDateFormat: @"yyyyMMddHHmmss"];
-    
-    // Set US locale, because JP locale for date formatter is buggy,
-    // especially for 12 hour settings.
-    NSLocale *us = [[[NSLocale alloc] initWithLocaleIdentifier:@"US"] autorelease];
-    [dateFormatter setLocale:us];
-
-    // backward compat.
-    dateFormatter2 = [[DateFormatter2 alloc] init];
-    [dateFormatter2 setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-    [dateFormatter2 setDateFormat: @"yyyyMMddHHmm"];
-    
-    // for broken data...
-    dateFormatter3 = [[DateFormatter2 alloc] init];
-    [dateFormatter3 setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-    [dateFormatter3 setDateFormat: @"yyyyMMdd"];
-    
     return self;
 }
 
 - (void)dealloc
 {
     //ASSERT(self == theDatabase);
-    theDatabase = nil;
+    sDatabase = nil;
 
-    if (handle != nil) {
-        sqlite3_close(handle);
+    if (mHandle != nil) {
+        sqlite3_close(mHandle);
     }
-
-    [dateFormatter release];
-
     [super dealloc];
 }
 
@@ -269,11 +90,11 @@ static Database *theDatabase = nil;
     NSString *dbPath = [self dbPath:dbname];
     BOOL isExistedDb = [fileManager fileExistsAtPath:dbPath];
 
-    if (sqlite3_open([dbPath UTF8String], &handle) != 0) {
+    if (sqlite3_open([dbPath UTF8String], &mHandle) != 0) {
         // ouch!
         // re-create database
         [fileManager removeItemAtPath:dbPath error:NULL];
-        sqlite3_open([dbPath UTF8String], &handle);
+        sqlite3_open([dbPath UTF8String], &mHandle);
 
         isExistedDb = NO;
     }
@@ -287,12 +108,12 @@ static Database *theDatabase = nil;
 */
 - (void)exec:(NSString *)sql
 {
-    //ASSERT(handle != 0);
+    //ASSERT(mHandle != 0);
 
     //LOG(@"SQL: %s", sql);
-    int result = sqlite3_exec(handle, [sql UTF8String], NULL, NULL, NULL);
+    int result = sqlite3_exec(mHandle, [sql UTF8String], NULL, NULL, NULL);
     if (result != SQLITE_OK) {
-        //LOG(@"sqlite3: %s", sqlite3_errmsg(handle));
+        //LOG(@"sqlite3: %s", sqlite3_errmsg(mHandle));
     }
 }
 
@@ -305,14 +126,14 @@ static Database *theDatabase = nil;
 - (dbstmt *)prepare:(NSString *)sql
 {
     sqlite3_stmt *stmt;
-    int result = sqlite3_prepare_v2(handle, [sql UTF8String], -1, &stmt, NULL);
+    int result = sqlite3_prepare_v2(mHandle, [sql UTF8String], -1, &stmt, NULL);
     if (result != SQLITE_OK) {
-        //LOG(@"sqlite3: %s", sqlite3_errmsg(handle));
+        //LOG(@"sqlite3: %s", sqlite3_errmsg(mHandle));
         //ASSERT(0);
     }
 
     dbstmt *dbs = [[[dbstmt alloc] initWithStmt:stmt] autorelease];
-    dbs.handle = self.handle;
+    dbs.mHandle = self.mHandle;
     return dbs;
 }
 
@@ -321,7 +142,7 @@ static Database *theDatabase = nil;
 */
 - (int)lastInsertRowId
 {
-    return sqlite3_last_insert_rowid(handle);
+    return sqlite3_last_insert_rowid(mHandle);
 }
 
 /**
@@ -365,32 +186,32 @@ static Database *theDatabase = nil;
 #pragma mark -
 #pragma mark Utilities
 
+- (NSDateFormatter *)dateFormatter
+{
+    static NSDateFormatter *dateFormatter = nil;
+    if (dateFormatter == nil) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+        [dateFormatter setDateFormat: @"yyyyMMddHHmmss"];
+        [dateFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"US"] autorelease]];
+    }
+    return dateFormatter;
+}
+
 - (NSDate *)dateFromString:(NSString *)str
 {
-    NSDate *date = nil;
-    
-    if ([str length] == 14) { // yyyyMMddHHmmss
-        date = [dateFormatter dateFromString:str];
-    }
+    // default impl.
+    NSDate *date = [[self dateFormatter] dateFromString:str];
     if (date == nil) {
-        // backward compat.
-        needFixDateFormat = true;
-        date = [dateFormatter2 dateFromString:str];
-
-        if (date == nil) {
-            date = [dateFormatter3 dateFromString:str];
-        }
-        if (date == nil) {
-            date = [dateFormatter dateFromString:@"20000101000000"]; // fallback
-        }
+        date = [dateFormatter dateFromString:@"20000101000000"]; // fallback
     }
     return date;
 }
 
 - (NSString *)stringFromDate:(NSDate *)date
 {
-    NSString *str = [dateFormatter stringFromDate:date];
-    return str;
+    // default impl.
+    return [[self dateFormatter] dateFormatter stringFromDate:str];
 }
 
 @end
