@@ -10,7 +10,7 @@ Shelf:ShelfBase
 
 Item:ItemBase
 	date :TEXT
-	itemState :INTEGER
+	shelfId => itemState :INTEGER
 	idType :INTEGER
 	idString :TEXT
 	asin :TEXT
