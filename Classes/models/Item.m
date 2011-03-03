@@ -142,7 +142,7 @@
     }
     self.shelfId = shelf;
 
-    if (self.pkey < 0) {
+    if (self.pid < 0) {
         return;	 // fail safe
     }
 
@@ -243,7 +243,7 @@ static NSMutableArray *agingArray = nil;
     }
 
     // Can't return image when downloading it.
-    if (buffer != nil) {
+    if (mBuffer != nil) {
         return nil;
     }
 
@@ -271,13 +271,13 @@ static NSMutableArray *agingArray = nil;
     }
 
     // Returns "NoImage" if no image URL.
-    if (imageURL == nil || imageURL.length == 0) {
+    if (mImageURL == nil || mImageURL.length == 0) {
         return [self _getNoImage];
     }
 
     // No cache. Start download image from network.
     if (delegate == nil) return nil;
-    itemDelegate = delegate;
+    mItemDelegate = delegate;
 	
     NSURLRequest *req =
         [NSURLRequest requestWithURL:[NSURL URLWithString:self.imageURL]
@@ -310,26 +310,26 @@ static NSMutableArray *agingArray = nil;
 
 - (void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data
 {
-    [buffer appendData:data];
+    [mBuffer appendData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)conn
 {
     LOG(@"Loading image done");
 	
-    [self saveImageCache:nil data:buffer];
-    [buffer release];
-    buffer = nil;
+    [self saveImageCache:nil data:mBuffer];
+    [mBuffer release];
+    mBuffer = nil;
 	
-    if (itemDelegate) {
-        [itemDelegate itemDidFinishDownloadImage:self];
+    if (mItemDelegate) {
+        [mItemDelegate itemDidFinishDownloadImage:self];
     }
 }
 
 - (void)connection:(NSURLConnection *)conn didFailWithError:(NSError *)error
 {
-    [buffer release];
-    buffer = nil;
+    [mBuffer release];
+    mBuffer = nil;
 	
     LOG(@"Connection failed. Error - %@ %@",
         [error localizedDescription],
@@ -363,7 +363,7 @@ static NSMutableArray *agingArray = nil;
 */
 - (void)cancelDownload
 {
-    itemDelegate = nil;
+    mItemDelegate = nil;
 }
 
 /**
@@ -371,9 +371,9 @@ static NSMutableArray *agingArray = nil;
 */
 - (NSString *)_imagePath
 {
-    if (pkey < 0) return nil;
+    if (self.pid < 0) return nil;
 
-    NSString *filename = [NSString stringWithFormat:@"img-%d.jpg", self.pkey];
+    NSString *filename = [NSString stringWithFormat:@"img-%d.jpg", self.pid];
     return [AppDelegate pathOfDataFile:filename];
 }
 
@@ -382,16 +382,16 @@ static NSMutableArray *agingArray = nil;
 */
 - (void)_fixImagePath
 {
-    if (pkey < 0) return;
+    if (self.pid < 0) return;
 
     NSFileManager *fm = [NSFileManager defaultManager];
 
-    NSString *oldfilename = [NSString stringWithFormat:@"img-%d", self.pkey];
+    NSString *oldfilename = [NSString stringWithFormat:@"img-%d", self.pid];
     NSString *oldpath = [AppDelegate pathOfDataFile:oldfilename];
 
     if (![fm fileExistsAtPath:oldpath]) return;
 
-    NSString *newfilename = [NSString stringWithFormat:@"img-%d.jpg", self.pkey];
+    NSString *newfilename = [NSString stringWithFormat:@"img-%d.jpg", self.pid];
     NSString *newpath = [AppDelegate pathOfDataFile:newfilename];
 
     if ([fm fileExistsAtPath:newpath]) {

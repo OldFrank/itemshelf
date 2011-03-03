@@ -34,6 +34,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DataModel.h"
+#import "ItemshelfDatabase.h"
 #import "StringArray.h"
 #import "Edition.h"
 
@@ -96,7 +97,7 @@ static DataModel *theDataModel = nil; // singleton
 - (Shelf *)shelf:(int)shelfId
 {
     for (Shelf *shelf in mShelves) {
-        if (shelf.pkey == shelfId) {
+        if (shelf.pid == shelfId) {
             return shelf;
         }
     }
@@ -167,7 +168,7 @@ static DataModel *theDataModel = nil; // singleton
     int n = 0;
     for (int i = 0; i < mShelves.count; i++) {
         shelf = [mShelves objectAtIndex:i];
-        if (shelf.pkey != SHELF_ALL_PKEY) {
+        if (shelf.pid != SHELF_ALL_PKEY) {
             if (shelf.sorder != n) {
                 shelf.sorder = n;
                 [shelf save];
@@ -416,7 +417,7 @@ static DataModel *theDataModel = nil; // singleton
     // All Shelf を追加しておく (DBには入れない)
     Shelf *shelf;
     shelf = [[Shelf alloc] init];
-    shelf.pkey = SHELF_ALL_PKEY;
+    shelf.pid = SHELF_ALL_PKEY;
     shelf.name = NSLocalizedString(@"All", @"");
     shelf.shelfType = ShelfTypeSmart;
     shelf.sorder = -1;

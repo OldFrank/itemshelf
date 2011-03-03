@@ -51,7 +51,7 @@
     self = [super init];
 
     mShelf = [sh retain];
-    searchText = nil;
+    mSearchText = nil;
     mFilter = nil;
     mFilteredList = [[NSMutableArray alloc] initWithCapacity:50];
 
@@ -64,7 +64,7 @@
     [mShelf release];
     [mFilteredList release];
     [mFilter release];
-    [searchText release];
+    [mSearchText release];
     [super dealloc];
 }
 
@@ -122,9 +122,9 @@
 */
 - (void)setSearchText:(NSString *)t
 {
-    if (searchText != t) {
-        [searchText release];
-        searchText = [t retain];
+    if (mSearchText != t) {
+        [mSearchText release];
+        mSearchText = [t retain];
         [self updateFilter];
     }
 }
@@ -146,17 +146,17 @@
         }
 		
         // 検索テキストチェック
-        if (searchText != nil && searchText.length > 0) {
+        if (mSearchText != nil && mSearchText.length > 0) {
             BOOL match = NO;
             NSRange range;
 			
-            range = [item.name rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            range = [item.name rangeOfString:mSearchText options:NSCaseInsensitiveSearch];
             if (range.location != NSNotFound) match = YES;
 
-            range = [item.author rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            range = [item.author rangeOfString:mSearchText options:NSCaseInsensitiveSearch];
             if (range.location != NSNotFound) match = YES;
 			
-            range = [item.manufacturer rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            range = [item.manufacturer rangeOfString:mSearchText options:NSCaseInsensitiveSearch];
             if (range.location != NSNotFound) match = YES;
 			
             if (!match) continue;

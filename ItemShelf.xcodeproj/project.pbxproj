@@ -135,6 +135,18 @@
 		3EA444770EEB8CBC00CE33EB /* ShelfMode.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EA444760EEB8CBC00CE33EB /* ShelfMode.png */; };
 		3EA62C9E0EE9834900A4694B /* NumPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EA62C9D0EE9834900A4694B /* NumPad.png */; };
 		3EA62D260EE98F7600A4694B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EA62D250EE98F7600A4694B /* Default.png */; };
+		3EA75E1C131FD1FB00574017 /* ItemshelfDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E1B131FD1FB00574017 /* ItemshelfDatabase.m */; };
+		3EA75E1D131FD1FB00574017 /* ItemshelfDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E1B131FD1FB00574017 /* ItemshelfDatabase.m */; };
+		3EA75E2B131FD22F00574017 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E22131FD22F00574017 /* Database.m */; };
+		3EA75E2C131FD22F00574017 /* Dbstmt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E24131FD22F00574017 /* Dbstmt.m */; };
+		3EA75E2D131FD22F00574017 /* ItemBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E26131FD22F00574017 /* ItemBase.m */; };
+		3EA75E2E131FD22F00574017 /* ORRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E28131FD22F00574017 /* ORRecord.m */; };
+		3EA75E2F131FD22F00574017 /* ShelfBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E2A131FD22F00574017 /* ShelfBase.m */; };
+		3EA75E30131FD22F00574017 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E22131FD22F00574017 /* Database.m */; };
+		3EA75E31131FD22F00574017 /* Dbstmt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E24131FD22F00574017 /* Dbstmt.m */; };
+		3EA75E32131FD22F00574017 /* ItemBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E26131FD22F00574017 /* ItemBase.m */; };
+		3EA75E33131FD22F00574017 /* ORRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E28131FD22F00574017 /* ORRecord.m */; };
+		3EA75E34131FD22F00574017 /* ShelfBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA75E2A131FD22F00574017 /* ShelfBase.m */; };
 		3EB6F10D114505F000C859C7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB6F10C114505F000C859C7 /* MessageUI.framework */; };
 		3EB779C911429491001C3F1F /* libGoogleAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB779C811429491001C3F1F /* libGoogleAds.a */; };
 		3EB779CA11429491001C3F1F /* libGoogleAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB779C811429491001C3F1F /* libGoogleAds.a */; };
@@ -146,7 +158,6 @@
 		3EBC16FC0EDA822B00A35747 /* ScanCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC16F90EDA822B00A35747 /* ScanCamera.png */; };
 		3EC639D10EE544C30057FAC2 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EC639D00EE544C30057FAC2 /* WebView.xib */; };
 		3EC727170EE83161008B2CBF /* Locale.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC727160EE83161008B2CBF /* Locale.png */; };
-		3EC9AB15105E57B30096AB90 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB07105E57B30096AB90 /* Database.m */; };
 		3EC9AB16105E57B30096AB90 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB09105E57B30096AB90 /* DataModel.m */; };
 		3EC9AB17105E57B30096AB90 /* DateFormatter2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB0B105E57B30096AB90 /* DateFormatter2.m */; };
 		3EC9AB18105E57B30096AB90 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB0D105E57B30096AB90 /* Item.m */; };
@@ -154,7 +165,6 @@
 		3EC9AB1A105E57B30096AB90 /* Shelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB11105E57B30096AB90 /* Shelf.m */; };
 		3EC9AB1B105E57B30096AB90 /* SmartShelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB12105E57B30096AB90 /* SmartShelf.m */; };
 		3EC9AB1C105E57B30096AB90 /* StringArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB14105E57B30096AB90 /* StringArray.m */; };
-		3EC9AB1D105E57B30096AB90 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB07105E57B30096AB90 /* Database.m */; };
 		3EC9AB1E105E57B30096AB90 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB09105E57B30096AB90 /* DataModel.m */; };
 		3EC9AB1F105E57B30096AB90 /* DateFormatter2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB0B105E57B30096AB90 /* DateFormatter2.m */; };
 		3EC9AB20105E57B30096AB90 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB0D105E57B30096AB90 /* Item.m */; };
@@ -389,6 +399,18 @@
 		3EA444760EEB8CBC00CE33EB /* ShelfMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShelfMode.png; sourceTree = "<group>"; };
 		3EA62C9D0EE9834900A4694B /* NumPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NumPad.png; sourceTree = "<group>"; };
 		3EA62D250EE98F7600A4694B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3EA75E1A131FD1FB00574017 /* ItemshelfDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemshelfDatabase.h; sourceTree = "<group>"; };
+		3EA75E1B131FD1FB00574017 /* ItemshelfDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemshelfDatabase.m; sourceTree = "<group>"; };
+		3EA75E21131FD22F00574017 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		3EA75E22131FD22F00574017 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
+		3EA75E23131FD22F00574017 /* Dbstmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dbstmt.h; sourceTree = "<group>"; };
+		3EA75E24131FD22F00574017 /* Dbstmt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dbstmt.m; sourceTree = "<group>"; };
+		3EA75E25131FD22F00574017 /* ItemBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemBase.h; sourceTree = "<group>"; };
+		3EA75E26131FD22F00574017 /* ItemBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemBase.m; sourceTree = "<group>"; };
+		3EA75E27131FD22F00574017 /* ORRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORRecord.h; sourceTree = "<group>"; };
+		3EA75E28131FD22F00574017 /* ORRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORRecord.m; sourceTree = "<group>"; };
+		3EA75E29131FD22F00574017 /* ShelfBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShelfBase.h; sourceTree = "<group>"; };
+		3EA75E2A131FD22F00574017 /* ShelfBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShelfBase.m; sourceTree = "<group>"; };
 		3EB6F10C114505F000C859C7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		3EB779C61142947E001C3F1F /* GADAdSenseParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSenseParameters.h; sourceTree = "<group>"; };
 		3EB779C711429488001C3F1F /* GADAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdViewController.h; sourceTree = "<group>"; };
@@ -400,8 +422,6 @@
 		3EBC16F90EDA822B00A35747 /* ScanCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScanCamera.png; sourceTree = "<group>"; };
 		3EC639D00EE544C30057FAC2 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		3EC727160EE83161008B2CBF /* Locale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Locale.png; sourceTree = "<group>"; };
-		3EC9AB06105E57B30096AB90 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
-		3EC9AB07105E57B30096AB90 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		3EC9AB08105E57B30096AB90 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		3EC9AB09105E57B30096AB90 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		3EC9AB0A105E57B30096AB90 /* DateFormatter2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFormatter2.h; sourceTree = "<group>"; };
@@ -556,6 +576,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3EA75E20131FD21000574017 /* ormapper */,
 				3E7BD5BB0EDD61D40083CBE5 /* models */,
 				3E7BD5BA0EDD61B80083CBE5 /* ui */,
 				3E37D1900F13953B005B6B90 /* webapi */,
@@ -843,8 +864,8 @@
 		3E7BD5BB0EDD61D40083CBE5 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				3EC9AB06105E57B30096AB90 /* Database.h */,
-				3EC9AB07105E57B30096AB90 /* Database.m */,
+				3EA75E1A131FD1FB00574017 /* ItemshelfDatabase.h */,
+				3EA75E1B131FD1FB00574017 /* ItemshelfDatabase.m */,
 				3EC9AB08105E57B30096AB90 /* DataModel.h */,
 				3EC9AB09105E57B30096AB90 /* DataModel.m */,
 				3EC9AB0A105E57B30096AB90 /* DateFormatter2.h */,
@@ -936,6 +957,23 @@
 				3E99359F11465B54005386D0 /* zip.h */,
 			);
 			path = minizip;
+			sourceTree = "<group>";
+		};
+		3EA75E20131FD21000574017 /* ormapper */ = {
+			isa = PBXGroup;
+			children = (
+				3EA75E21131FD22F00574017 /* Database.h */,
+				3EA75E22131FD22F00574017 /* Database.m */,
+				3EA75E23131FD22F00574017 /* Dbstmt.h */,
+				3EA75E24131FD22F00574017 /* Dbstmt.m */,
+				3EA75E25131FD22F00574017 /* ItemBase.h */,
+				3EA75E26131FD22F00574017 /* ItemBase.m */,
+				3EA75E27131FD22F00574017 /* ORRecord.h */,
+				3EA75E28131FD22F00574017 /* ORRecord.m */,
+				3EA75E29131FD22F00574017 /* ShelfBase.h */,
+				3EA75E2A131FD22F00574017 /* ShelfBase.m */,
+			);
+			path = ormapper;
 			sourceTree = "<group>";
 		};
 		3EB779C51142945F001C3F1F /* GoogleAds */ = {
@@ -1168,7 +1206,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EC9AB1D105E57B30096AB90 /* Database.m in Sources */,
 				3EC9AB1E105E57B30096AB90 /* DataModel.m in Sources */,
 				3EC9AB1F105E57B30096AB90 /* DateFormatter2.m in Sources */,
 				3EC9AB20105E57B30096AB90 /* Item.m in Sources */,
@@ -1217,6 +1254,12 @@
 				3E9935A711465B54005386D0 /* zip.c in Sources */,
 				3E9935AB11465B5F005386D0 /* ZipArchive.mm in Sources */,
 				3E3C9E60131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */,
+				3EA75E1C131FD1FB00574017 /* ItemshelfDatabase.m in Sources */,
+				3EA75E2B131FD22F00574017 /* Database.m in Sources */,
+				3EA75E2C131FD22F00574017 /* Dbstmt.m in Sources */,
+				3EA75E2D131FD22F00574017 /* ItemBase.m in Sources */,
+				3EA75E2E131FD22F00574017 /* ORRecord.m in Sources */,
+				3EA75E2F131FD22F00574017 /* ShelfBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1224,7 +1267,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EC9AB15105E57B30096AB90 /* Database.m in Sources */,
 				3EC9AB16105E57B30096AB90 /* DataModel.m in Sources */,
 				3EC9AB17105E57B30096AB90 /* DateFormatter2.m in Sources */,
 				3EC9AB18105E57B30096AB90 /* Item.m in Sources */,
@@ -1273,6 +1315,12 @@
 				3E9935A311465B54005386D0 /* zip.c in Sources */,
 				3E9935AA11465B5F005386D0 /* ZipArchive.mm in Sources */,
 				3E3C9E61131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */,
+				3EA75E1D131FD1FB00574017 /* ItemshelfDatabase.m in Sources */,
+				3EA75E30131FD22F00574017 /* Database.m in Sources */,
+				3EA75E31131FD22F00574017 /* Dbstmt.m in Sources */,
+				3EA75E32131FD22F00574017 /* ItemBase.m in Sources */,
+				3EA75E33131FD22F00574017 /* ORRecord.m in Sources */,
+				3EA75E34131FD22F00574017 /* ShelfBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

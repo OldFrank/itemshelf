@@ -37,21 +37,24 @@
 #import "Item.h"
 #import "Shelf.h"
 #import "DateFormatter2.h"
+#import "ItemshelfDatabase.h"
 
 @implementation ItemshelfDatabase
 
 // Override
 - (BOOL)open:(NSString *)dbname
 {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
     // migrate old database...
-    NSString *oldDbPath = [self dbPath:"iWantThis.db"];
+    NSString *oldDbPath = [self dbPath:@"iWantThis.db"];
     BOOL isExistOldDb = [fileManager fileExistsAtPath:oldDbPath];
 
     NSString *dbPath = [self dbPath:dbname];
     BOOL isExistDb = [fileManager fileExistsAtPath:dbPath];
     
     if (isExistOldDb) {
-        if (isExistedDb) {
+        if (isExistDb) {
             [fileManager removeItemAtPath:oldDbPath error:NULL];
         } else {
             [fileManager moveItemAtPath:oldDbPath toPath:dbPath error:NULL];
