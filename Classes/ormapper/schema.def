@@ -1,3 +1,5 @@
+PKEY = pkey
+
 Shelf:ShelfBase
         name :TEXT
         sorder :INTEGER
