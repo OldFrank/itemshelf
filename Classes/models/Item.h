@@ -37,6 +37,7 @@
 #import <UIKit/UIKit.h>
 #import "Common.h"
 #import "Database.h"
+#import "ItemBase.h"
 
 // 画像をメモリにキャッシュしておく個数
 #define MAX_IMAGE_CACHE_AGE		70
@@ -48,10 +49,10 @@
 @end
 
 
-// Item 情報 : とりあえず仮で
-@interface Item : NSObject 
+// Item 情報
+@interface Item : ItemBase
 {
-    int pkey;		///< Primary key (for database)
+#if 0
     NSDate *date;	///< Registered date
     int shelfId;	///< Shelf ID (SHELF_*)
 
@@ -70,38 +71,23 @@
     NSString *memo;	///< User defined memo (reserved)
     NSString *imageURL;	///< URL of image
 	
-    UIImage *imageCache; ///< Image cache
-	
     int sorder;		///< Sort order
     int star;           ///< Star
+#endif
 
+    UIImage *mImageCache; ///< Image cache
+	
     // image download 用
-    NSMutableData *buffer;  ///< Temporary buffer to download image
-    id<ItemDelegate> itemDelegate; ///< Delegate of ItemDelegate protocol
+    NSMutableData *mBuffer;  ///< Temporary buffer to download image
+    id<ItemDelegate> mItemDelegate; ///< Delegate of ItemDelegate protocol
 
     // ItemView 用
     //NSMutableArray *infoStrings; ///< Information strings, used with ItemView
-    BOOL registeredWithShelf;  ///< Is registered in shelf?
+    BOOL mRegisteredWithShelf;  ///< Is registered in shelf?
 }
 
-@property(nonatomic,assign) int pkey;
-@property(nonatomic,retain) NSDate *date;
-@property(nonatomic,assign) int shelfId;
-@property(nonatomic,assign) int serviceId;
-@property(nonatomic,retain) NSString *idString;
-@property(nonatomic,retain) NSString *asin;
-@property(nonatomic,retain) NSString *name;
-@property(nonatomic,retain) NSString *author;
-@property(nonatomic,retain) NSString *manufacturer;
-@property(nonatomic,retain) NSString *category;
-@property(nonatomic,retain) NSString *detailURL;
-@property(nonatomic,retain) NSString *price;
-@property(nonatomic,retain) NSString *tags;
-@property(nonatomic,retain) NSString *memo;
-@property(nonatomic,retain) NSString *imageURL;
 @property(nonatomic,retain) UIImage *imageCache;
-@property(nonatomic,assign) int sorder;
-@property(nonatomic,assign) int star;
+
 //@property(nonatomic,retain) NSMutableArray *infoStrings;
 @property(nonatomic,assign) BOOL registeredWithShelf;
 

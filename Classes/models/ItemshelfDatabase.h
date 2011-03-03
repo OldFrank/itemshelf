@@ -1,8 +1,8 @@
 // -*-  Mode:ObjC; c-basic-offset:4; tab-width:8; indent-tabs-mode:nil -*-
 /*
-  CashFlow for iPhone/iPod touch
+  ItemShelf for iPhone/iPod touch
 
-  Copyright (c) 2008, Takuya Murakami, All rights reserved.
+  Copyright (c) 2008, ItemShelf Development Team. All rights reserved.
 
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions are
@@ -32,11 +32,21 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import <UIKit/UIKit.h>
+// データベースアクセス用のクラス
+// sqlite3 のラッパ
 
-@interface DateFormatter2 :NSDateFormatter {
+#import <UIKit/UIKit.h>
+#import <sqlite3.h>
+#import "Common.h"
+
+/**
+   Wrapper class of sqlite3 database
+*/
+@interface ItemshelfDatabase : Database {
 }
 
-- (NSString *)fixDateString:(NSString *)string;
+// Utilities
++ (NSDate*)dateFromCString:(const char *)str;
++ (const char *)cstringFromDate:(NSDate*)date;
 
 @end
