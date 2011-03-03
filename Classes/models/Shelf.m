@@ -171,7 +171,7 @@ static int compareBySorder(Item *t1, Item *t2, void *context)
 */
 - (void)delete
 {
-    NOTYET;
+    [mDb beginTransaction];
     [super delete];
 
     // この棚にあるアイテムも全部消す
@@ -181,7 +181,7 @@ static int compareBySorder(Item *t1, Item *t2, void *context)
         }
     }
 
-    [db commitTransaction];
+    [mDb commitTransaction];
 }
 
 //@}

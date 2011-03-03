@@ -409,6 +409,7 @@ static DataModel *theDataModel = nil; // singleton
 {
     Database *db = [[ItemshelfDatabase alloc] init];
     [Database setSingletonInstance:db];
+    [db open:@"itemshelf.db"];
 
     // migration
     [Shelf migrate];

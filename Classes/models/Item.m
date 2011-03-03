@@ -32,6 +32,7 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#import "ItemBase.h"
 #import "Item.h"
 #import "AppDelegate.h"
 #import "DataModel.h"
@@ -269,7 +270,7 @@ static NSMutableArray *agingArray = nil;
         return nil;
 #endif
     }
-
+    
     // Returns "NoImage" if no image URL.
     if (mImageURL == nil || mImageURL.length == 0) {
         return [self _getNoImage];

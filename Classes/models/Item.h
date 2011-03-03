@@ -52,7 +52,7 @@
 // Item 情報
 @interface Item : ItemBase
 {
-#if 0
+/*
     NSDate *date;	///< Registered date
     int shelfId;	///< Shelf ID (SHELF_*)
 
@@ -73,7 +73,7 @@
 	
     int sorder;		///< Sort order
     int star;           ///< Star
-#endif
+*/
 
     UIImage *mImageCache; ///< Image cache
 	

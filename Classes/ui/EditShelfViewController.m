@@ -111,10 +111,7 @@
         [[DataModel sharedDataModel] addShelf:shelf];
     } else {
         // 変更
-        [shelf updateName];
-        if (shelf.shelfType == ShelfTypeSmart) {
-            [shelf updateSmartFilters];
-        }
+        [shelf save];
     }
 
     // SmartShelf を更新する
