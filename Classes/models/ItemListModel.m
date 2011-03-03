@@ -210,10 +210,10 @@
             a.sorder = b.sorder;
             b.sorder = tmp;
 			
-            [a update];
+            [a save];
         }
         ASSERT(b);
-        [b update];
+        [b save];
     } else {
         Item *a, *b = nil;
         for (int i = to; i > from; i--) {
@@ -223,10 +223,10 @@
             a.sorder = b.sorder;
             b.sorder = tmp;
 			
-            [a update];
+            [a save];
         }
         ASSERT(b);
-        [b update];
+        [b save];
     }
     [[Database instance] commitTransaction];
 	
@@ -319,7 +319,7 @@ static int compByDate(Item *a, Item *b, void *ctx)
         NSNumber *sorder = [sorders objectAtIndex:i++];
         if (item.sorder != sorder.intValue) {
             item.sorder = sorder.intValue;
-            [item update];
+            [item save];
         }
     }
     [[Database instance] commitTransaction];

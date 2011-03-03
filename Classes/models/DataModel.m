@@ -130,7 +130,7 @@ static DataModel *theDataModel = nil; // singleton
 - (void)addShelf:(Shelf *)shelf
 {
     [mShelves addObject:shelf];
-    [shelf insert];
+    [shelf save];
 }
 
 /**
@@ -170,7 +170,7 @@ static DataModel *theDataModel = nil; // singleton
         if (shelf.pkey != SHELF_ALL_PKEY) {
             if (shelf.sorder != n) {
                 shelf.sorder = n;
-                [shelf update];
+                [shelf save];
             }
             n++;
         }
@@ -247,7 +247,7 @@ static DataModel *theDataModel = nil; // singleton
     ASSERT(shelf.shelfType == ShelfTypeNormal);
 	
     [shelf addItem:item];
-    [item insert]; // add database
+    [item save]; // add database
 	
     item.registeredWithShelf = YES;
 

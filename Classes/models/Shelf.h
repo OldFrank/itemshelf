@@ -69,7 +69,7 @@
 
 //+ (void)checkTable;
 //- (void)loadRow:(dbstmt *)stmt;
-//- (void)insert;
+//- (void)_insert;
 - (void)delete;
 //- (void)updateName;
 //- (void)updateSorder;

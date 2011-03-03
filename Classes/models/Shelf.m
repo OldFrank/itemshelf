@@ -160,7 +160,7 @@ static int compareBySorder(Item *t1, Item *t2, void *context)
             Shelf *shelf = [[[Shelf alloc] init] autorelease];
             shelf.name = NSLocalizedString(name, @"");
             shelf.sorder = i;
-            [shelf insert];
+            [shelf save];
         }
     }
     return ret;

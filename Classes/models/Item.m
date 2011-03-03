@@ -118,7 +118,7 @@
     //self.sorder = item.sorder;
     self.star = item.star;
 
-    [self update];
+    [self save];
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -146,7 +146,7 @@
         return;	 // fail safe
     }
 
-    [self update];
+    [self save];
 }
 
 //@}
