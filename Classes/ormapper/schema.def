@@ -1,0 +1,27 @@
+Shelf:ShelfBase
+        name :TEXT
+        sorder :INTEGER
+        type :INTEGER
+        titleFilter :TEXT
+        authorFilter :TEXT
+        manufacturerFilter :TEXT
+        tagsFilter :TEXT
+        starFilter :INTEGER
+
+Item:ItemBase
+	date :TEXT
+	itemState :INTEGER
+	idType :INTEGER
+	idString :TEXT
+	asin :TEXT
+	name :TEXT
+	author :TEXT
+	manufacturer :TEXT
+	productGroup :TEXT
+	detailURL :TEXT
+	price :TEXT
+	tags :TEXT
+	memo :TEXT
+	imageURL :TEXT
+	sorder :INTEGER
+	star :INTEGER
