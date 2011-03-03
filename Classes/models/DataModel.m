@@ -406,11 +406,14 @@ static DataModel *theDataModel = nil; // singleton
 */
 - (void)loadDB
 {
-    Database *db = [Database instance];
+    Database *db = [[ItemshelfDatabase alloc] init];
+    [Database setSingletonInstance:db];
 
-    dbstmt *stmt;
+    // migration
+    [Shelf migrate];
+    [Item migrate];
 
-    // All Shelf を追加しておく
+    // All Shelf を追加しておく (DBには入れない)
     Shelf *shelf;
     shelf = [[Shelf alloc] init];
     shelf.pkey = SHELF_ALL_PKEY;
@@ -421,23 +424,13 @@ static DataModel *theDataModel = nil; // singleton
     [shelf release];
 
     // load shelves
-    stmt = [db prepare:"SELECT * FROM Shelf ORDER BY sorder;"];
-    while ([stmt step] == SQLITE_ROW) {
-        shelf = [[Shelf alloc] init];
-        [shelf loadRow:stmt];
-        [shelves addObject:shelf];
-        [shelf release];
-    }
+    self.shelves = [Shelf find_cond:nil];
 
     // load items
-    stmt = [db prepare:"SELECT * FROM Item ORDER BY sorder,date;"];
-    while ([stmt step] == SQLITE_ROW) {
-        Item *item = [[Item alloc] init];
-        [item loadRow:stmt];
-
-        Shelf *shelf = [self shelf:item.shelfId];
+    NSMutableArray *items = [Item find_cond:@"ORDER BY sorder, date"];
+    for (Item *item in items) {
+        shelf = [self shelf:item.shelfId];
         [shelf addItem:item];
-        [item release];
     }
 
     [self updateSmartShelves];

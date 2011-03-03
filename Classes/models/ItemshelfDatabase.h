@@ -45,8 +45,4 @@
 @interface ItemshelfDatabase : Database {
 }
 
-// Utilities
-+ (NSDate*)dateFromCString:(const char *)str;
-+ (const char *)cstringFromDate:(NSDate*)date;
-
 @end

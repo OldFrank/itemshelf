@@ -40,45 +40,6 @@
 
 @implementation ItemshelfDatabase
 
-- (id)init
-{
-    self = [super init];
-    if (dateFormatter == nil) {
-        dateFormatter = [[DateFormatter2 alloc] init];
-        [dateFormatter setTimeZone: [NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-        [dateFormatter setDateFormat: @"yyyyMMddHHmm"];
-    }
-	
-    return self;
-}
-
-
-- (void)dealloc
-{
-    [dateFormatter release];
-    dateFormatter = nil;
-    [super dealloc];
-}
-
-/**
-   Return database file name
-*/
-- (NSString*)dbPath
-{
-    NSString *dbPath = [AppDelegate pathOfDataFile:@"itemshelf.db"];
-    NSLog(@"dbPath = %@", dbPath);
-
-    return dbPath;
-}
-
-- (NSString*)_oldDbPath
-{
-    NSString *oldDbPath = [AppDelegate pathOfDataFile:@"iWantThis.db"];
-    NSLog(@"oldDbPath = %@", oldDbPath);
-
-    return oldDbPath;
-}
-
 // Override
 - (BOOL)open:(NSString *)dbname
 {
@@ -97,18 +58,8 @@
         }
     }
 
-    BOOL ret = [super open:dbname];
-
-    // migrate
-    [Shelf migrate];
-    [Item migrate];
-
-    return isExistedDb;
+    return [super open:dbname];
 }
-
-//////////////////////////////////////////////////////////////////////////////////
-// Utility
-
 
 // Override
 - (NSDateFormatter *)dateFormatter
@@ -120,25 +71,6 @@
         [dateFormatter setDateFormat: @"yyyyMMddHHmm"];
     }
     return dateFormatter;
-}
-
-/**
-   Generate NSDate from C-string
-*/
-+ (NSDate*)dateFromCString:(const char *)str
-{
-    NSDate *date = [dateFormatter dateFromString:
-                                      [NSString stringWithCString:str encoding:NSUTF8StringEncoding]];
-    return date;
-}
-
-/**
-   Get C-string from NSDate
-*/
-+ (const char *)cstringFromDate:(NSDate*)date
-{
-    const char *s = [[dateFormatter stringFromDate:date] UTF8String];
-    return s;
 }
 
 @end
