@@ -37,15 +37,13 @@
 #import <UIKit/UIKit.h>
 #import "Common.h"
 #import "Database.h"
+#import "ShelfBase.h"
 
 /**
    Shelf type
 */
-typedef enum 
-{
-    ShelfTypeNormal,  ///< Normal shelf
-    ShelfTypeSmart    ///< Smart shelf
-} ShelfType;
+#define ShelfTypeNormal 0  ///< Normal shelf
+#define ShelfTypeSmart  1  ///< Smart shelf
 
 #define SHELF_ALL_PKEY	-99999	///< Special primary key for "All shelf".
 
@@ -54,34 +52,12 @@ typedef enum
 /**
    Shelf class
 */
-@interface Shelf : NSObject <NSFastEnumeration>
+@interface Shelf : ShelfBase <NSFastEnumeration>
 {
-    NSMutableArray *array;	///< Array of items.
-	
-    int pkey;			///< Primary key of this shelf.
-    NSString *name;		///< Name of this shelf.
-    int sorder;			///< Sort order
-
-    ShelfType shelfType;	///< Shelf type
-
-    // smart shelf filter
-    NSString *titleFilter;	///< Title filter of smart shelf
-    NSString *authorFilter;	///< Author filter of smart shelf
-    NSString *manufacturerFilter; ///< Manufacturer filter of smart shelf
-    NSString *tagsFilter;       ///< Tags filter of smart shelf
-    int starFilter;             ///< Star filter of smart shelf
+    NSMutableArray *mArray;	///< Array of items.
 }
 
 @property(nonatomic,retain) NSMutableArray *array;
-@property(nonatomic,assign) int pkey;
-@property(nonatomic,retain) NSString *name;
-@property(nonatomic,assign) int sorder;
-@property(nonatomic,assign) ShelfType shelfType;
-@property(nonatomic,retain) NSString *titleFilter;
-@property(nonatomic,retain) NSString *authorFilter;
-@property(nonatomic,retain) NSString *manufacturerFilter;
-@property(nonatomic,retain) NSString *tagsFilter;
-@property(nonatomic,assign) int starFilter;
 
 - (void)addItem:(Item*)item;
 - (void)removeItem:(Item*)item;
@@ -91,13 +67,13 @@ typedef enum
 
 - (void)sortBySorder;
 
-+ (void)checkTable;
-- (void)loadRow:(dbstmt *)stmt;
-- (void)insert;
+//+ (void)checkTable;
+//- (void)loadRow:(dbstmt *)stmt;
+//- (void)insert;
 - (void)delete;
-- (void)updateName;
-- (void)updateSorder;
-- (void)updateSmartFilters;
+//- (void)updateName;
+//- (void)updateSorder;
+//- (void)updateSmartFilters;
 @end
 
 /**
