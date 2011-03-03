@@ -38,7 +38,8 @@
 #import "Shelf.h"
 
 @implementation Shelf
-@synthesize array;
+
+@synthesize array = mArray;
 
 + (id)allocator
 {
@@ -49,7 +50,7 @@
 {
     self = [super init];
     if (self) {
-        self.array = [[NSMutableArray alloc] initWithCapacity:30];
+        self.array = [[[NSMutableArray alloc] initWithCapacity:30] autorelease];
 
         self.name = nil;
         self.shelfType = ShelfTypeNormal;

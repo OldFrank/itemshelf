@@ -426,7 +426,10 @@ static DataModel *theDataModel = nil; // singleton
     [shelf release];
 
     // load shelves
-    self.shelves = [Shelf find_cond:nil];
+    NSMutableArray *shelves = [Shelf find_cond:@"ORDER BY sorder"];
+    for (Shelf *shelf in shelves) {
+        [mShelves addObject:shelf];
+    }
 
     // load items
     NSMutableArray *items = [Item find_cond:@"ORDER BY sorder, date"];

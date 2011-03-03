@@ -39,7 +39,7 @@
 
 @implementation Item
 
-@synthesize imageCache;
+@synthesize imageCache = mImageCache;
 @synthesize registeredWithShelf = mRegisteredWithShelf;
 //@synthesize infoStrings;
 
@@ -75,7 +75,7 @@
 
 - (void)dealloc
 {
-    [imageCache release];
+    [mImageCache release];
     //[infoStrings release];
 	
     [super dealloc];
@@ -243,9 +243,9 @@ static NSMutableArray *agingArray = nil;
 - (UIImage *)getImage:(id<ItemDelegate>)delegate
 {
     // Returns image on memory cache
-    if (imageCache != nil) {
+    if (mImageCache != nil) {
         [self _refreshImageCache];
-        return imageCache;
+        return mImageCache;
     }
 
     // Can't return image when downloading it.
