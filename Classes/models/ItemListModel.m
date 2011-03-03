@@ -38,7 +38,7 @@
 
 @implementation ItemListModel
 
-@synthesize shelf;
+@synthesize shelf = mShelf;
 
 /**
    Initialize the model with specified shelf
@@ -50,10 +50,10 @@
 {
     self = [super init];
 
-    shelf = [sh retain];
+    mShelf = [sh retain];
     searchText = nil;
-    filter = nil;
-    filteredList = [[NSMutableArray alloc] initWithCapacity:50];
+    mFilter = nil;
+    mFilteredList = [[NSMutableArray alloc] initWithCapacity:50];
 
     [self updateFilter];
 
@@ -61,9 +61,9 @@
 }
 
 - (void)dealloc {
-    [shelf release];
-    [filteredList release];
-    [filter release];
+    [mShelf release];
+    [mFilteredList release];
+    [mFilter release];
     [searchText release];
     [super dealloc];
 }
@@ -73,7 +73,7 @@
 */
 - (int)count
 {
-    return [filteredList count];
+    return [mFilteredList count];
 }
 
 /**
@@ -84,12 +84,12 @@
 */
 - (Item *)itemAtIndex:(int)index
 {
-    int n = [filteredList count] - 1 - index;
+    int n = [mFilteredList count] - 1 - index;
     if (n < 0) {
         ASSERT(NO);
         return nil;
     }
-    Item *item = [filteredList objectAtIndex:n];
+    Item *item = [mFilteredList objectAtIndex:n];
     return item;
 }
 
@@ -98,7 +98,7 @@
 */
 - (NSString*)filter
 {
-    return filter;
+    return mFilter;
 }
 
 /**
@@ -108,9 +108,9 @@
 */
 - (void)setFilter:(NSString *)f
 {
-    if (filter != f) {
-        [filter release];
-        filter = [f retain];
+    if (mFilter != f) {
+        [mFilter release];
+        mFilter = [f retain];
         [self updateFilter];
     }
 }
@@ -134,14 +134,14 @@
 */
 - (void)updateFilter
 {
-    ASSERT(shelf);
+    ASSERT(mShelf);
 
-    [filteredList removeAllObjects];
+    [mFilteredList removeAllObjects];
 	
     Item *item;
-    for (item in shelf) {
+    for (item in mShelf) {
         // フィルタチェック
-        if (filter != nil && ![item.category isEqualToString:filter]) {
+        if (mFilter != nil && ![item.category isEqualToString:mFilter]) {
             continue;
         }
 		
@@ -162,7 +162,7 @@
             if (!match) continue;
         }
 
-        [filteredList addObject:item];
+        [mFilteredList addObject:item];
     }
 }
 
@@ -171,7 +171,7 @@
 */
 - (void)removeObject:(Item *)item
 {
-    [filteredList removeObject:item];
+    [mFilteredList removeObject:item];
     [[DataModel sharedDataModel] removeItem:item];
 }
 
@@ -186,17 +186,17 @@
 - (void)moveRowAtIndex:(int)fromIndex toIndex:(int)toIndex
 {
     // filteredList の中のインデックスを計算
-    int from = [filteredList count] - 1 - fromIndex;
-    int to   = [filteredList count] - 1 - toIndex;
+    int from = [mFilteredList count] - 1 - fromIndex;
+    int to   = [mFilteredList count] - 1 - toIndex;
 
     if (from == to) {
         return;
     }
 	
     // リスト内の入れ替えを実施
-    Item *item = [[filteredList objectAtIndex:from] retain];
-    [filteredList removeObjectAtIndex:from];
-    [filteredList insertObject:item atIndex:to];
+    Item *item = [[mFilteredList objectAtIndex:from] retain];
+    [mFilteredList removeObjectAtIndex:from];
+    [mFilteredList insertObject:item atIndex:to];
     [item release];
 	
     // sorder を入れ替える
@@ -204,29 +204,29 @@
     if (to < from) {
         Item *a, *b = nil;
         for (int i = to; i < from; i++) {
-            a = [filteredList objectAtIndex:i];
-            b = [filteredList objectAtIndex:i+1];
+            a = [mFilteredList objectAtIndex:i];
+            b = [mFilteredList objectAtIndex:i+1];
             int tmp = a.sorder;
             a.sorder = b.sorder;
             b.sorder = tmp;
 			
-            [a updateSorder];
+            [a update];
         }
         ASSERT(b);
-        [b updateSorder];
+        [b update];
     } else {
         Item *a, *b = nil;
         for (int i = to; i > from; i--) {
-            a = [filteredList objectAtIndex:i];
-            b = [filteredList objectAtIndex:i-1];
+            a = [mFilteredList objectAtIndex:i];
+            b = [mFilteredList objectAtIndex:i-1];
             int tmp = a.sorder;
             a.sorder = b.sorder;
             b.sorder = tmp;
 			
-            [a updateSorder];
+            [a update];
         }
         ASSERT(b);
-        [b updateSorder];
+        [b update];
     }
     [[Database instance] commitTransaction];
 	
@@ -285,27 +285,27 @@ static int compByDate(Item *a, Item *b, void *ctx)
     switch (kind) {
     case 0:
     default:
-        [filteredList sortUsingFunction:compByTitle context:0];
+        [mFilteredList sortUsingFunction:compByTitle context:0];
         break;
     case 1:
-        [filteredList sortUsingFunction:compByAuthor context:0];
+        [mFilteredList sortUsingFunction:compByAuthor context:0];
         break;
     case 2:
-        [filteredList sortUsingFunction:compByManufacturer context:0];
+        [mFilteredList sortUsingFunction:compByManufacturer context:0];
         break;
     case 3:
-        [filteredList sortUsingFunction:compByStar context:0];
+        [mFilteredList sortUsingFunction:compByStar context:0];
         break;
     case 4:
-        [filteredList sortUsingFunction:compByDate context:0];
+        [mFilteredList sortUsingFunction:compByDate context:0];
         break;
     }
 
     // sorder を取り出す
-    int count = [filteredList count];
+    int count = [mFilteredList count];
     NSMutableArray *sorders = [[[NSMutableArray alloc] initWithCapacity:count] autorelease];
 
-    for (Item *item in filteredList) {
+    for (Item *item in mFilteredList) {
         [sorders addObject:[NSNumber numberWithInteger:item.sorder]];
     }
 
@@ -315,11 +315,11 @@ static int compByDate(Item *a, Item *b, void *ctx)
     // sorder を item に戻す
     [[Database instance] beginTransaction];
     int i = 0;
-    for (Item *item in filteredList) {
+    for (Item *item in mFilteredList) {
         NSNumber *sorder = [sorders objectAtIndex:i++];
         if (item.sorder != sorder.intValue) {
             item.sorder = sorder.intValue;
-            [item updateSorder];
+            [item update];
         }
     }
     [[Database instance] commitTransaction];

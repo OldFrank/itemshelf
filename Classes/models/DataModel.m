@@ -170,7 +170,7 @@ static DataModel *theDataModel = nil; // singleton
         if (shelf.pkey != SHELF_ALL_PKEY) {
             if (shelf.sorder != n) {
                 shelf.sorder = n;
-                [shelf updateSorder];
+                [shelf update];
             }
             n++;
         }

@@ -128,6 +128,7 @@
 */
 //@{
 
+// Override
 - (void)delete
 {
     [self _deleteImageFile];

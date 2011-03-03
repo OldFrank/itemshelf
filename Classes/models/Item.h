@@ -93,18 +93,8 @@
 
 - (BOOL)isEqualToItem:(Item*)item;
 - (void)updateWithNewItem:(Item*)item;
-+ (void)checkTable;
-- (void)loadRow:(dbstmt *)stmt;
-- (void)insert;
-- (void)update;
 - (void)delete;
 - (void)changeShelf:(int)shelf;
-- (void)updateSorder;
-- (void)updateStar;
-- (void)updateTags;
-- (void)updateMemo;
-- (void)_updateIntKey:(const char *)key value:(int)value;
-- (void)_updateStringKey:(const char *)key value:(NSString *)value;
 
 + (void)clearAllImageCache;
 - (UIImage *)getImage:(id<ItemDelegate>)delegate;
