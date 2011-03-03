@@ -277,7 +277,7 @@ static NSMutableArray *agingArray = nil;
     }
     
     // Returns "NoImage" if no image URL.
-    if (self.imageURL == nil || self.imageURL.length == 0) { // TODO
+    if (mImageURL == nil || mImageURL.length == 0) { // TODO
         return [self _getNoImage];
     }
 
@@ -464,13 +464,13 @@ static NSMutableArray *agingArray = nil;
 - (NSString *)additionalInfoValueAtIndex:(int)idx
 {
     switch (idx) {
-        case 0: return self.name;   // TODO
-        case 1: return self.author;
-        case 2: return self.manufacturer;
-        case 3: return self.category; //NSLocalizedString(category, @"");
-        case 4: return self.price;
-        case 5: return self.idString;
-        case 6: return self.asin;
+        case 0: return mName;
+        case 1: return mAuthor;
+        case 2: return mManufacturer;
+        case 3: return mCategory; //NSLocalizedString(category, @"");
+        case 4: return mPrice;
+        case 5: return mIdString;
+        case 6: return mAsin;
     }
     return nil;
 }
