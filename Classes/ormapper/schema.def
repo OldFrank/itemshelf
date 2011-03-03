@@ -11,7 +11,7 @@ Shelf:ShelfBase
         starFilter :INTEGER
 
 Item:ItemBase
-	date :TEXT
+	date :DATE
 	shelfId => itemState :INTEGER
 	serviceId => idType :INTEGER
 	idString :TEXT

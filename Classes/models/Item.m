@@ -43,6 +43,11 @@
 @synthesize registeredWithShelf = mRegisteredWithShelf;
 //@synthesize infoStrings;
 
++ (id)allocator
+{
+    return [[Item alloc] init];
+}
+
 - (id)init
 {
     self = [super init];
@@ -272,7 +277,7 @@ static NSMutableArray *agingArray = nil;
     }
     
     // Returns "NoImage" if no image URL.
-    if (mImageURL == nil || mImageURL.length == 0) {
+    if (self.imageURL == nil || self.imageURL.length == 0) { // TODO
         return [self _getNoImage];
     }
 
@@ -287,8 +292,8 @@ static NSMutableArray *agingArray = nil;
 
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
     if (conn) {
-        buffer = [[NSMutableData data] retain];
-        LOG(@"Loading image: %@", imageURL);
+        mBuffer = [[NSMutableData data] retain];
+        LOG(@"Loading image: %@", self.imageURL);
         [conn release];
     }
 	
@@ -459,13 +464,13 @@ static NSMutableArray *agingArray = nil;
 - (NSString *)additionalInfoValueAtIndex:(int)idx
 {
     switch (idx) {
-        case 0: return name;
-        case 1: return author;
-        case 2: return manufacturer;
-        case 3: return category; //NSLocalizedString(category, @"");
-        case 4: return price;
-        case 5: return idString;
-        case 6: return asin;
+        case 0: return self.name;   // TODO
+        case 1: return self.author;
+        case 2: return self.manufacturer;
+        case 3: return self.category; //NSLocalizedString(category, @"");
+        case 4: return self.price;
+        case 5: return self.idString;
+        case 6: return self.asin;
     }
     return nil;
 }

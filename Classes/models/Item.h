@@ -35,8 +35,8 @@
 // アイテム情報を格納するクラス
 
 #import <UIKit/UIKit.h>
-#import "Common.h"
-#import "Database.h"
+//#import "Common.h"
+//#import "Database.h"
 #import "ItemBase.h"
 
 // 画像をメモリにキャッシュしておく個数
@@ -47,7 +47,6 @@
 @protocol ItemDelegate
 - (void)itemDidFinishDownloadImage:(Item*)item;
 @end
-
 
 // Item 情報
 @interface Item : ItemBase

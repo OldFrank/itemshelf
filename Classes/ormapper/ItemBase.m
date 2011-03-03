@@ -54,7 +54,7 @@
 + (BOOL)migrate
 {
     NSArray *columnTypes = [NSArray arrayWithObjects:
-        @"date", @"TEXT",
+        @"date", @"DATE",
         @"itemState", @"INTEGER",
         @"idType", @"INTEGER",
         @"idString", @"TEXT",
@@ -160,7 +160,7 @@
 - (void)_loadRow:(dbstmt *)stmt
 {
     self.pid = [stmt colInt:0];
-    self.date = [stmt colString:1];
+    self.date = [stmt colDate:1];
     self.shelfId = [stmt colInt:2];
     self.serviceId = [stmt colInt:3];
     self.idString = [stmt colString:4];
@@ -192,7 +192,7 @@
     //[db beginTransaction];
     stmt = [db prepare:@"INSERT INTO Item VALUES(NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"];
 
-    [stmt bindString:0 val:mDate];
+    [stmt bindDate:0 val:mDate];
     [stmt bindInt:1 val:mShelfId];
     [stmt bindInt:2 val:mServiceId];
     [stmt bindString:3 val:mIdString];
@@ -243,7 +243,7 @@
         ",sorder = ?"
         ",star = ?"
         " WHERE pkey = ?;"];
-    [stmt bindString:0 val:mDate];
+    [stmt bindDate:0 val:mDate];
     [stmt bindInt:1 val:mShelfId];
     [stmt bindInt:2 val:mServiceId];
     [stmt bindString:3 val:mIdString];
@@ -306,3 +306,5 @@
 }
 
 @end
+
+

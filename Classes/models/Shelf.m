@@ -40,6 +40,11 @@
 @implementation Shelf
 @synthesize array;
 
++ (id)allocator
+{
+    return [[Shelf alloc] init];
+}
+
 - (id)init
 {
     self = [super init];
@@ -171,17 +176,18 @@ static int compareBySorder(Item *t1, Item *t2, void *context)
 */
 - (void)delete
 {
-    [mDb beginTransaction];
+    Database *db = [Database instance];
+    [db beginTransaction];
     [super delete];
 
     // この棚にあるアイテムも全部消す
-    if (mShelfType == ShelfTypeNormal) {
+    if (self.shelfType == ShelfTypeNormal) {
         for (Item *item in mArray) {
             [item delete];
         }
     }
 
-    [mDb commitTransaction];
+    [db commitTransaction];
 }
 
 //@}

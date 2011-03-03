@@ -4,7 +4,7 @@
 #import "ORRecord.h"
 
 @interface ItemBase : ORRecord {
-    NSString* mDate;
+    NSDate* mDate;
     int mShelfId;
     int mServiceId;
     NSString* mIdString;
@@ -22,7 +22,7 @@
     int mStar;
 }
 
-@property(nonatomic,retain) NSString* date;
+@property(nonatomic,retain) NSDate* date;
 @property(nonatomic,assign) int shelfId;
 @property(nonatomic,assign) int serviceId;
 @property(nonatomic,retain) NSString* idString;
