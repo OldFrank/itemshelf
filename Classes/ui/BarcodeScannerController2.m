@@ -65,12 +65,11 @@
     [super dealloc];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidLoad
 {
-    NSLog(@"BarcodeScannerController: viewDidAppear");
-    [super viewDidAppear:animated];
+    NSLog(@"BarcodeScannerController: viewDidLoad");
 
-    // AVCaptureSession を作る
+    // capture manager を作る
     mCaptureManager = [[CaptureSessionManager alloc] init];
 
     if (![mCaptureManager addVideoInput]) {
@@ -81,7 +80,7 @@
     // Note: iOS 4.1 では、Output よりさきに Preview を作らないとフリーズするらしい
     [mCaptureManager addVideoPreviewLayer];
     AVCaptureVideoPreviewLayer *preview = mCaptureManager.previewLayer;
-    preview.frame = mReaderArea.bounds;
+    preview.frame = mReaderArea.layer.bounds;
     [mReaderArea.layer addSublayer:preview];
 
     // video output を作成
@@ -96,17 +95,12 @@
 #endif
     
     // バーコード用ビューをオーバーレイする
-#if 0
     UIImage *overlayImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BarcodeReader" ofType:@"png"]];
-    CALayer *overlay = [CALayer layer];
-    overlay.contents = overlayImage.CGImage;
-    overlay.frame = mReaderArea.bounds;
-    // TODO: overlayImage retain
-    [base.layer addSublayer:overlay];
-#endif
+    overlayImage.frame = mReaderArea.bounds;
+    [mReaderArea addSubview:overlayImage];
 
     // キャプチャ開始
-    [mCaptureSession startRunning];
+    [mCaptureManager.captureSession startRunning];
 }
 
 #pragma mark AVCaptureVideoDataOutputSampleBufferDelegate
@@ -120,7 +114,7 @@
         NSLog(@"Code = %@", code);
 
         if ([self isValidBarcode:code]) {
-            [mCaptureSession stopRunning];
+            [mCaptureManager.captureSession stopRunning];
             [self.delegate barcodeScannerController:(BarcodeScannerController*)self didRecognizeBarcode:(NSString*)code];
         } else {
             NSLog(@"Invalid code");
