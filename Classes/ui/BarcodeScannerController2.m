@@ -59,8 +59,7 @@
 
 - (void)dealloc
 {
-    [mCaptureSession stopRunning];
-    [mCaptureSession release];
+    [mCaptureManager release];
     [mBarcodeReader release];
 
     [super dealloc];
@@ -71,35 +70,22 @@
     NSLog(@"BarcodeScannerController: viewDidAppear");
     [super viewDidAppear:animated];
 
-    // Capture 設定
-    AVCaptureDevice *dev = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if ([dev isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
-        NSError *error;
-        if ([dev lockForConfiguration:&error]) {
-            dev.focusMode = AVCaptureFocusModeContinuousAutoFocus;
-            [dev unlockForConfiguration];
-        } else {
-            // TBD
-        }
-    }
-    AVCaptureDeviceInput *capIn = [AVCaptureDeviceInput deviceInputWithDevice:dev error:NULL];
-    if (!capIn) {
+    // AVCaptureSession を作る
+    mCaptureManager = [[CaptureSessionManager alloc] init];
+
+    if (![mCaptureManager addVideoInput]) {
         // TBD
     }
 
-    AVCaptureVideoDataOutput *capOut = [[[AVCaptureVideoDataOutput alloc] init] autorelease];
-    capOut.alwaysDiscardsLateVideoFrames = YES;
-    [capOut setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
-    NSDictionary *videoSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA] forKey:(NSString *)kCVPixelBufferPixelFormatTypeKey];
-    [capOut setVideoSettings:videoSettings];
-    //capOut.minFrameDuration = CMTimeMake(1, 8);
+    // Preview capture preview を作成
+    // Note: iOS 4.1 では、Output よりさきに Preview を作らないとフリーズするらしい
+    [mCaptureManager addVideoPreviewLayer];
+    AVCaptureVideoPreviewLayer *preview = mCaptureManager.previewLayer;
+    preview.frame = mReaderArea.bounds;
+    [mReaderArea.layer addSublayer:preview];
 
-    mCaptureSession = [[AVCaptureSession alloc] init];
-    [mCaptureSession addInput:capIn];
-    [mCaptureSession addOutput:capOut];
-    [mCaptureSession beginConfiguration];
-    mCaptureSession.sessionPreset = AVCaptureSessionPresetMedium;
-    [mCaptureSession commitConfiguration];
+    // video output を作成
+    [mCaptureManager addVideoOutput:self];
 
     // プレビュー用のビューを作成
 #if 0
@@ -108,11 +94,6 @@
     base.backgroundColor = [UIColor blackColor];
     [mReaderArea addSubview:base];
 #endif
-    
-    AVCaptureVideoPreviewLayer *preview = [AVCaptureVideoPreviewLayer layerWithSession:mCaptureSession];
-    preview.frame = mReaderArea.bounds;
-    preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    [mReaderArea.layer addSublayer:preview];
     
     // バーコード用ビューをオーバーレイする
 #if 0
@@ -123,7 +104,8 @@
     // TODO: overlayImage retain
     [base.layer addSublayer:overlay];
 #endif
-    
+
+    // キャプチャ開始
     [mCaptureSession startRunning];
 }
 

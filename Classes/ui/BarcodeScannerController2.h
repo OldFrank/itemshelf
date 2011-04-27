@@ -39,6 +39,7 @@
 #import <CoreMedia/CoreMedia.h>
 
 #import "BarcodeReader.h"
+#import "CaptureSessionManager.h"
 
 @class BarcodeScannerController;
 
@@ -50,7 +51,7 @@
 {
     IBOutlet UIView *mReaderArea;
     
-    AVCaptureSession *mCaptureSession;
+    CaptureSessionManager *mCaptureManager;
     BarcodeReader *mBarcodeReader;
 }
 
