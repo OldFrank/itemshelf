@@ -85,14 +85,6 @@
 
     // video output を作成
     [mCaptureManager addVideoOutput:self];
-
-    // プレビュー用のビューを作成
-#if 0
-    UIView *base = [[[UIView alloc] init] autorelease];
-    base.frame = mReaderArea.bounds;
-    base.backgroundColor = [UIColor blackColor];
-    [mReaderArea addSubview:base];
-#endif
     
     // バーコード用ビューをオーバーレイする
     UIImage *overlayImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BarcodeReader" ofType:@"png"]];
