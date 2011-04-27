@@ -9,12 +9,13 @@
 
 #define ADMOB_PUBLISHER_ID      @"a14a925cd4c5c5f" // ItemShelf Lite
 
-@interface AdCell : UITableViewCell {
+@interface AdCell : UITableViewCell <GADBannrViewDelegate> {
+    GADBannerView *mAdBannerView;
 }
-
-@property(nonatomic,assign) UIViewController *parentViewController;
 
 + (AdCell *)adCell:(UITableView *)tableView parentViewController:(UIViewController *)parentViewController;
 + (CGFloat)adCellHeight;
+
+- (id)init:(UIViewController *)rootViewController;
 
 @end

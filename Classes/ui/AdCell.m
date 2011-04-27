@@ -14,7 +14,7 @@
 
 @implementation AdCell
 
-static GADBannerView *sAdBannerView = nil;
+#define REUSE_IDENTIFIER @"AdCell"
 
 + (CGFloat)adCellHeight
 {
@@ -23,43 +23,57 @@ static GADBannerView *sAdBannerView = nil;
 
 + (AdCell *)adCell:(UITableView *)tableView parentViewController:(UIViewController *)parentViewController
 {
-    NSString *identifier = @"AdCell";
-
-    AdCell *cell = (AdCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
+    AdCell *cell = (AdCell*)[tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER];
     if (cell == nil) {
-        cell = [[[AdCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+        cell = [[[AdCell alloc] init:parentViewController] autorelease];
     }
-    sAdBannerView.rootViewController = parentViewController;
 
     return cell;
 }
 
-- (UITableViewCell *)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)identifier
+- (id)init:(UIViewController *)rootViewController
 {
-    self = [super initWithStyle:style reuseIdentifier:identifier];
+    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER];
 
     // 広告を作成する
-    if (sAdBannerView == nil) {
-        CGRect frame = CGRectMake(0, 0, 320, 50);
-        sAdBannerView = [[GADBannerView alloc] initWithFrame:frame];
-        sAdBannerView.adUnitID = ADMOB_PUBLISHER_ID;
-    }
-        
-    CGRect frame = sAdBannerView.frame;
+    CGRect frame = CGRectMake(0, 0, 320, 50);
+    mAdBannerView = [[[GADBannerView alloc] initWithFrame:frame] autorelease];
+    mAdBannerView.adUnitID = ADMOB_PUBLISHER_ID;
+    mAdBannerView.delegate = self;
+
+    CGRect frame = mAdBannerView.frame;
     frame.origin.x = (self.frame.size.width - frame.size.width) / 2;
     frame.origin.y = 0;
-    sAdBannerView.frame = frame;
-    sAdBannerView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    [self.contentView addSubview:sAdBannerView];
+    mAdBannerView.frame = frame;
+    mAdBannerView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [self.contentView addSubview:mAdBannerView];
 
     // リクエスト開始
-    [sAdBannerView loadRequest:[GADRequest request]];
+    [mAdBannerView loadRequest:[GADRequest request]];
     
     return self;
 }
 
 - (void)dealloc {
+    mAdBannerView.delegate = nil;
     [super dealloc];
+}
+
+#pragma mark - AdMob : GADBannerViewDelegate
+
+- (void)adViewDidReceiveAd:(GADBannerView *)view
+{
+    NSLog(@"AdMob loaded");
+}
+
+- (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error
+{
+    if (mGADBannerView.hasAutoRefreshed) {
+        // auto refresh failed, but previous ad is effective.
+        NSLog(@"AdMob auto refresh failed");
+    } else {
+        NSLog(@"AdMob initial load failed");
+    }
 }
 
 @end
