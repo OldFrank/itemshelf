@@ -11,14 +11,6 @@
   1. Redistributions of source code must retain the above copyright notice,
   this list of conditions and the following disclaimer. 
 
-  2. Redistributions in binary form must reproduce the above copyright
-  notice, this list of conditions and the following disclaimer in the
-  documentation and/or other materials provided with the distribution. 
-
-  3. Neither the name of the project nor the names of its contributors
-  may be used to endorse or promote products derived from this software
-  without specific prior written permission. 
-
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -37,23 +29,23 @@
 
 @implementation ORRecord
 
+#define UNASSIGNED_PID -1
+
 @synthesize pid = mPid;
 
 /** Constructor */ 
 - (id)init
 {
     self = [super init];
-    if (self) {
-        mIsNew = YES;
+    if (self != nil) {
+        mPid = UNASSIGNED_PID;
     }
-        
     return self;
 }
 
 /** Destructor */
 - (void)dealloc
 {
-    
     [super dealloc];
 }
 
@@ -111,7 +103,7 @@
 */
 + (NSMutableArray *)find_all
 {
-    return [self find_cond:nil];
+    return [self find_all:nil];
 }
 
 /**
@@ -122,7 +114,7 @@
 
    @note You must override this.
 */
-+ (NSMutableArray *)find_cond:(NSString *)cond
++ (NSMutableArray *)find_all:(NSString *)cond
 {
     return nil;
 }
@@ -143,7 +135,7 @@
 */
 - (void)save
 {
-    if (mIsNew) {
+    if (mPid == UNASSIGNED_PID) {
         [self _insert];
     } else {
         [self _update];
@@ -152,7 +144,6 @@
 
 - (void)_insert
 {
-    mIsNew = NO;
 }
 
 - (void)_update
