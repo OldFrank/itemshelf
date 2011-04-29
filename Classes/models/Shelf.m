@@ -41,11 +41,6 @@
 
 @synthesize array = mArray;
 
-+ (id)allocator
-{
-    return [[Shelf alloc] init];
-}
-
 - (id)init
 {
     self = [super init];

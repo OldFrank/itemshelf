@@ -407,8 +407,7 @@ static DataModel *theDataModel = nil; // singleton
 */
 - (void)loadDB
 {
-    Database *db = [[ItemshelfDatabase alloc] init];
-    [Database setSingletonInstance:db];
+    Database *db = [ItemshelfDatabase instance];
     [db open:@"itemshelf.db"];
 
     // migration
@@ -426,13 +425,13 @@ static DataModel *theDataModel = nil; // singleton
     [shelf release];
 
     // load shelves
-    NSMutableArray *shelves = [Shelf find_cond:@"ORDER BY sorder"];
+    NSMutableArray *shelves = [Shelf find_all:@"ORDER BY sorder"];
     for (Shelf *shelf in shelves) {
         [mShelves addObject:shelf];
     }
 
     // load items
-    NSMutableArray *items = [Item find_cond:@"ORDER BY sorder, date"];
+    NSMutableArray *items = [Item find_all:@"ORDER BY sorder, date"];
     for (Item *item in items) {
         shelf = [self shelf:item.shelfId];
         [shelf addItem:item];

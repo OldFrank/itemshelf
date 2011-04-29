@@ -43,11 +43,6 @@
 @synthesize registeredWithShelf = mRegisteredWithShelf;
 //@synthesize infoStrings;
 
-+ (id)allocator
-{
-    return [[Item alloc] init];
-}
-
 - (id)init
 {
     self = [super init];
