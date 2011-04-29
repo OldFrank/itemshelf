@@ -9,7 +9,7 @@
 
 #define ADMOB_PUBLISHER_ID      @"a14a925cd4c5c5f" // ItemShelf Lite
 
-@interface AdCell : UITableViewCell <GADBannrViewDelegate> {
+@interface AdCell : UITableViewCell <GADBannerViewDelegate> {
     GADBannerView *mAdBannerView;
 }
 

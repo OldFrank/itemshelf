@@ -41,7 +41,7 @@
     mAdBannerView.adUnitID = ADMOB_PUBLISHER_ID;
     mAdBannerView.delegate = self;
 
-    CGRect frame = mAdBannerView.frame;
+    frame = mAdBannerView.frame;
     frame.origin.x = (self.frame.size.width - frame.size.width) / 2;
     frame.origin.y = 0;
     mAdBannerView.frame = frame;
@@ -68,7 +68,7 @@
 
 - (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error
 {
-    if (mGADBannerView.hasAutoRefreshed) {
+    if (mAdBannerView.hasAutoRefreshed) {
         // auto refresh failed, but previous ad is effective.
         NSLog(@"AdMob auto refresh failed");
     } else {
