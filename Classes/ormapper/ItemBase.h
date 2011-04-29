@@ -3,6 +3,8 @@
 #import <UIKit/UIKit.h>
 #import "ORRecord.h"
 
+@class ItemBase;
+
 @interface ItemBase : ORRecord {
     NSDate* mDate;
     int mShelfId;
@@ -41,8 +43,6 @@
 
 + (BOOL)migrate;
 
-+ (id)allocator;
-
 // CRUD (Create/Read/Update/Delete) operations
 
 // Create/update operations
@@ -50,11 +50,46 @@
 - (void)_insert;
 - (void)_update;
 
-// Read operations
+// Read operations (Finder)
 + (ItemBase *)find:(int)pid;
-+ (NSMutableArray *)find_cond:(NSString *)cond;
++ (ItemBase *)find_by_date:(NSDate*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_date:(NSDate*)key;
++ (ItemBase *)find_by_itemState:(int)key cond:(NSString*)cond;
++ (ItemBase *)find_by_itemState:(int)key;
++ (ItemBase *)find_by_idType:(int)key cond:(NSString*)cond;
++ (ItemBase *)find_by_idType:(int)key;
++ (ItemBase *)find_by_idString:(NSString*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_idString:(NSString*)key;
++ (ItemBase *)find_by_asin:(NSString*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_asin:(NSString*)key;
++ (ItemBase *)find_by_name:(NSString*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_name:(NSString*)key;
++ (ItemBase *)find_by_author:(NSString*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_author:(NSString*)key;
++ (ItemBase *)find_by_manufacturer:(NSString*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_manufacturer:(NSString*)key;
++ (ItemBase *)find_by_productGroup:(NSString*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_productGroup:(NSString*)key;
++ (ItemBase *)find_by_detailURL:(NSString*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_detailURL:(NSString*)key;
++ (ItemBase *)find_by_price:(NSString*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_price:(NSString*)key;
++ (ItemBase *)find_by_tags:(NSString*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_tags:(NSString*)key;
++ (ItemBase *)find_by_memo:(NSString*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_memo:(NSString*)key;
++ (ItemBase *)find_by_imageURL:(NSString*)key cond:(NSString*)cond;
++ (ItemBase *)find_by_imageURL:(NSString*)key;
++ (ItemBase *)find_by_sorder:(int)key cond:(NSString*)cond;
++ (ItemBase *)find_by_sorder:(int)key;
++ (ItemBase *)find_by_star:(int)key cond:(NSString*)cond;
++ (ItemBase *)find_by_star:(int)key;
+
++ (NSMutableArray *)find_all:(NSString *)cond;
+
 + (dbstmt *)gen_stmt:(NSString *)cond;
-+ (NSMutableArray *)find_stmt:(dbstmt *)cond;
++ (ItemBase *)find_first_stmt:(dbstmt *)stmt;
++ (NSMutableArray *)find_all_stmt:(dbstmt *)stmt;
 
 // Delete operations
 - (void)delete;

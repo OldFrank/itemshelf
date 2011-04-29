@@ -75,15 +75,6 @@
     return [super migrate:columnTypes primaryKey:@"pkey"];
 }
 
-/**
-  @brief allocate entry
-*/
-+ (id)allocator
-{
-    id e = [[[ItemBase alloc] init] autorelease];
-    return e;
-}
-
 #pragma mark Read operations
 
 /**
@@ -98,27 +89,421 @@
 
     dbstmt *stmt = [db prepare:@"SELECT * FROM Item WHERE pkey = ?;"];
     [stmt bindInt:0 val:pid];
-    if ([stmt step] != SQLITE_ROW) {
-        return nil;
-    }
 
-    ItemBase *e = [self allocator];
-    [e _loadRow:stmt];
- 
-    return e;
+    return [self find_first_stmt:stmt];
+}
+
+
+/**
+  finder with date
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_date:(NSDate*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE date = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE date = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindDate:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_date:(NSDate*)key
+{
+    return [self find_by_date:key cond:nil];
 }
 
 /**
-  @brief get all records matche the conditions
+  finder with itemState
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_itemState:(int)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE itemState = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE itemState = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindInt:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_itemState:(int)key
+{
+    return [self find_by_itemState:key cond:nil];
+}
+
+/**
+  finder with idType
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_idType:(int)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE idType = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE idType = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindInt:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_idType:(int)key
+{
+    return [self find_by_idType:key cond:nil];
+}
+
+/**
+  finder with idString
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_idString:(NSString*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE idString = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE idString = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindString:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_idString:(NSString*)key
+{
+    return [self find_by_idString:key cond:nil];
+}
+
+/**
+  finder with asin
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_asin:(NSString*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE asin = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE asin = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindString:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_asin:(NSString*)key
+{
+    return [self find_by_asin:key cond:nil];
+}
+
+/**
+  finder with name
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_name:(NSString*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE name = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE name = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindString:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_name:(NSString*)key
+{
+    return [self find_by_name:key cond:nil];
+}
+
+/**
+  finder with author
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_author:(NSString*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE author = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE author = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindString:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_author:(NSString*)key
+{
+    return [self find_by_author:key cond:nil];
+}
+
+/**
+  finder with manufacturer
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_manufacturer:(NSString*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE manufacturer = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE manufacturer = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindString:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_manufacturer:(NSString*)key
+{
+    return [self find_by_manufacturer:key cond:nil];
+}
+
+/**
+  finder with productGroup
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_productGroup:(NSString*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE productGroup = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE productGroup = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindString:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_productGroup:(NSString*)key
+{
+    return [self find_by_productGroup:key cond:nil];
+}
+
+/**
+  finder with detailURL
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_detailURL:(NSString*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE detailURL = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE detailURL = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindString:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_detailURL:(NSString*)key
+{
+    return [self find_by_detailURL:key cond:nil];
+}
+
+/**
+  finder with price
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_price:(NSString*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE price = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE price = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindString:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_price:(NSString*)key
+{
+    return [self find_by_price:key cond:nil];
+}
+
+/**
+  finder with tags
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_tags:(NSString*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE tags = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE tags = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindString:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_tags:(NSString*)key
+{
+    return [self find_by_tags:key cond:nil];
+}
+
+/**
+  finder with memo
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_memo:(NSString*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE memo = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE memo = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindString:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_memo:(NSString*)key
+{
+    return [self find_by_memo:key cond:nil];
+}
+
+/**
+  finder with imageURL
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_imageURL:(NSString*)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE imageURL = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE imageURL = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindString:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_imageURL:(NSString*)key
+{
+    return [self find_by_imageURL:key cond:nil];
+}
+
+/**
+  finder with sorder
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_sorder:(int)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE sorder = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE sorder = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindInt:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_sorder:(int)key
+{
+    return [self find_by_sorder:key cond:nil];
+}
+
+/**
+  finder with star
+
+  @param key Key value
+  @param cond Conditions (ORDER BY etc)
+  @note If you specify WHERE conditions, you must start cond with "AND" keyword.
+*/
++ (ItemBase*)find_by_star:(int)key cond:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"WHERE star = ? LIMIT 1";
+    } else {
+        cond = [NSString stringWithFormat:@"WHERE star = ? %@ LIMIT 1", cond];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    [stmt bindInt:0 val:key];
+    return [self find_first_stmt:stmt];
+}
+
++ (ItemBase*)find_by_star:(int)key
+{
+    return [self find_by_star:key cond:nil];
+}
+/**
+  Get first record matches the conditions
 
   @param cond Conditions (WHERE phrase and so on)
   @return array of records
 */
-+ (NSMutableArray *)find_cond:(NSString *)cond
++ (ItemBase *)find_first:(NSString *)cond
+{
+    if (cond == nil) {
+        cond = @"LIMIT 1";
+    } else {
+        cond = [cond stringByAppendingString:@" LIMIT 1"];
+    }
+    dbstmt *stmt = [self gen_stmt:cond];
+    return  [self find_first_stmt:stmt];
+}
+
+/**
+  Get all records match the conditions
+
+  @param cond Conditions (WHERE phrase and so on)
+  @return array of records
+*/
++ (NSMutableArray *)find_all:(NSString *)cond
 {
     dbstmt *stmt = [self gen_stmt:cond];
-    NSMutableArray *array = [self find_stmt:stmt];
-    return array;
+    return  [self find_all_stmt:stmt];
 }
 
 /**
@@ -140,19 +525,36 @@
 }
 
 /**
-  @brief get all records matche the conditions
+  Get first record matches the conditions
 
   @param stmt Statement
   @return array of records
 */
-+ (NSMutableArray *)find_stmt:(dbstmt *)stmt
++ (ItemBase *)find_first_stmt:(dbstmt *)stmt
+{
+    if ([stmt step] == SQLITE_ROW) {
+        ItemBase *e = [[[[self class] alloc] init] autorelease];
+        [e _loadRow:stmt];
+        return (ItemBase *)e;
+    }
+    return nil;
+}
+
+/**
+  Get all records match the conditions
+
+  @param stmt Statement
+  @return array of records
+*/
++ (NSMutableArray *)find_all_stmt:(dbstmt *)stmt
 {
     NSMutableArray *array = [[[NSMutableArray alloc] init] autorelease];
 
     while ([stmt step] == SQLITE_ROW) {
-        ItemBase *e = [self allocator];
+        ItemBase *e = [[[self class] alloc] init];
         [e _loadRow:stmt];
         [array addObject:e];
+        [e release];
     }
     return array;
 }
@@ -176,8 +578,6 @@
     self.imageURL = [stmt colString:14];
     self.sorder = [stmt colInt:15];
     self.star = [stmt colInt:16];
-
-    mIsNew = NO;
 }
 
 #pragma mark Create operations
@@ -213,7 +613,6 @@
     self.pid = [db lastInsertRowId];
 
     //[db commitTransaction];
-    mIsNew = NO;
 }
 
 #pragma mark Update operations
@@ -306,5 +705,3 @@
 }
 
 @end
-
-
