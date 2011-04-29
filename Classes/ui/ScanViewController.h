@@ -35,8 +35,10 @@
 // Scan ビューコントローラ
 
 #import <UIKit/UIKit.h>
+
+#import "ZBarSDK.h"
+
 #import "Common.h"
-#import "BarcodeScannerController2.h"
 #import "GenSelectListViewController.h"
 #import "NumPadViewController.h"
 //#import "KeywordViewController.h"
@@ -45,9 +47,9 @@
 #import "SearchController.h"
 
 @interface ScanViewController : UITableViewController 
-<BarcodeScannerControllerDelegate,
-UIImagePickerControllerDelegate, UINavigationControllerDelegate,
-GenSelectListViewDelegate, SearchControllerDelegate>
+<UIImagePickerControllerDelegate, UINavigationControllerDelegate,
+GenSelectListViewDelegate, SearchControllerDelegate,
+ZBarReaderDelegate>
 {
     UIActivityIndicatorView *activityIndicator;
     Shelf *selectedShelf;

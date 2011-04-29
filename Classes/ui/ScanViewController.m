@@ -35,8 +35,7 @@
 #import "AppDelegate.h"
 #import "ScanViewController.h"
 #import "ItemViewController.h"
-#import "BarcodeReader.h"
-#import "BarcodeScannerController2.h"
+//#import "BarcodeReader.h"
 #import "NumPadViewController.h"
 #import "DataModel.h"
 #import "SearchController.h"
@@ -271,8 +270,15 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     }
 
     // iOS 4.x
-    BarcodeScannerController *scanner = [BarcodeScannerController barcodeScannerController:self];
-    [self presentModalViewController:scanner animated:YES];
+    ZBarReaderViewController *reader = [ZBarReaderViewController new];
+    reader.readerDelegate = self;
+    
+    ZBarImageScanner *scanner = reader.scanner;
+    
+    [scanner setSymbology:ZBAR_I25 config:ZBAR_CFG_ENABLE to:0];
+    
+    [self presentModalViewController:reader animated:YES];
+    [reader release];
 }
 
 - (IBAction)scanFromLibrary:(id)sender
@@ -288,41 +294,40 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
         return NO;
     }
 	
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.sourceType = type;
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-	
-    [self presentModalViewController:picker animated:YES];
-    [picker release];
+    ZBarReaderController *reader = [ZBarReaderController new];
+    reader.readerDelegate = self;
+    reader.sourceType = type;
+    [self presentModalViewController:reader animated:YES];
+    [reader release];
     return YES;
-}
-
-#pragma mark BarcodeScannerControllerDelegate
-
-- (void)barcodeScannerController:(BarcodeScannerController*)scanner didRecognizeBarcode:(NSString*)code
-{
-    [[scanner parentViewController] dismissModalViewControllerAnimated:YES];
-    [self _didRecognizeBarcode:code];
 }
 
 #pragma mark UIImagePickerControllerDelegate
 
-// 画像取得完了
+// ZBarReader 認識完了
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *image = (UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
+    id<NSFastEnumeration> results = [info objectForKey:ZBarReaderControllerResults];
+    if (results != nil) {
+        // ZBar 認識完了
+        ZBarSymbol *symbol = nil;
 
-    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
+        NSString *code = nil;
+        for (symbol in results) {
+            code = symbol.data;
+            NSLog(@"Code = %@", code);
+            if ([code hasPrefix:@"97"]) {
+                // may be ISBN
+                break;
+            }
+        }
 
-    // バーコード解析
-    BarcodeReader *reader = [[[BarcodeReader alloc] init] autorelease];
-    if (![reader recognize:image]) {
-        [Common showAlertDialog:@"No symbol" message:@"Could not recognize barcode symbol"];
-        return;
+        // dismiss controller
+        [picker dismissModalViewControllerAnimated:YES];
+
+        // pass result
+        [self _didRecognizeBarcode:code];
     }
-
-    [self _didRecognizeBarcode:reader.data];
 }
 
 // バーコード解析完了 → 検索開始
