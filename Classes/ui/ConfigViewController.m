@@ -36,6 +36,7 @@
 #import "DataModel.h"
 #import "AboutViewController.h"
 #import "WebViewController.h"
+#import "BackupVC.h"
 
 @implementation ConfigViewController
 
@@ -184,6 +185,10 @@
 
 - (void)_doBackup
 {
+    BackupViewController *vc = [BackupViewController backupViewController:nil]; // TODO: delegate
+    [self.navigationController pushViewController:vc animated:YES];
+    
+#if 0
     BOOL result = NO;
     
     backupServer = [[BackupServer alloc] init];
@@ -213,6 +218,7 @@
     }
     [v show];
     [v release];
+#endif
 }
 
 - (void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
