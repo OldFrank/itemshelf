@@ -92,6 +92,8 @@
 		3E42FD420EDD6BEF00FD4879 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E42FD410EDD6BEF00FD4879 /* Entitlements.plist */; };
 		3E45FEF8136AF59F0029ABEC /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FEF7136AF59F0029ABEC /* libGoogleAdMobAds.a */; };
 		3E45FEF9136AF59F0029ABEC /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FEF7136AF59F0029ABEC /* libGoogleAdMobAds.a */; };
+		3E45FF54136AF8A00029ABEC /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */; };
+		3E45FF55136AF8A00029ABEC /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */; };
 		3E554C870ED98A4400166874 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E554C860ED98A4400166874 /* Localizable.strings */; };
 		3E61A3B41145166500AFC6E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB6F10C114505F000C859C7 /* MessageUI.framework */; };
 		3E6665DB118B1E49006EBD0B /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6665D9118B1E49006EBD0B /* Default-Landscape.png */; };
@@ -360,6 +362,8 @@
 		3E45FEF5136AF59F0029ABEC /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADRequest.h; path = AdMob/GADRequest.h; sourceTree = "<group>"; };
 		3E45FEF6136AF59F0029ABEC /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADRequestError.h; path = AdMob/GADRequestError.h; sourceTree = "<group>"; };
 		3E45FEF7136AF59F0029ABEC /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAdMobAds.a; path = AdMob/libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		3E45FF52136AF8A00029ABEC /* CaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSessionManager.h; sourceTree = "<group>"; };
+		3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureSessionManager.m; sourceTree = "<group>"; };
 		3E46ED280EF9362A00D12D8A /* UnitTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTest-Info.plist"; path = "../UnitTest-Info.plist"; sourceTree = "<group>"; };
 		3E4BB2210F1636A100EDAD74 /* German */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3E4BB2220F1636A700EDAD74 /* French */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -826,6 +830,8 @@
 				3EC9AB44105E57D30096AB90 /* ItemCell4.m */,
 				3E1CC8F7131BCEC100AB59BA /* BarcodeScannerController2.h */,
 				3E3C9E5F131BCC0D005CC671 /* BarcodeScannerController2.m */,
+				3E45FF52136AF8A00029ABEC /* CaptureSessionManager.h */,
+				3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */,
 				3EC9AB2D105E57D30096AB90 /* AboutViewController.h */,
 				3EC9AB2E105E57D30096AB90 /* AboutViewController.m */,
 				3EC9AB2F105E57D30096AB90 /* AdCell.h */,
@@ -1225,6 +1231,7 @@
 				3E9935A711465B54005386D0 /* zip.c in Sources */,
 				3E9935AB11465B5F005386D0 /* ZipArchive.mm in Sources */,
 				3E3C9E60131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */,
+				3E45FF54136AF8A00029ABEC /* CaptureSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1281,6 +1288,7 @@
 				3E9935A311465B54005386D0 /* zip.c in Sources */,
 				3E9935AA11465B5F005386D0 /* ZipArchive.mm in Sources */,
 				3E3C9E61131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */,
+				3E45FF55136AF8A00029ABEC /* CaptureSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

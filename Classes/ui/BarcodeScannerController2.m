@@ -88,8 +88,10 @@
     
     // バーコード用ビューをオーバーレイする
     UIImage *overlayImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BarcodeReader" ofType:@"png"]];
-    overlayImage.frame = mReaderArea.bounds;
-    [mReaderArea addSubview:overlayImage];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:overlayImage];
+    imageView.frame = mReaderArea.bounds;
+    [mReaderArea addSubview:imageView];
+    [imageView release];
 
     // キャプチャ開始
     [mCaptureManager.captureSession startRunning];
@@ -147,7 +149,13 @@
 {
     int n[13];
     
-    if ([code length] == 13) {
+    int codeLength = [code length];
+    if (codeLength < 8) {
+        // it seems too short...
+        return NO;
+    }
+    
+    if (codeLength == 13) {
         // EAN, JAN
         @try {
             for (int i = 0; i < 13; i++) {
@@ -184,7 +192,6 @@
 
 - (IBAction)onCancel:(id)sender
 {
-    [mCaptureSession stopRunning];
     [[self parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
