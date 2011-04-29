@@ -37,7 +37,7 @@
 
 #define COPYRIGHT @"Copyright © 2008-2011, ItemShelf development team. All rights reserved."
 
-const NSString *COPYRIGHT_ZEBRA = 
+static NSString *COPYRIGHT_ZEBRA = 
 @"The ZBar Bar Code Reader is Copyright (C) 2007-2010 Jeff Brown"
 " <spadix@users.sourceforge.net>\n"
 "The QR Code reader is Copyright (C) 1999-2009 Timothy B. Terriberry <tterribe@xiph.org>\n\n"

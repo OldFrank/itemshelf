@@ -63,7 +63,6 @@
 		3E23102B0F4D9ED0006E24AF /* PlusItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDA86A70EFA7DE300C4D226 /* PlusItem.png */; };
 		3E23102C0F4D9ED0006E24AF /* PlusShelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDA86A80EFA7DE300C4D226 /* PlusShelf.png */; };
 		3E23102D0F4D9ED0006E24AF /* config.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E36E1AD0F309A9500AB3C64 /* config.png */; };
-		3E2310370F4D9ED0006E24AF /* AudioToolbox in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ECBBB4D0EDC4A8200865EF7 /* AudioToolbox */; };
 		3E28EABD10649A87006F9FF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EABC10649A87006F9FF7 /* Foundation.framework */; };
 		3E28EACA10649B87006F9FF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EAC910649B87006F9FF7 /* CoreGraphics.framework */; };
 		3E28EAE210649BAC006F9FF7 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EAE110649BAC006F9FF7 /* AddressBook.framework */; };
@@ -80,12 +79,8 @@
 		3E427BDB0EDC2F7B0028E633 /* NumPadButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E427BDA0EDC2F7B0028E633 /* NumPadButton.png */; };
 		3E427BDE0EDC30B80028E633 /* NumPadSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E427BDD0EDC30B80028E633 /* NumPadSelected.png */; };
 		3E42FD420EDD6BEF00FD4879 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E42FD410EDD6BEF00FD4879 /* Entitlements.plist */; };
-		3E45FEF8136AF59F0029ABEC /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FEF7136AF59F0029ABEC /* libGoogleAdMobAds.a */; };
-		3E45FEF9136AF59F0029ABEC /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FEF7136AF59F0029ABEC /* libGoogleAdMobAds.a */; };
 		3E45FF54136AF8A00029ABEC /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */; };
 		3E45FF55136AF8A00029ABEC /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */; };
-		3E45FF60136B01E70029ABEC /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FF5F136B01E70029ABEC /* libzbar.a */; };
-		3E45FF61136B01E70029ABEC /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FF5F136B01E70029ABEC /* libzbar.a */; };
 		3E45FF67136B01F90029ABEC /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E45FF63136B01F90029ABEC /* zbar-back.png */; };
 		3E45FF68136B01F90029ABEC /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E45FF63136B01F90029ABEC /* zbar-back.png */; };
 		3E45FF69136B01F90029ABEC /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 3E45FF64136B01F90029ABEC /* zbar-help.html */; };
@@ -137,6 +132,12 @@
 		3E764C39136B18EF00E18F81 /* ShelfBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C2F136B18EF00E18F81 /* ShelfBase.m */; };
 		3E764C3B136B192200E18F81 /* ItemshelfDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C3A136B192200E18F81 /* ItemshelfDatabase.m */; };
 		3E764C3C136B192200E18F81 /* ItemshelfDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C3A136B192200E18F81 /* ItemshelfDatabase.m */; };
+		3E764C7F136B1B5F00E18F81 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E764C7E136B1B5F00E18F81 /* libGoogleAdMobAds.a */; };
+		3E764C80136B1B5F00E18F81 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E764C7E136B1B5F00E18F81 /* libGoogleAdMobAds.a */; };
+		3E764C82136B1BBC00E18F81 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E764C81136B1BBC00E18F81 /* libzbar.a */; };
+		3E764C83136B1BBC00E18F81 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E764C81136B1BBC00E18F81 /* libzbar.a */; };
+		3E764C85136B1BF300E18F81 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E764C84136B1BF300E18F81 /* AudioToolbox.framework */; };
+		3E764C86136B1C2000E18F81 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E764C84136B1BF300E18F81 /* AudioToolbox.framework */; };
 		3E7EB2DC0EE422D900D5CE27 /* ShelfListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7EB2DB0EE422D900D5CE27 /* ShelfListView.xib */; };
 		3E7F60181084CABA0040A615 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7F60171084CABA0040A615 /* CoreLocation.framework */; };
 		3E7F605E1084CD210040A615 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EABC10649A87006F9FF7 /* Foundation.framework */; };
@@ -257,7 +258,6 @@
 		3EC9ABD3105E582B0096AB90 /* URLComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABC3105E582B0096AB90 /* URLComponent.m */; };
 		3EC9ABDD105E58640096AB90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABDC105E58640096AB90 /* main.m */; };
 		3EC9ABDE105E58640096AB90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABDC105E58640096AB90 /* main.m */; };
-		3ECBBB4E0EDC4A8200865EF7 /* AudioToolbox in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ECBBB4D0EDC4A8200865EF7 /* AudioToolbox */; };
 		3ECD3DD10ED06434001A775F /* backward.png in Resources */ = {isa = PBXBuildFile; fileRef = 3ECD3DD00ED06434001A775F /* backward.png */; };
 		3ED0696A0F545CBA006D932B /* KeywordView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED069690F545CBA006D932B /* KeywordView2.xib */; };
 		3ED0696B0F545CBA006D932B /* KeywordView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED069690F545CBA006D932B /* KeywordView2.xib */; };
@@ -307,10 +307,8 @@
 		3E45FEF4136AF59F0029ABEC /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADInterstitialDelegate.h; path = AdMob/GADInterstitialDelegate.h; sourceTree = "<group>"; };
 		3E45FEF5136AF59F0029ABEC /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADRequest.h; path = AdMob/GADRequest.h; sourceTree = "<group>"; };
 		3E45FEF6136AF59F0029ABEC /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADRequestError.h; path = AdMob/GADRequestError.h; sourceTree = "<group>"; };
-		3E45FEF7136AF59F0029ABEC /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAdMobAds.a; path = AdMob/libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		3E45FF52136AF8A00029ABEC /* CaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSessionManager.h; sourceTree = "<group>"; };
 		3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureSessionManager.m; sourceTree = "<group>"; };
-		3E45FF5F136B01E70029ABEC /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzbar.a; path = ZBarSDK/libzbar.a; sourceTree = "<group>"; };
 		3E45FF63136B01F90029ABEC /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		3E45FF64136B01F90029ABEC /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		3E45FF65136B01F90029ABEC /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
@@ -366,6 +364,9 @@
 		3E764C2F136B18EF00E18F81 /* ShelfBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShelfBase.m; path = ormapper/ShelfBase.m; sourceTree = "<group>"; };
 		3E764C3A136B192200E18F81 /* ItemshelfDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemshelfDatabase.m; sourceTree = "<group>"; };
 		3E764C3D136B192C00E18F81 /* ItemshelfDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemshelfDatabase.h; sourceTree = "<group>"; };
+		3E764C7E136B1B5F00E18F81 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAdMobAds.a; path = AdMob/libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		3E764C81136B1BBC00E18F81 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzbar.a; path = ZBarSDK/libzbar.a; sourceTree = "<group>"; };
+		3E764C84136B1BF300E18F81 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3E7EB2DB0EE422D900D5CE27 /* ShelfListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShelfListView.xib; sourceTree = "<group>"; };
 		3E7F60171084CABA0040A615 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = /System/Library/Frameworks/CoreLocation.framework; sourceTree = "<absolute>"; };
 		3E7FFEBB0ECC487B000164D4 /* ScanView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanView.xib; sourceTree = "<group>"; };
@@ -478,7 +479,6 @@
 		3EC9ABC2105E582B0096AB90 /* URLComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLComponent.h; sourceTree = "<group>"; };
 		3EC9ABC3105E582B0096AB90 /* URLComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLComponent.m; sourceTree = "<group>"; };
 		3EC9ABDC105E58640096AB90 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3ECBBB4D0EDC4A8200865EF7 /* AudioToolbox */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = AudioToolbox; path = System/Library/Frameworks/AudioToolbox.framework/AudioToolbox; sourceTree = SDKROOT; };
 		3ECD3DD00ED06434001A775F /* backward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backward.png; sourceTree = "<group>"; };
 		3ED069690F545CBA006D932B /* KeywordView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordView2.xib; sourceTree = "<group>"; };
 		3ED6BE100ED588CB00F4C7EE /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
@@ -494,12 +494,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E45FEF8136AF59F0029ABEC /* libGoogleAdMobAds.a in Frameworks */,
 				3E45FFB0136B0F4D0029ABEC /* libsqlite3.dylib in Frameworks */,
-				3E45FF60136B01E70029ABEC /* libzbar.a in Frameworks */,
 				3E45FF88136B054B0029ABEC /* libiconv.dylib in Frameworks */,
 				3E9935BA11465BDD005386D0 /* libz.dylib in Frameworks */,
-				3ECBBB4E0EDC4A8200865EF7 /* AudioToolbox in Frameworks */,
 				3E61A3B41145166500AFC6E3 /* MessageUI.framework in Frameworks */,
 				3E7F605E1084CD210040A615 /* Foundation.framework in Frameworks */,
 				3E7F60AC1084CD2E0040A615 /* CoreGraphics.framework in Frameworks */,
@@ -511,6 +508,9 @@
 				3E1C73E41168647E00CCCC22 /* SystemConfiguration.framework in Frameworks */,
 				3E1CC9B0131BD47000AB59BA /* CoreMedia.framework in Frameworks */,
 				3E1CC9BB131BD47500AB59BA /* CoreVideo.framework in Frameworks */,
+				3E764C85136B1BF300E18F81 /* AudioToolbox.framework in Frameworks */,
+				3E764C7F136B1B5F00E18F81 /* libGoogleAdMobAds.a in Frameworks */,
+				3E764C82136B1BBC00E18F81 /* libzbar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,12 +518,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E45FEF9136AF59F0029ABEC /* libGoogleAdMobAds.a in Frameworks */,
-				3E45FF61136B01E70029ABEC /* libzbar.a in Frameworks */,
 				3E45FFD1136B0F880029ABEC /* libsqlite3.dylib in Frameworks */,
 				3E45FFD2136B0F8E0029ABEC /* libiconv.dylib in Frameworks */,
 				3E9935B911465BD1005386D0 /* libz.dylib in Frameworks */,
-				3E2310370F4D9ED0006E24AF /* AudioToolbox in Frameworks */,
 				3EB6F10D114505F000C859C7 /* MessageUI.framework in Frameworks */,
 				3E28EABD10649A87006F9FF7 /* Foundation.framework in Frameworks */,
 				3E28EACA10649B87006F9FF7 /* CoreGraphics.framework in Frameworks */,
@@ -535,6 +532,9 @@
 				3EDCFFFC11684765009D99C2 /* SystemConfiguration.framework in Frameworks */,
 				3E1CC99C131BD43E00AB59BA /* CoreMedia.framework in Frameworks */,
 				3E1CC9A0131BD44900AB59BA /* CoreVideo.framework in Frameworks */,
+				3E764C86136B1C2000E18F81 /* AudioToolbox.framework in Frameworks */,
+				3E764C80136B1B5F00E18F81 /* libGoogleAdMobAds.a in Frameworks */,
+				3E764C83136B1BBC00E18F81 /* libzbar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,12 +566,12 @@
 		29B97314FDCFA39411CA2CEA /* iWantThis */ = {
 			isa = PBXGroup;
 			children = (
-				3E99359511465B24005386D0 /* ziparchive */,
-				3E45FF5E136B01C50029ABEC /* ZBarSDK */,
 				080E96DDFE201D6D7F000001 /* Classes */,
-				3E45FEF0136AF5740029ABEC /* AdMob */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				3E45FF5E136B01C50029ABEC /* ZBarSDK */,
+				3E45FEF0136AF5740029ABEC /* AdMob */,
+				3E99359511465B24005386D0 /* ziparchive */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -607,7 +607,6 @@
 				3E45FFAF136B0F4D0029ABEC /* libsqlite3.dylib */,
 				3E45FF87136B054B0029ABEC /* libiconv.dylib */,
 				3E9935B811465BD1005386D0 /* libz.dylib */,
-				3ECBBB4D0EDC4A8200865EF7 /* AudioToolbox */,
 				3EB6F10C114505F000C859C7 /* MessageUI.framework */,
 				3E28EABC10649A87006F9FF7 /* Foundation.framework */,
 				3E28EAC910649B87006F9FF7 /* CoreGraphics.framework */,
@@ -619,6 +618,7 @@
 				3EDCFFFB11684765009D99C2 /* SystemConfiguration.framework */,
 				3E1CC99B131BD43E00AB59BA /* CoreMedia.framework */,
 				3E1CC99F131BD44900AB59BA /* CoreVideo.framework */,
+				3E764C84136B1BF300E18F81 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -686,13 +686,13 @@
 		3E45FEF0136AF5740029ABEC /* AdMob */ = {
 			isa = PBXGroup;
 			children = (
+				3E764C7E136B1B5F00E18F81 /* libGoogleAdMobAds.a */,
 				3E45FEF1136AF59F0029ABEC /* GADBannerView.h */,
 				3E45FEF2136AF59F0029ABEC /* GADBannerViewDelegate.h */,
 				3E45FEF3136AF59F0029ABEC /* GADInterstitial.h */,
 				3E45FEF4136AF59F0029ABEC /* GADInterstitialDelegate.h */,
 				3E45FEF5136AF59F0029ABEC /* GADRequest.h */,
 				3E45FEF6136AF59F0029ABEC /* GADRequestError.h */,
-				3E45FEF7136AF59F0029ABEC /* libGoogleAdMobAds.a */,
 			);
 			name = AdMob;
 			sourceTree = "<group>";
@@ -700,9 +700,9 @@
 		3E45FF5E136B01C50029ABEC /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
+				3E764C81136B1BBC00E18F81 /* libzbar.a */,
 				3E45FF6F136B02020029ABEC /* Headers */,
 				3E45FF62136B01F90029ABEC /* Resources */,
-				3E45FF5F136B01E70029ABEC /* libzbar.a */,
 			);
 			name = ZBarSDK;
 			sourceTree = "<group>";
@@ -1269,7 +1269,6 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ItemShelf_Prefix.pch;
@@ -1277,10 +1276,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/GoogleAds\"",
 					"\"$(SRCROOT)/AdMob\"",
 					"\"$(SRCROOT)/ZBarSDK\"",
-					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/Frameworks/AudioToolbox.framework\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelf;
@@ -1304,10 +1301,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/GoogleAds\"",
 					"\"$(SRCROOT)/AdMob\"",
 					"\"$(SRCROOT)/ZBarSDK\"",
-					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/Frameworks/AudioToolbox.framework\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelf;
@@ -1337,10 +1332,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/GoogleAds\"",
 					"\"$(SRCROOT)/AdMob\"",
 					"\"$(SRCROOT)/ZBarSDK\"",
-					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/Frameworks/AudioToolbox.framework\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelfLite;
@@ -1365,10 +1358,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/GoogleAds\"",
 					"\"$(SRCROOT)/AdMob\"",
 					"\"$(SRCROOT)/ZBarSDK\"",
-					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/Frameworks/AudioToolbox.framework\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelfLite;
@@ -1385,6 +1376,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1392,6 +1384,7 @@
 					zebra/include,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				PRODUCT_NAME = "";
@@ -1407,6 +1400,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1414,6 +1408,7 @@
 					zebra/include,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				PRODUCT_NAME = "";
