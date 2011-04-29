@@ -125,6 +125,18 @@
 		3E6F53100ECFBE7D00E68A4B /* ItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E6F530F0ECFBE7D00E68A4B /* ItemView.xib */; };
 		3E71A6A910406A04006266C7 /* BarcodeReader.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E71A6A810406A04006266C7 /* BarcodeReader.png */; };
 		3E71A6AA10406A04006266C7 /* BarcodeReader.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E71A6A810406A04006266C7 /* BarcodeReader.png */; };
+		3E764C30136B18EF00E18F81 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C27136B18EF00E18F81 /* Database.m */; };
+		3E764C31136B18EF00E18F81 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C27136B18EF00E18F81 /* Database.m */; };
+		3E764C32136B18EF00E18F81 /* Dbstmt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C29136B18EF00E18F81 /* Dbstmt.m */; };
+		3E764C33136B18EF00E18F81 /* Dbstmt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C29136B18EF00E18F81 /* Dbstmt.m */; };
+		3E764C34136B18EF00E18F81 /* ItemBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C2B136B18EF00E18F81 /* ItemBase.m */; };
+		3E764C35136B18EF00E18F81 /* ItemBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C2B136B18EF00E18F81 /* ItemBase.m */; };
+		3E764C36136B18EF00E18F81 /* ORRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C2D136B18EF00E18F81 /* ORRecord.m */; };
+		3E764C37136B18EF00E18F81 /* ORRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C2D136B18EF00E18F81 /* ORRecord.m */; };
+		3E764C38136B18EF00E18F81 /* ShelfBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C2F136B18EF00E18F81 /* ShelfBase.m */; };
+		3E764C39136B18EF00E18F81 /* ShelfBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C2F136B18EF00E18F81 /* ShelfBase.m */; };
+		3E764C3B136B192200E18F81 /* ItemshelfDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C3A136B192200E18F81 /* ItemshelfDatabase.m */; };
+		3E764C3C136B192200E18F81 /* ItemshelfDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C3A136B192200E18F81 /* ItemshelfDatabase.m */; };
 		3E7EB2DC0EE422D900D5CE27 /* ShelfListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7EB2DB0EE422D900D5CE27 /* ShelfListView.xib */; };
 		3E7F60181084CABA0040A615 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7F60171084CABA0040A615 /* CoreLocation.framework */; };
 		3E7F605E1084CD210040A615 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EABC10649A87006F9FF7 /* Foundation.framework */; };
@@ -163,7 +175,6 @@
 		3EBC16FC0EDA822B00A35747 /* ScanCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC16F90EDA822B00A35747 /* ScanCamera.png */; };
 		3EC639D10EE544C30057FAC2 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EC639D00EE544C30057FAC2 /* WebView.xib */; };
 		3EC727170EE83161008B2CBF /* Locale.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC727160EE83161008B2CBF /* Locale.png */; };
-		3EC9AB15105E57B30096AB90 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB07105E57B30096AB90 /* Database.m */; };
 		3EC9AB16105E57B30096AB90 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB09105E57B30096AB90 /* DataModel.m */; };
 		3EC9AB17105E57B30096AB90 /* DateFormatter2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB0B105E57B30096AB90 /* DateFormatter2.m */; };
 		3EC9AB18105E57B30096AB90 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB0D105E57B30096AB90 /* Item.m */; };
@@ -171,7 +182,6 @@
 		3EC9AB1A105E57B30096AB90 /* Shelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB11105E57B30096AB90 /* Shelf.m */; };
 		3EC9AB1B105E57B30096AB90 /* SmartShelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB12105E57B30096AB90 /* SmartShelf.m */; };
 		3EC9AB1C105E57B30096AB90 /* StringArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB14105E57B30096AB90 /* StringArray.m */; };
-		3EC9AB1D105E57B30096AB90 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB07105E57B30096AB90 /* Database.m */; };
 		3EC9AB1E105E57B30096AB90 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB09105E57B30096AB90 /* DataModel.m */; };
 		3EC9AB1F105E57B30096AB90 /* DateFormatter2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB0B105E57B30096AB90 /* DateFormatter2.m */; };
 		3EC9AB20105E57B30096AB90 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB0D105E57B30096AB90 /* Item.m */; };
@@ -344,6 +354,18 @@
 		3E6CE7501187303400221C66 /* ItemView-ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "ItemView-ipad.xib"; sourceTree = "<group>"; };
 		3E6F530F0ECFBE7D00E68A4B /* ItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemView.xib; sourceTree = "<group>"; };
 		3E71A6A810406A04006266C7 /* BarcodeReader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BarcodeReader.png; sourceTree = "<group>"; };
+		3E764C26136B18EF00E18F81 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Database.h; path = ormapper/Database.h; sourceTree = "<group>"; };
+		3E764C27136B18EF00E18F81 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = ormapper/Database.m; sourceTree = "<group>"; };
+		3E764C28136B18EF00E18F81 /* Dbstmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dbstmt.h; path = ormapper/Dbstmt.h; sourceTree = "<group>"; };
+		3E764C29136B18EF00E18F81 /* Dbstmt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dbstmt.m; path = ormapper/Dbstmt.m; sourceTree = "<group>"; };
+		3E764C2A136B18EF00E18F81 /* ItemBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemBase.h; path = ormapper/ItemBase.h; sourceTree = "<group>"; };
+		3E764C2B136B18EF00E18F81 /* ItemBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemBase.m; path = ormapper/ItemBase.m; sourceTree = "<group>"; };
+		3E764C2C136B18EF00E18F81 /* ORRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ORRecord.h; path = ormapper/ORRecord.h; sourceTree = "<group>"; };
+		3E764C2D136B18EF00E18F81 /* ORRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ORRecord.m; path = ormapper/ORRecord.m; sourceTree = "<group>"; };
+		3E764C2E136B18EF00E18F81 /* ShelfBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShelfBase.h; path = ormapper/ShelfBase.h; sourceTree = "<group>"; };
+		3E764C2F136B18EF00E18F81 /* ShelfBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShelfBase.m; path = ormapper/ShelfBase.m; sourceTree = "<group>"; };
+		3E764C3A136B192200E18F81 /* ItemshelfDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemshelfDatabase.m; sourceTree = "<group>"; };
+		3E764C3D136B192C00E18F81 /* ItemshelfDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemshelfDatabase.h; sourceTree = "<group>"; };
 		3E7EB2DB0EE422D900D5CE27 /* ShelfListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShelfListView.xib; sourceTree = "<group>"; };
 		3E7F60171084CABA0040A615 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = /System/Library/Frameworks/CoreLocation.framework; sourceTree = "<absolute>"; };
 		3E7FFEBB0ECC487B000164D4 /* ScanView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanView.xib; sourceTree = "<group>"; };
@@ -376,8 +398,6 @@
 		3EBC16F90EDA822B00A35747 /* ScanCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScanCamera.png; sourceTree = "<group>"; };
 		3EC639D00EE544C30057FAC2 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		3EC727160EE83161008B2CBF /* Locale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Locale.png; sourceTree = "<group>"; };
-		3EC9AB06105E57B30096AB90 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
-		3EC9AB07105E57B30096AB90 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		3EC9AB08105E57B30096AB90 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		3EC9AB09105E57B30096AB90 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		3EC9AB0A105E57B30096AB90 /* DateFormatter2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFormatter2.h; sourceTree = "<group>"; };
@@ -524,6 +544,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3E764C25136B18D600E18F81 /* ormapper */,
 				3E7BD5BB0EDD61D40083CBE5 /* models */,
 				3E7BD5BA0EDD61B80083CBE5 /* ui */,
 				3E37D1900F13953B005B6B90 /* webapi */,
@@ -741,6 +762,23 @@
 			path = zbar;
 			sourceTree = "<group>";
 		};
+		3E764C25136B18D600E18F81 /* ormapper */ = {
+			isa = PBXGroup;
+			children = (
+				3E764C26136B18EF00E18F81 /* Database.h */,
+				3E764C27136B18EF00E18F81 /* Database.m */,
+				3E764C28136B18EF00E18F81 /* Dbstmt.h */,
+				3E764C29136B18EF00E18F81 /* Dbstmt.m */,
+				3E764C2A136B18EF00E18F81 /* ItemBase.h */,
+				3E764C2B136B18EF00E18F81 /* ItemBase.m */,
+				3E764C2C136B18EF00E18F81 /* ORRecord.h */,
+				3E764C2D136B18EF00E18F81 /* ORRecord.m */,
+				3E764C2E136B18EF00E18F81 /* ShelfBase.h */,
+				3E764C2F136B18EF00E18F81 /* ShelfBase.m */,
+			);
+			name = ormapper;
+			sourceTree = "<group>";
+		};
 		3E7BD5BA0EDD61B80083CBE5 /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,8 +831,8 @@
 		3E7BD5BB0EDD61D40083CBE5 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				3EC9AB06105E57B30096AB90 /* Database.h */,
-				3EC9AB07105E57B30096AB90 /* Database.m */,
+				3E764C3D136B192C00E18F81 /* ItemshelfDatabase.h */,
+				3E764C3A136B192200E18F81 /* ItemshelfDatabase.m */,
 				3EC9AB08105E57B30096AB90 /* DataModel.h */,
 				3EC9AB09105E57B30096AB90 /* DataModel.m */,
 				3EC9AB0A105E57B30096AB90 /* DateFormatter2.h */,
@@ -1090,7 +1128,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EC9AB1D105E57B30096AB90 /* Database.m in Sources */,
 				3EC9AB1E105E57B30096AB90 /* DataModel.m in Sources */,
 				3EC9AB1F105E57B30096AB90 /* DateFormatter2.m in Sources */,
 				3EC9AB20105E57B30096AB90 /* Item.m in Sources */,
@@ -1138,6 +1175,12 @@
 				3E9935A711465B54005386D0 /* zip.c in Sources */,
 				3E9935AB11465B5F005386D0 /* ZipArchive.mm in Sources */,
 				3E45FF54136AF8A00029ABEC /* CaptureSessionManager.m in Sources */,
+				3E764C30136B18EF00E18F81 /* Database.m in Sources */,
+				3E764C32136B18EF00E18F81 /* Dbstmt.m in Sources */,
+				3E764C34136B18EF00E18F81 /* ItemBase.m in Sources */,
+				3E764C36136B18EF00E18F81 /* ORRecord.m in Sources */,
+				3E764C38136B18EF00E18F81 /* ShelfBase.m in Sources */,
+				3E764C3B136B192200E18F81 /* ItemshelfDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1145,7 +1188,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EC9AB15105E57B30096AB90 /* Database.m in Sources */,
 				3EC9AB16105E57B30096AB90 /* DataModel.m in Sources */,
 				3EC9AB17105E57B30096AB90 /* DateFormatter2.m in Sources */,
 				3EC9AB18105E57B30096AB90 /* Item.m in Sources */,
@@ -1193,6 +1235,12 @@
 				3E9935A311465B54005386D0 /* zip.c in Sources */,
 				3E9935AA11465B5F005386D0 /* ZipArchive.mm in Sources */,
 				3E45FF55136AF8A00029ABEC /* CaptureSessionManager.m in Sources */,
+				3E764C31136B18EF00E18F81 /* Database.m in Sources */,
+				3E764C33136B18EF00E18F81 /* Dbstmt.m in Sources */,
+				3E764C35136B18EF00E18F81 /* ItemBase.m in Sources */,
+				3E764C37136B18EF00E18F81 /* ORRecord.m in Sources */,
+				3E764C39136B18EF00E18F81 /* ShelfBase.m in Sources */,
+				3E764C3C136B192200E18F81 /* ItemshelfDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
