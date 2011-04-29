@@ -9,12 +9,12 @@
 	<key>CFBundleExecutable</key>
 	<string>ItemShelfLite</string>
 	<key>CFBundleIconFile</key>
-	<string>Icon.png</string>
+	<string>Icon-lite.png</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Icon.png</string>
-		<string>Icon@2x.png</string>
-		<string>Icon-72.png</string>
+		<string>Icon-lite.png</string>
+		<string>Icon-lite@2x.png</string>
+		<string>Icon-lite-72.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.dreamhosters.bcmashup.ItemShelf-Lite</string>
@@ -26,14 +26,6 @@
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>3.2</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>NSMainNibFile</key>
-	<string>MainWindow</string>
-	<key>NSMainNibFile~ipad</key>
-	<string>MainWindow-iPad</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -45,6 +37,14 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>3.2</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSMainNibFile</key>
+	<string>MainWindow</string>
+	<key>NSMainNibFile~ipad</key>
+	<string>MainWindow-iPad</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
