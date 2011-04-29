@@ -40,6 +40,7 @@
     mAdBannerView = [[[GADBannerView alloc] initWithFrame:frame] autorelease];
     mAdBannerView.adUnitID = ADMOB_PUBLISHER_ID;
     mAdBannerView.delegate = self;
+    mAdBannerView.rootViewController = rootViewController;
 
     frame = mAdBannerView.frame;
     frame.origin.x = (self.frame.size.width - frame.size.width) / 2;
@@ -70,9 +71,9 @@
 {
     if (mAdBannerView.hasAutoRefreshed) {
         // auto refresh failed, but previous ad is effective.
-        NSLog(@"AdMob auto refresh failed");
+        NSLog(@"AdMob auto refresh failed : %@", [error localizedDescription]);
     } else {
-        NSLog(@"AdMob initial load failed");
+        NSLog(@"AdMob initial load failed : %@", [error localizedDescription]);
     }
 }
 
