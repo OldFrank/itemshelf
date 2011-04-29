@@ -69,7 +69,6 @@
 		3E23102B0F4D9ED0006E24AF /* PlusItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDA86A70EFA7DE300C4D226 /* PlusItem.png */; };
 		3E23102C0F4D9ED0006E24AF /* PlusShelf.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDA86A80EFA7DE300C4D226 /* PlusShelf.png */; };
 		3E23102D0F4D9ED0006E24AF /* config.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E36E1AD0F309A9500AB3C64 /* config.png */; };
-		3E2310310F4D9ED0006E24AF /* libZebla.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC9C6EF0EE147210026396A /* libZebla.a */; };
 		3E2310370F4D9ED0006E24AF /* AudioToolbox in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ECBBB4D0EDC4A8200865EF7 /* AudioToolbox */; };
 		3E28EABB10649A7A006F9FF7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EABA10649A7A006F9FF7 /* libsqlite3.dylib */; };
 		3E28EABD10649A87006F9FF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EABC10649A87006F9FF7 /* Foundation.framework */; };
@@ -83,8 +82,6 @@
 		3E3A0A5E118BD6CB007F56DD /* ShelfListView-ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3A0A5D118BD6CB007F56DD /* ShelfListView-ipad.xib */; };
 		3E3A0A5F118BD6CB007F56DD /* ShelfListView-ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3A0A5D118BD6CB007F56DD /* ShelfListView-ipad.xib */; };
 		3E3AA5AD0EE02EF200339BAB /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AA5AC0EE02EF200339BAB /* AboutView.xib */; };
-		3E3C9E60131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9E5F131BCC0D005CC671 /* BarcodeScannerController2.m */; };
-		3E3C9E61131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C9E5F131BCC0D005CC671 /* BarcodeScannerController2.m */; };
 		3E3EA1510ED9A072006892E9 /* ConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EA1500ED9A072006892E9 /* ConfigView.xib */; };
 		3E427BC10EDC2A320028E633 /* NumPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E427BC00EDC2A320028E633 /* NumPadView.xib */; };
 		3E427BDB0EDC2F7B0028E633 /* NumPadButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E427BDA0EDC2F7B0028E633 /* NumPadButton.png */; };
@@ -94,6 +91,17 @@
 		3E45FEF9136AF59F0029ABEC /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FEF7136AF59F0029ABEC /* libGoogleAdMobAds.a */; };
 		3E45FF54136AF8A00029ABEC /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */; };
 		3E45FF55136AF8A00029ABEC /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */; };
+		3E45FF60136B01E70029ABEC /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FF5F136B01E70029ABEC /* libzbar.a */; };
+		3E45FF61136B01E70029ABEC /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FF5F136B01E70029ABEC /* libzbar.a */; };
+		3E45FF67136B01F90029ABEC /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E45FF63136B01F90029ABEC /* zbar-back.png */; };
+		3E45FF68136B01F90029ABEC /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E45FF63136B01F90029ABEC /* zbar-back.png */; };
+		3E45FF69136B01F90029ABEC /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 3E45FF64136B01F90029ABEC /* zbar-help.html */; };
+		3E45FF6A136B01F90029ABEC /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 3E45FF64136B01F90029ABEC /* zbar-help.html */; };
+		3E45FF6B136B01F90029ABEC /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E45FF65136B01F90029ABEC /* zbar-helpicons.png */; };
+		3E45FF6C136B01F90029ABEC /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E45FF65136B01F90029ABEC /* zbar-helpicons.png */; };
+		3E45FF6D136B01F90029ABEC /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E45FF66136B01F90029ABEC /* zbar-samples.png */; };
+		3E45FF6E136B01F90029ABEC /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E45FF66136B01F90029ABEC /* zbar-samples.png */; };
+		3E45FF88136B054B0029ABEC /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FF87136B054B0029ABEC /* libiconv.dylib */; };
 		3E554C870ED98A4400166874 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E554C860ED98A4400166874 /* Localizable.strings */; };
 		3E61A3B41145166500AFC6E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB6F10C114505F000C859C7 /* MessageUI.framework */; };
 		3E6665DB118B1E49006EBD0B /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6665D9118B1E49006EBD0B /* Default-Landscape.png */; };
@@ -218,7 +226,6 @@
 		3EC9ABAD105E57FF0096AB90 /* Yahoo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABA1105E57FF0096AB90 /* Yahoo.m */; };
 		3EC9ABC4105E582B0096AB90 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABB5105E582B0096AB90 /* AppDelegate.m */; };
 		3EC9ABC5105E582B0096AB90 /* BackupServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABB7105E582B0096AB90 /* BackupServer.m */; };
-		3EC9ABC6105E582B0096AB90 /* BarcodeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABB9105E582B0096AB90 /* BarcodeReader.m */; };
 		3EC9ABC7105E582B0096AB90 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABBB105E582B0096AB90 /* Common.m */; };
 		3EC9ABC8105E582B0096AB90 /* Edition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABBD105E582B0096AB90 /* Edition.m */; };
 		3EC9ABC9105E582B0096AB90 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABBF105E582B0096AB90 /* HttpClient.m */; };
@@ -226,7 +233,6 @@
 		3EC9ABCB105E582B0096AB90 /* URLComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABC3105E582B0096AB90 /* URLComponent.m */; };
 		3EC9ABCC105E582B0096AB90 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABB5105E582B0096AB90 /* AppDelegate.m */; };
 		3EC9ABCD105E582B0096AB90 /* BackupServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABB7105E582B0096AB90 /* BackupServer.m */; };
-		3EC9ABCE105E582B0096AB90 /* BarcodeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABB9105E582B0096AB90 /* BarcodeReader.m */; };
 		3EC9ABCF105E582B0096AB90 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABBB105E582B0096AB90 /* Common.m */; };
 		3EC9ABD0105E582B0096AB90 /* Edition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABBD105E582B0096AB90 /* Edition.m */; };
 		3EC9ABD1105E582B0096AB90 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABBF105E582B0096AB90 /* HttpClient.m */; };
@@ -234,25 +240,6 @@
 		3EC9ABD3105E582B0096AB90 /* URLComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABC3105E582B0096AB90 /* URLComponent.m */; };
 		3EC9ABDD105E58640096AB90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABDC105E58640096AB90 /* main.m */; };
 		3EC9ABDE105E58640096AB90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABDC105E58640096AB90 /* main.m */; };
-		3EC9C6F70EE147530026396A /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD450ECEF78200915E3E /* config.c */; };
-		3EC9C6F80EE147530026396A /* convert.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD460ECEF78200915E3E /* convert.c */; };
-		3EC9C6FA0EE147530026396A /* decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD480ECEF78200915E3E /* decoder.c */; };
-		3EC9C6FC0EE147530026396A /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD4A0ECEF78200915E3E /* error.c */; };
-		3EC9C6FE0EE147530026396A /* image.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD4C0ECEF78200915E3E /* image.c */; };
-		3EC9C7000EE147530026396A /* img_scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD4E0ECEF78200915E3E /* img_scanner.c */; };
-		3EC9C7010EE147530026396A /* logo.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD4F0ECEF78200915E3E /* logo.c */; };
-		3EC9C7020EE147530026396A /* processor.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD500ECEF78200915E3E /* processor.c */; };
-		3EC9C7040EE147530026396A /* scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD520ECEF78200915E3E /* scanner.c */; };
-		3EC9C7050EE147530026396A /* symbol.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD530ECEF78200915E3E /* symbol.c */; };
-		3EC9C7070EE147530026396A /* video.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD550ECEF78200915E3E /* video.c */; };
-		3EC9C7090EE147530026396A /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD570ECEF78200915E3E /* window.c */; };
-		3EC9C70B0EE147800026396A /* code39.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD650ECEF79E00915E3E /* code39.c */; };
-		3EC9C70C0EE147800026396A /* code128.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD670ECEF79E00915E3E /* code128.c */; };
-		3EC9C70D0EE147800026396A /* ean.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD690ECEF79E00915E3E /* ean.c */; };
-		3EC9C70E0EE147800026396A /* i25.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD6B0ECEF79E00915E3E /* i25.c */; };
-		3EC9C70F0EE1478F0026396A /* null.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD710ECEF7AC00915E3E /* null.c */; };
-		3EC9C7100EE147940026396A /* null.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FDD770ECEF7B700915E3E /* null.c */; };
-		3EC9C7580EE14B8A0026396A /* libZebla.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC9C6EF0EE147210026396A /* libZebla.a */; };
 		3ECBBB4E0EDC4A8200865EF7 /* AudioToolbox in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ECBBB4D0EDC4A8200865EF7 /* AudioToolbox */; };
 		3ECD3DD10ED06434001A775F /* backward.png in Resources */ = {isa = PBXBuildFile; fileRef = 3ECD3DD00ED06434001A775F /* backward.png */; };
 		3ED0696A0F545CBA006D932B /* KeywordView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED069690F545CBA006D932B /* KeywordView2.xib */; };
@@ -264,23 +251,6 @@
 		3EE8374E11564EFD00F64764 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8374D11564EFD00F64764 /* MainWindow-iPad.xib */; };
 		3EE8374F11564EFD00F64764 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8374D11564EFD00F64764 /* MainWindow-iPad.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3E2310070F4D9ED0006E24AF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3EC9C6EE0EE147210026396A;
-			remoteInfo = Zebla;
-		};
-		3EC9C7460EE149320026396A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3EC9C6EE0EE147210026396A;
-			remoteInfo = Zebla;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D6058910D05DD3D006BFB54 /* ItemShelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemShelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,7 +272,6 @@
 		3E0C0D76101AD45800F18D86 /* Star4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star4.png; sourceTree = "<group>"; };
 		3E0C0D77101AD45800F18D86 /* Star5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star5.png; sourceTree = "<group>"; };
 		3E15190E0EDAB7C100F510E9 /* ItemCellBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ItemCellBack.png; sourceTree = "<group>"; };
-		3E1CC8F7131BCEC100AB59BA /* BarcodeScannerController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeScannerController2.h; sourceTree = "<group>"; };
 		3E1CC99B131BD43E00AB59BA /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		3E1CC99F131BD44900AB59BA /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		3E1CCA0E131BE5CA00AB59BA /* BarcodeScannerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarcodeScannerView.xib; sourceTree = "<group>"; };
@@ -349,7 +318,6 @@
 		3E36E1AD0F309A9500AB3C64 /* config.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = config.png; sourceTree = "<group>"; };
 		3E3A0A5D118BD6CB007F56DD /* ShelfListView-ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "ShelfListView-ipad.xib"; sourceTree = "<group>"; };
 		3E3AA5AC0EE02EF200339BAB /* AboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
-		3E3C9E5F131BCC0D005CC671 /* BarcodeScannerController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeScannerController2.m; sourceTree = "<group>"; };
 		3E3EA1500ED9A072006892E9 /* ConfigView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigView.xib; sourceTree = "<group>"; };
 		3E427BC00EDC2A320028E633 /* NumPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumPadView.xib; sourceTree = "<group>"; };
 		3E427BDA0EDC2F7B0028E633 /* NumPadButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NumPadButton.png; sourceTree = "<group>"; };
@@ -364,6 +332,31 @@
 		3E45FEF7136AF59F0029ABEC /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAdMobAds.a; path = AdMob/libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		3E45FF52136AF8A00029ABEC /* CaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSessionManager.h; sourceTree = "<group>"; };
 		3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureSessionManager.m; sourceTree = "<group>"; };
+		3E45FF5F136B01E70029ABEC /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzbar.a; path = ZBarSDK/libzbar.a; sourceTree = "<group>"; };
+		3E45FF63136B01F90029ABEC /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
+		3E45FF64136B01F90029ABEC /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
+		3E45FF65136B01F90029ABEC /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
+		3E45FF66136B01F90029ABEC /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		3E45FF72136B02020029ABEC /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
+		3E45FF73136B02020029ABEC /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		3E45FF74136B02020029ABEC /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		3E45FF75136B02020029ABEC /* ImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScanner.h; sourceTree = "<group>"; };
+		3E45FF76136B02020029ABEC /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
+		3E45FF77136B02020029ABEC /* Scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scanner.h; sourceTree = "<group>"; };
+		3E45FF78136B02020029ABEC /* Symbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Symbol.h; sourceTree = "<group>"; };
+		3E45FF79136B02020029ABEC /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		3E45FF7A136B02020029ABEC /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		3E45FF7B136B02020029ABEC /* zbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zbar.h; sourceTree = "<group>"; };
+		3E45FF7C136B02020029ABEC /* ZBarCaptureReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarCaptureReader.h; sourceTree = "<group>"; };
+		3E45FF7D136B02020029ABEC /* ZBarHelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarHelpController.h; sourceTree = "<group>"; };
+		3E45FF7E136B02020029ABEC /* ZBarImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarImage.h; sourceTree = "<group>"; };
+		3E45FF7F136B02020029ABEC /* ZBarImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarImageScanner.h; sourceTree = "<group>"; };
+		3E45FF80136B02020029ABEC /* ZBarReaderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderController.h; sourceTree = "<group>"; };
+		3E45FF81136B02020029ABEC /* ZBarReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderView.h; sourceTree = "<group>"; };
+		3E45FF82136B02020029ABEC /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
+		3E45FF83136B02020029ABEC /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
+		3E45FF84136B02020029ABEC /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
+		3E45FF87136B054B0029ABEC /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		3E46ED280EF9362A00D12D8A /* UnitTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTest-Info.plist"; path = "../UnitTest-Info.plist"; sourceTree = "<group>"; };
 		3E4BB2210F1636A100EDAD74 /* German */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3E4BB2220F1636A700EDAD74 /* French */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -479,8 +472,6 @@
 		3EC9ABB5105E582B0096AB90 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3EC9ABB6105E582B0096AB90 /* BackupServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupServer.h; sourceTree = "<group>"; };
 		3EC9ABB7105E582B0096AB90 /* BackupServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupServer.m; sourceTree = "<group>"; };
-		3EC9ABB8105E582B0096AB90 /* BarcodeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeReader.h; sourceTree = "<group>"; };
-		3EC9ABB9105E582B0096AB90 /* BarcodeReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeReader.m; sourceTree = "<group>"; };
 		3EC9ABBA105E582B0096AB90 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		3EC9ABBB105E582B0096AB90 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		3EC9ABBC105E582B0096AB90 /* Edition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edition.h; sourceTree = "<group>"; };
@@ -492,7 +483,6 @@
 		3EC9ABC2105E582B0096AB90 /* URLComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLComponent.h; sourceTree = "<group>"; };
 		3EC9ABC3105E582B0096AB90 /* URLComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLComponent.m; sourceTree = "<group>"; };
 		3EC9ABDC105E58640096AB90 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3EC9C6EF0EE147210026396A /* libZebla.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZebla.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ECBBB4D0EDC4A8200865EF7 /* AudioToolbox */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = AudioToolbox; path = System/Library/Frameworks/AudioToolbox.framework/AudioToolbox; sourceTree = SDKROOT; };
 		3ECD3DD00ED06434001A775F /* backward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backward.png; sourceTree = "<group>"; };
 		3ED069690F545CBA006D932B /* KeywordView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordView2.xib; sourceTree = "<group>"; };
@@ -509,10 +499,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E45FF88136B054B0029ABEC /* libiconv.dylib in Frameworks */,
 				3E1C73E41168647E00CCCC22 /* SystemConfiguration.framework in Frameworks */,
 				3E9935BA11465BDD005386D0 /* libz.dylib in Frameworks */,
 				3E61A3B41145166500AFC6E3 /* MessageUI.framework in Frameworks */,
-				3EC9C7580EE14B8A0026396A /* libZebla.a in Frameworks */,
 				3EB779D311429519001C3F1F /* AVFoundation.framework in Frameworks */,
 				3ECBBB4E0EDC4A8200865EF7 /* AudioToolbox in Frameworks */,
 				3E7F610B1084CD4A0040A615 /* UIKit.framework in Frameworks */,
@@ -525,6 +515,7 @@
 				3E1CC9B0131BD47000AB59BA /* CoreMedia.framework in Frameworks */,
 				3E1CC9BB131BD47500AB59BA /* CoreVideo.framework in Frameworks */,
 				3E45FEF8136AF59F0029ABEC /* libGoogleAdMobAds.a in Frameworks */,
+				3E45FF60136B01E70029ABEC /* libzbar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,7 +524,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E368D3411428ED4001B2805 /* CoreLocation.framework in Frameworks */,
-				3E2310310F4D9ED0006E24AF /* libZebla.a in Frameworks */,
 				3E2310370F4D9ED0006E24AF /* AudioToolbox in Frameworks */,
 				3E28EABB10649A7A006F9FF7 /* libsqlite3.dylib in Frameworks */,
 				3E28EABD10649A87006F9FF7 /* Foundation.framework in Frameworks */,
@@ -548,13 +538,7 @@
 				3E1CC99C131BD43E00AB59BA /* CoreMedia.framework in Frameworks */,
 				3E1CC9A0131BD44900AB59BA /* CoreVideo.framework in Frameworks */,
 				3E45FEF9136AF59F0029ABEC /* libGoogleAdMobAds.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3EC9C6ED0EE147210026396A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				3E45FF61136B01E70029ABEC /* libzbar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,7 +561,6 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* ItemShelf.app */,
 				3E0796200F4DAA1F00456CB3 /* ItemShelfLite.app */,
-				3EC9C6EF0EE147210026396A /* libZebla.a */,
 				3E84575D11575EE800B863C1 /* ItemShelfLite.app */,
 			);
 			name = Products;
@@ -587,6 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				3E99359511465B24005386D0 /* ziparchive */,
+				3E45FF5E136B01C50029ABEC /* ZBarSDK */,
 				3E1FDD170ECEF55B00915E3E /* zebra */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				3E45FEF0136AF5740029ABEC /* AdMob */,
@@ -624,6 +608,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E45FF87136B054B0029ABEC /* libiconv.dylib */,
 				3ECBBB4D0EDC4A8200865EF7 /* AudioToolbox */,
 				3EB6F10C114505F000C859C7 /* MessageUI.framework */,
 				3E28EABA10649A7A006F9FF7 /* libsqlite3.dylib */,
@@ -813,6 +798,71 @@
 			name = AdMob;
 			sourceTree = "<group>";
 		};
+		3E45FF5E136B01C50029ABEC /* ZBarSDK */ = {
+			isa = PBXGroup;
+			children = (
+				3E45FF6F136B02020029ABEC /* Headers */,
+				3E45FF62136B01F90029ABEC /* Resources */,
+				3E45FF5F136B01E70029ABEC /* libzbar.a */,
+			);
+			name = ZBarSDK;
+			sourceTree = "<group>";
+		};
+		3E45FF62136B01F90029ABEC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3E45FF63136B01F90029ABEC /* zbar-back.png */,
+				3E45FF64136B01F90029ABEC /* zbar-help.html */,
+				3E45FF65136B01F90029ABEC /* zbar-helpicons.png */,
+				3E45FF66136B01F90029ABEC /* zbar-samples.png */,
+			);
+			name = Resources;
+			path = ZBarSDK/Resources;
+			sourceTree = "<group>";
+		};
+		3E45FF6F136B02020029ABEC /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				3E45FF70136B02020029ABEC /* ZBarSDK */,
+			);
+			name = Headers;
+			path = ZBarSDK/Headers;
+			sourceTree = "<group>";
+		};
+		3E45FF70136B02020029ABEC /* ZBarSDK */ = {
+			isa = PBXGroup;
+			children = (
+				3E45FF71136B02020029ABEC /* zbar */,
+				3E45FF7B136B02020029ABEC /* zbar.h */,
+				3E45FF7C136B02020029ABEC /* ZBarCaptureReader.h */,
+				3E45FF7D136B02020029ABEC /* ZBarHelpController.h */,
+				3E45FF7E136B02020029ABEC /* ZBarImage.h */,
+				3E45FF7F136B02020029ABEC /* ZBarImageScanner.h */,
+				3E45FF80136B02020029ABEC /* ZBarReaderController.h */,
+				3E45FF81136B02020029ABEC /* ZBarReaderView.h */,
+				3E45FF82136B02020029ABEC /* ZBarReaderViewController.h */,
+				3E45FF83136B02020029ABEC /* ZBarSDK.h */,
+				3E45FF84136B02020029ABEC /* ZBarSymbol.h */,
+			);
+			path = ZBarSDK;
+			sourceTree = "<group>";
+		};
+		3E45FF71136B02020029ABEC /* zbar */ = {
+			isa = PBXGroup;
+			children = (
+				3E45FF72136B02020029ABEC /* Decoder.h */,
+				3E45FF73136B02020029ABEC /* Exception.h */,
+				3E45FF74136B02020029ABEC /* Image.h */,
+				3E45FF75136B02020029ABEC /* ImageScanner.h */,
+				3E45FF76136B02020029ABEC /* Processor.h */,
+				3E45FF77136B02020029ABEC /* Scanner.h */,
+				3E45FF78136B02020029ABEC /* Symbol.h */,
+				3E45FF79136B02020029ABEC /* Video.h */,
+				3E45FF7A136B02020029ABEC /* Window.h */,
+			);
+			path = zbar;
+			sourceTree = "<group>";
+		};
 		3E7BD5BA0EDD61B80083CBE5 /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,8 +878,6 @@
 				3EC9AB42105E57D30096AB90 /* ItemCell.m */,
 				3EC9AB43105E57D30096AB90 /* ItemCell4.h */,
 				3EC9AB44105E57D30096AB90 /* ItemCell4.m */,
-				3E1CC8F7131BCEC100AB59BA /* BarcodeScannerController2.h */,
-				3E3C9E5F131BCC0D005CC671 /* BarcodeScannerController2.m */,
 				3E45FF52136AF8A00029ABEC /* CaptureSessionManager.h */,
 				3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */,
 				3EC9AB2D105E57D30096AB90 /* AboutViewController.h */,
@@ -893,8 +941,6 @@
 				3EC9ABB5105E582B0096AB90 /* AppDelegate.m */,
 				3EC9ABB6105E582B0096AB90 /* BackupServer.h */,
 				3EC9ABB7105E582B0096AB90 /* BackupServer.m */,
-				3EC9ABB8105E582B0096AB90 /* BarcodeReader.h */,
-				3EC9ABB9105E582B0096AB90 /* BarcodeReader.m */,
 				3EC9ABBA105E582B0096AB90 /* Common.h */,
 				3EC9ABBB105E582B0096AB90 /* Common.m */,
 				3EC9ABBC105E582B0096AB90 /* Edition.h */,
@@ -964,16 +1010,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		3EC9C6EB0EE147210026396A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		1D6058900D05DD3D006BFB54 /* ItemShelf */ = {
 			isa = PBXNativeTarget;
@@ -986,7 +1022,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3EC9C7470EE149320026396A /* PBXTargetDependency */,
 			);
 			name = ItemShelf;
 			productName = iWantThis;
@@ -1004,29 +1039,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				3E2310060F4D9ED0006E24AF /* PBXTargetDependency */,
 			);
 			name = ItemShelfLite;
 			productName = iWantThis;
 			productReference = 3E84575D11575EE800B863C1 /* ItemShelfLite.app */;
 			productType = "com.apple.product-type.application";
-		};
-		3EC9C6EE0EE147210026396A /* Zebla */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3EC9C6F60EE147400026396A /* Build configuration list for PBXNativeTarget "Zebla" */;
-			buildPhases = (
-				3EC9C6EB0EE147210026396A /* Headers */,
-				3EC9C6EC0EE147210026396A /* Sources */,
-				3EC9C6ED0EE147210026396A /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Zebla;
-			productName = Zebla;
-			productReference = 3EC9C6EF0EE147210026396A /* libZebla.a */;
-			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -1049,7 +1066,6 @@
 			targets = (
 				1D6058900D05DD3D006BFB54 /* ItemShelf */,
 				3E2310050F4D9ED0006E24AF /* ItemShelfLite */,
-				3EC9C6EE0EE147210026396A /* Zebla */,
 			);
 		};
 /* End PBXProject section */
@@ -1112,6 +1128,10 @@
 				3E08D2DF12DAE31A000EDC0D /* Icon.png in Resources */,
 				3E08D2E012DAE31A000EDC0D /* Icon@2x.png in Resources */,
 				3E1CCA0F131BE5CA00AB59BA /* BarcodeScannerView.xib in Resources */,
+				3E45FF67136B01F90029ABEC /* zbar-back.png in Resources */,
+				3E45FF69136B01F90029ABEC /* zbar-help.html in Resources */,
+				3E45FF6B136B01F90029ABEC /* zbar-helpicons.png in Resources */,
+				3E45FF6D136B01F90029ABEC /* zbar-samples.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1172,6 +1192,10 @@
 				3E08D2D912DAE30F000EDC0D /* Icon.png in Resources */,
 				3E08D2DA12DAE30F000EDC0D /* Icon@2x.png in Resources */,
 				3E1CCA10131BE5CA00AB59BA /* BarcodeScannerView.xib in Resources */,
+				3E45FF68136B01F90029ABEC /* zbar-back.png in Resources */,
+				3E45FF6A136B01F90029ABEC /* zbar-help.html in Resources */,
+				3E45FF6C136B01F90029ABEC /* zbar-helpicons.png in Resources */,
+				3E45FF6E136B01F90029ABEC /* zbar-samples.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1218,7 +1242,6 @@
 				3EC9ABAD105E57FF0096AB90 /* Yahoo.m in Sources */,
 				3EC9ABCC105E582B0096AB90 /* AppDelegate.m in Sources */,
 				3EC9ABCD105E582B0096AB90 /* BackupServer.m in Sources */,
-				3EC9ABCE105E582B0096AB90 /* BarcodeReader.m in Sources */,
 				3EC9ABCF105E582B0096AB90 /* Common.m in Sources */,
 				3EC9ABD0105E582B0096AB90 /* Edition.m in Sources */,
 				3EC9ABD1105E582B0096AB90 /* HttpClient.m in Sources */,
@@ -1230,7 +1253,6 @@
 				3E9935A611465B54005386D0 /* unzip.c in Sources */,
 				3E9935A711465B54005386D0 /* zip.c in Sources */,
 				3E9935AB11465B5F005386D0 /* ZipArchive.mm in Sources */,
-				3E3C9E60131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */,
 				3E45FF54136AF8A00029ABEC /* CaptureSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1275,7 +1297,6 @@
 				3EC9ABA7105E57FF0096AB90 /* Yahoo.m in Sources */,
 				3EC9ABC4105E582B0096AB90 /* AppDelegate.m in Sources */,
 				3EC9ABC5105E582B0096AB90 /* BackupServer.m in Sources */,
-				3EC9ABC6105E582B0096AB90 /* BarcodeReader.m in Sources */,
 				3EC9ABC7105E582B0096AB90 /* Common.m in Sources */,
 				3EC9ABC8105E582B0096AB90 /* Edition.m in Sources */,
 				3EC9ABC9105E582B0096AB90 /* HttpClient.m in Sources */,
@@ -1287,50 +1308,11 @@
 				3E9935A211465B54005386D0 /* unzip.c in Sources */,
 				3E9935A311465B54005386D0 /* zip.c in Sources */,
 				3E9935AA11465B5F005386D0 /* ZipArchive.mm in Sources */,
-				3E3C9E61131BCC0D005CC671 /* BarcodeScannerController2.m in Sources */,
 				3E45FF55136AF8A00029ABEC /* CaptureSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3EC9C6EC0EE147210026396A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3EC9C7100EE147940026396A /* null.c in Sources */,
-				3EC9C70F0EE1478F0026396A /* null.c in Sources */,
-				3EC9C70B0EE147800026396A /* code39.c in Sources */,
-				3EC9C70C0EE147800026396A /* code128.c in Sources */,
-				3EC9C70D0EE147800026396A /* ean.c in Sources */,
-				3EC9C70E0EE147800026396A /* i25.c in Sources */,
-				3EC9C6F70EE147530026396A /* config.c in Sources */,
-				3EC9C6F80EE147530026396A /* convert.c in Sources */,
-				3EC9C6FA0EE147530026396A /* decoder.c in Sources */,
-				3EC9C6FC0EE147530026396A /* error.c in Sources */,
-				3EC9C6FE0EE147530026396A /* image.c in Sources */,
-				3EC9C7000EE147530026396A /* img_scanner.c in Sources */,
-				3EC9C7010EE147530026396A /* logo.c in Sources */,
-				3EC9C7020EE147530026396A /* processor.c in Sources */,
-				3EC9C7040EE147530026396A /* scanner.c in Sources */,
-				3EC9C7050EE147530026396A /* symbol.c in Sources */,
-				3EC9C7070EE147530026396A /* video.c in Sources */,
-				3EC9C7090EE147530026396A /* window.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3E2310060F4D9ED0006E24AF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3EC9C6EE0EE147210026396A /* Zebla */;
-			targetProxy = 3E2310070F4D9ED0006E24AF /* PBXContainerItemProxy */;
-		};
-		3EC9C7470EE149320026396A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3EC9C6EE0EE147210026396A /* Zebla */;
-			targetProxy = 3EC9C7460EE149320026396A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3E554C860ED98A4400166874 /* Localizable.strings */ = {
@@ -1365,6 +1347,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/GoogleAds\"",
 					"\"$(SRCROOT)/AdMob\"",
+					"\"$(SRCROOT)/ZBarSDK\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelf;
@@ -1390,6 +1373,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/GoogleAds\"",
 					"\"$(SRCROOT)/AdMob\"",
+					"\"$(SRCROOT)/ZBarSDK\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelf;
@@ -1421,6 +1405,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/GoogleAds\"",
 					"\"$(SRCROOT)/AdMob\"",
+					"\"$(SRCROOT)/ZBarSDK\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelfLite;
@@ -1447,33 +1432,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/GoogleAds\"",
 					"\"$(SRCROOT)/AdMob\"",
+					"\"$(SRCROOT)/ZBarSDK\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ItemShelfLite;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		3EC9C6F00EE147220026396A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PREBINDING = NO;
-				PRODUCT_NAME = Zebla;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		3EC9C6F20EE147220026396A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				PREBINDING = NO;
-				PRODUCT_NAME = Zebla;
-				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -1539,15 +1504,6 @@
 			buildConfigurations = (
 				3E23103A0F4D9ED0006E24AF /* Debug */,
 				3E23103B0F4D9ED0006E24AF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3EC9C6F60EE147400026396A /* Build configuration list for PBXNativeTarget "Zebla" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3EC9C6F00EE147220026396A /* Debug */,
-				3EC9C6F20EE147220026396A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
