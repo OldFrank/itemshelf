@@ -32,24 +32,21 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#import "ItemBase.h"
 #import "Item.h"
 #import "AppDelegate.h"
 #import "DataModel.h"
 
 @implementation Item
 
-@synthesize pkey, date, shelfId;
-@synthesize serviceId, idString, asin;
-@synthesize name, author, manufacturer, category, detailURL, price, tags;
-@synthesize memo, imageURL, sorder, star;
-@synthesize imageCache, registeredWithShelf;
+@synthesize imageCache = mImageCache;
+@synthesize registeredWithShelf = mRegisteredWithShelf;
 //@synthesize infoStrings;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        self.pkey = -1; // initial
         self.date = [NSDate date];  // 現在時刻で生成
         self.shelfId = 0; // unclassified shelf
         self.serviceId = -1;
@@ -73,19 +70,7 @@
 
 - (void)dealloc
 {
-    [date release];
-    [asin release];
-    [idString release];
-    [name release];
-    [author release];
-    [manufacturer release];
-    [category release];
-    [detailURL release];
-    [price release];
-    [tags release];
-    [memo release];
-    [imageURL release];
-    [imageCache release];
+    [mImageCache release];
     //[infoStrings release];
 	
     [super dealloc];
@@ -134,7 +119,7 @@
     //self.sorder = item.sorder;
     self.star = item.star;
 
-    [self update];
+    [self save];
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -144,171 +129,11 @@
 */
 //@{
 
-+ (void)checkTable
-{
-    Database *db = [Database instance];
-    dbstmt *stmt;
-
-    // テーブルの scheme をチェック
-    // sqlite_master テーブルから table 一覧と schema をチェックする
-    stmt = [db prepare:"SELECT sql FROM sqlite_master WHERE type='table' AND name='Item';"];
-    if ([stmt step] != SQLITE_ROW) {
-        // テーブル新規作成
-        [db exec:"CREATE TABLE Item ("
-            "pkey INTEGER PRIMARY KEY,"
-            "date TEXT,"
-            "itemState INTEGER,"
-            "idType INTEGER,"
-            "idString TEXT,"
-            "asin TEXT,"
-            "name TEXT,"
-            "author TEXT,"
-            "manufacturer TEXT,"
-            "productGroup TEXT,"
-            "detailURL TEXT,"
-            "price TEXT,"
-            "tags TEXT,"
-            "memo TEXT,"
-            "imageURL TEXT,"
-            "sorder INTEGER,"
-            "star INTEGER"
-            ");"
-         ];
-    } else {
-        // スキーマをチェック
-        NSString *tablesql = [stmt colString:0];
-
-        // Sqlite では列名は変更できないので注意
-
-        // Ver 1.6 -> 2.0 upgrade
-        NSRange range;
-        range = [tablesql rangeOfString:@"star"];
-        if (range.location == NSNotFound) {
-            [db exec:"ALTER TABLE Item ADD COLUMN star INTEGER;"];
-            [db exec:"UPDATE Item SET star = 0;"];
-        }
-    }
-}
-
-- (void)loadRow:(dbstmt *)stmt
-{
-    self.pkey         = [stmt colInt:0];
-    self.date         = [stmt colDate:1];
-    self.shelfId      = [stmt colInt:2];
-    self.serviceId    = [stmt colInt:3];
-    self.idString     = [stmt colString:4];
-    self.asin         = [stmt colString:5];
-    self.name         = [stmt colString:6];
-    self.author       = [stmt colString:7];
-    self.manufacturer = [stmt colString:8];
-    self.category     = [stmt colString:9];
-    self.detailURL    = [stmt colString:10];
-    self.price        = [stmt colString:11];
-    self.tags         = [stmt colString:12];
-    self.memo         = [stmt colString:13];
-    self.imageURL     = [stmt colString:14];
-    self.sorder       = [stmt colInt:15];
-    self.star         = [stmt colInt:16];
-
-    self.registeredWithShelf = YES;
-
-    NSLog(@"%d %d %@", self.pkey, self.sorder, self.name);
-}
-
-- (void)insert
-{
-    Database *db = [Database instance];
-	
-    [db beginTransaction];
-	
-    const char *sql = "INSERT INTO Item VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    dbstmt *stmt = [db prepare:sql];
-
-    [stmt bindDate:0 val:date];
-    [stmt bindInt:1 val:shelfId];
-    [stmt bindInt:2 val:serviceId];
-    [stmt bindString:3 val:idString];
-    [stmt bindString:4 val:asin];
-    [stmt bindString:5 val:name];
-    [stmt bindString:6 val:author];
-    [stmt bindString:7 val:manufacturer];
-    [stmt bindString:8 val:category];
-    [stmt bindString:9 val:detailURL];
-    [stmt bindString:10 val:price];
-    [stmt bindString:11 val:tags];
-    [stmt bindString:12 val:memo];
-    [stmt bindString:13 val:imageURL];
-    [stmt bindInt:14 val:sorder];
-    [stmt bindInt:15 val:star];
-    [stmt step];
-
-    self.pkey = [db	lastInsertRowId];
-    self.sorder = pkey;  // 初期並び順は Primary Key と同じにしておく(最大値)
-    [self updateSorder];
-	
-    [db commitTransaction];
-}
-
-- (void)update
-{
-    Database *db = [Database instance];
-	
-    [db beginTransaction];
-	
-    const char *sql = "UPDATE Item SET "
-        "date = ?,"
-        "itemState = ?,"
-        "idType = ?,"
-        "idString = ?,"
-        "asin = ?,"
-        "name = ?,"
-        "author = ?,"
-        "manufacturer = ?,"
-        "productGroup = ?,"
-        "detailURL = ?,"
-        "price = ?,"
-        "tags = ?,"
-        "memo = ?,"
-        "imageURL = ?,"
-        "sorder = ?,"
-        "star = ?"
-        " WHERE pkey = ?;";
-
-    dbstmt *stmt = [db prepare:sql];
-
-    [stmt bindDate:0 val:date];
-    [stmt bindInt:1 val:shelfId];
-    [stmt bindInt:2 val:serviceId];
-    [stmt bindString:3 val:idString];
-    [stmt bindString:4 val:asin];
-    [stmt bindString:5 val:name];
-    [stmt bindString:6 val:author];
-    [stmt bindString:7 val:manufacturer];
-    [stmt bindString:8 val:category];
-    [stmt bindString:9 val:detailURL];
-    [stmt bindString:10 val:price];
-    [stmt bindString:11 val:tags];
-    [stmt bindString:12 val:memo];
-    [stmt bindString:13 val:imageURL];
-    [stmt bindInt:14 val:sorder];
-    [stmt bindInt:15 val:star];
-    [stmt bindInt:16 val:pkey];
-    [stmt step];
-
-    [db commitTransaction];
-}
-
+// Override
 - (void)delete
 {
     [self _deleteImageFile];
-
-    Database *db = [Database instance];
-
-    const char *sql = "DELETE FROM Item WHERE pkey = ?;";
-    dbstmt *stmt = [db prepare:sql];
-
-    [stmt bindInt:0 val:pkey];
-    [stmt step];
+    [super delete];
 }
 
 - (void)changeShelf:(int)shelf
@@ -318,55 +143,11 @@
     }
     self.shelfId = shelf;
 
-    if (self.pkey < 0) {
+    if (self.pid < 0) {
         return;	 // fail safe
     }
-	
-	[self _updateIntKey:"itemState" value:shelfId];
-}
 
-- (void)updateSorder
-{
-    [self _updateIntKey:"sorder" value:sorder];
-}
-
-- (void)updateStar
-{
-    [self _updateIntKey:"star" value:star];
-    [[DataModel sharedDataModel] updateSmartShelves];
-}
-
-- (void)updateTags
-{
-    [self _updateStringKey:"tags" value:tags];
-    [[DataModel sharedDataModel] updateSmartShelves];
-}
-
-- (void)updateMemo
-{
-    [self _updateStringKey:"memo" value:memo];
-}
-
-- (void)_updateIntKey:(const char *)key value:(int)value
-{
-	char sql[256];
-	sprintf(sql, "UPDATE Item SET %s = ? WHERE pkey = ?;", key);
-    dbstmt *stmt = [[Database instance] prepare:sql];
-	
-    [stmt bindInt:0 val:value];
-    [stmt bindInt:1 val:pkey];
-    [stmt step];
-}
-
-- (void)_updateStringKey:(const char *)key value:(NSString *)value
-{
-	char sql[256];
-	sprintf(sql, "UPDATE Item SET %s = ? WHERE pkey = ?;", key);
-    dbstmt *stmt = [[Database instance] prepare:sql];
-	
-    [stmt bindString:0 val:value];
-    [stmt bindInt:1 val:pkey];
-    [stmt step];
+    [self save];
 }
 
 //@}
@@ -457,13 +238,13 @@ static NSMutableArray *agingArray = nil;
 - (UIImage *)getImage:(id<ItemDelegate>)delegate
 {
     // Returns image on memory cache
-    if (imageCache != nil) {
+    if (mImageCache != nil) {
         [self _refreshImageCache];
-        return imageCache;
+        return mImageCache;
     }
 
     // Can't return image when downloading it.
-    if (buffer != nil) {
+    if (mBuffer != nil) {
         return nil;
     }
 
@@ -489,15 +270,15 @@ static NSMutableArray *agingArray = nil;
         return nil;
 #endif
     }
-
+    
     // Returns "NoImage" if no image URL.
-    if (imageURL == nil || imageURL.length == 0) {
+    if (mImageURL == nil || mImageURL.length == 0) { // TODO
         return [self _getNoImage];
     }
 
     // No cache. Start download image from network.
     if (delegate == nil) return nil;
-    itemDelegate = delegate;
+    mItemDelegate = delegate;
 	
     NSURLRequest *req =
         [NSURLRequest requestWithURL:[NSURL URLWithString:self.imageURL]
@@ -506,8 +287,8 @@ static NSMutableArray *agingArray = nil;
 
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
     if (conn) {
-        buffer = [[NSMutableData data] retain];
-        LOG(@"Loading image: %@", imageURL);
+        mBuffer = [[NSMutableData data] retain];
+        LOG(@"Loading image: %@", self.imageURL);
         [conn release];
     }
 	
@@ -530,26 +311,26 @@ static NSMutableArray *agingArray = nil;
 
 - (void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)data
 {
-    [buffer appendData:data];
+    [mBuffer appendData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)conn
 {
     LOG(@"Loading image done");
 	
-    [self saveImageCache:nil data:buffer];
-    [buffer release];
-    buffer = nil;
+    [self saveImageCache:nil data:mBuffer];
+    [mBuffer release];
+    mBuffer = nil;
 	
-    if (itemDelegate) {
-        [itemDelegate itemDidFinishDownloadImage:self];
+    if (mItemDelegate) {
+        [mItemDelegate itemDidFinishDownloadImage:self];
     }
 }
 
 - (void)connection:(NSURLConnection *)conn didFailWithError:(NSError *)error
 {
-    [buffer release];
-    buffer = nil;
+    [mBuffer release];
+    mBuffer = nil;
 	
     LOG(@"Connection failed. Error - %@ %@",
         [error localizedDescription],
@@ -583,7 +364,7 @@ static NSMutableArray *agingArray = nil;
 */
 - (void)cancelDownload
 {
-    itemDelegate = nil;
+    mItemDelegate = nil;
 }
 
 /**
@@ -591,9 +372,9 @@ static NSMutableArray *agingArray = nil;
 */
 - (NSString *)_imagePath
 {
-    if (pkey < 0) return nil;
+    if (self.pid < 0) return nil;
 
-    NSString *filename = [NSString stringWithFormat:@"img-%d.jpg", self.pkey];
+    NSString *filename = [NSString stringWithFormat:@"img-%d.jpg", self.pid];
     return [AppDelegate pathOfDataFile:filename];
 }
 
@@ -602,16 +383,16 @@ static NSMutableArray *agingArray = nil;
 */
 - (void)_fixImagePath
 {
-    if (pkey < 0) return;
+    if (self.pid < 0) return;
 
     NSFileManager *fm = [NSFileManager defaultManager];
 
-    NSString *oldfilename = [NSString stringWithFormat:@"img-%d", self.pkey];
+    NSString *oldfilename = [NSString stringWithFormat:@"img-%d", self.pid];
     NSString *oldpath = [AppDelegate pathOfDataFile:oldfilename];
 
     if (![fm fileExistsAtPath:oldpath]) return;
 
-    NSString *newfilename = [NSString stringWithFormat:@"img-%d.jpg", self.pkey];
+    NSString *newfilename = [NSString stringWithFormat:@"img-%d.jpg", self.pid];
     NSString *newpath = [AppDelegate pathOfDataFile:newfilename];
 
     if ([fm fileExistsAtPath:newpath]) {
@@ -678,13 +459,13 @@ static NSMutableArray *agingArray = nil;
 - (NSString *)additionalInfoValueAtIndex:(int)idx
 {
     switch (idx) {
-        case 0: return name;
-        case 1: return author;
-        case 2: return manufacturer;
-        case 3: return category; //NSLocalizedString(category, @"");
-        case 4: return price;
-        case 5: return idString;
-        case 6: return asin;
+        case 0: return mName;
+        case 1: return mAuthor;
+        case 2: return mManufacturer;
+        case 3: return mCategory; //NSLocalizedString(category, @"");
+        case 4: return mPrice;
+        case 5: return mIdString;
+        case 6: return mAsin;
     }
     return nil;
 }

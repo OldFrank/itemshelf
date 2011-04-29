@@ -47,7 +47,7 @@
 */
 @interface DataModel : NSObject
 {
-    NSMutableArray *shelves;	///< All shelves
+    NSMutableArray *mShelves;	///< All shelves
 
 //    NSString *currentCountry;	///< Current country setting
 //    NSArray *countries;		///< Countries array

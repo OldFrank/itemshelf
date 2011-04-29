@@ -32,42 +32,48 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// アイテム一覧モデル
-//   ItemListViewController で使用
-
-#import <UIKit/UIKit.h>
-#import "Common.h"
-#import "Shelf.h"
+#import "Database.h"
+#import "AppDelegate.h"
 #import "Item.h"
-#import "StringArray.h"
+#import "Shelf.h"
+#import "DateFormatter2.h"
+#import "ItemshelfDatabase.h"
 
-/**
-   Item list model, used from ItemListViewController
+@implementation ItemshelfDatabase
 
-   This model contains array of items, "filtered" with
-   search string and category.
-*/
-@interface ItemListModel : NSObject
+// Override
+- (BOOL)open:(NSString *)dbname
 {
-    Shelf *mShelf;		///< Shelf
-	
-    NSString *mFilter;		///< Filter string (if nil, no filter)
-    NSString *mSearchText;	///< Search string
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    // migrate old database...
+    NSString *oldDbPath = [self dbPath:@"iWantThis.db"];
+    BOOL isExistOldDb = [fileManager fileExistsAtPath:oldDbPath];
 
-    NSMutableArray *mFilteredList; ///< Filtered array of items.
+    NSString *dbPath = [self dbPath:dbname];
+    BOOL isExistDb = [fileManager fileExistsAtPath:dbPath];
+    
+    if (isExistOldDb) {
+        if (isExistDb) {
+            [fileManager removeItemAtPath:oldDbPath error:NULL];
+        } else {
+            [fileManager moveItemAtPath:oldDbPath toPath:dbPath error:NULL];
+        }
+    }
+
+    return [super open:dbname];
 }
 
-@property(nonatomic,readonly) Shelf *shelf;
-@property(nonatomic,retain) NSString *filter;
-
-- (id)initWithShelf:(Shelf *)shelf;
-- (int)count;
-- (Item *)itemAtIndex:(int)index;
-- (void)setSearchText:(NSString *)t;
-- (void)setFilter:(NSString *)f;
-- (void)updateFilter;
-- (void)removeObject:(Item *)item;
-- (void)moveRowAtIndex:(int)fromIndex toIndex:(int)toIndex;
-- (void)sort:(int)kind;
+// Override
+- (NSDateFormatter *)dateFormatter
+{
+    static DateFormatter2 *dateFormatter = nil;
+    if (dateFormatter == nil) {
+        dateFormatter = [[DateFormatter2 alloc] init];
+        [dateFormatter setTimeZone: [NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+        [dateFormatter setDateFormat: @"yyyyMMddHHmm"];
+    }
+    return dateFormatter;
+}
 
 @end

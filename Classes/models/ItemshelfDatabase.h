@@ -40,60 +40,9 @@
 #import "Common.h"
 
 /**
-   Wrapper class of sqlite3_stmt
-*/
-@interface dbstmt : NSObject {
-    sqlite3_stmt *stmt;	///< sqlite3_stmt handle.
-    sqlite3 *handle;    ///< database handle.
-}
-
-@property(nonatomic,assign) sqlite3 *handle;
-
-- (id)initWithStmt:(sqlite3_stmt *)st;
-- (int)step;
-- (void)reset;
-
-- (void)bindInt:(int)idx val:(int)val;
-- (void)bindDouble:(int)idx val:(double)val;
-- (void)bindCString:(int)idx val:(const char *)val;
-- (void)bindString:(int)idx val:(NSString*)val;
-- (void)bindDate:(int)idx val:(NSDate*)date;
-
-- (int)colInt:(int)idx;
-- (double)colDouble:(int)idx;
-- (const char*)colCString:(int)idx;
-- (NSString*)colString:(int)idx;
-- (NSDate*)colDate:(int)idx;
-@end
-
-/**
    Wrapper class of sqlite3 database
 */
-@interface Database : NSObject {
-    sqlite3 *handle; ///< Database handle
+@interface ItemshelfDatabase : Database {
 }
-
-@property(nonatomic,readonly) sqlite3 *handle;
-
-+ (Database*)instance;
-+ (void)shutdown;
-
-- (id)init;
-- (void)dealloc;
-
-- (void)exec:(const char *)sql;
-- (dbstmt*)prepare:(const char *)sql;
-- (int)lastInsertRowId;
-
-- (void)beginTransaction;
-- (void)commitTransaction;
-
-- (NSString *)dbPath;
-- (BOOL)open;
-- (void)checkTables; // private
-
-// Utilities
-+ (NSDate*)dateFromCString:(const char *)str;
-+ (const char *)cstringFromDate:(NSDate*)date;
 
 @end

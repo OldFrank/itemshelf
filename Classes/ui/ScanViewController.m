@@ -389,7 +389,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     if (selectedShelf == nil) {
         item.shelfId = 0; // 未分類
     } else {
-        item.shelfId = selectedShelf.pkey;
+        item.shelfId = selectedShelf.pid;
     }
     DataModel *dm = [DataModel sharedDataModel];
     [dm addItem:item];

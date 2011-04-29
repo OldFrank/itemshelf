@@ -416,21 +416,21 @@
 - (void)editStarViewChanged:(EditStarViewController *)vc
 {
     currentEditingItem.star = [vc star];
-    [currentEditingItem updateStar];
+    [currentEditingItem save];
     [tableView reloadData];
 }
 
 - (void)editTagsViewChanged:(EditTagsViewController *)vc
 {
     currentEditingItem.tags = [vc tags];
-    [currentEditingItem updateTags];
+    [currentEditingItem save];
     [tableView reloadData];
 }
 
 - (void)editMemoViewChanged:(EditMemoViewController *)vc identifier:(int)id
 {
     currentEditingItem.memo = vc.text;
-    [currentEditingItem updateMemo];
+    [currentEditingItem save];
     [tableView reloadData];
 }
 
@@ -438,7 +438,7 @@
 - (void)genEditTextViewChanged:(GenEditTextViewController *)vc
 {
     [currentEditingItem setAdditionalInfoValueAtIndex:currentEditingRow withValue:vc.text];
-    [currentEditingItem update]; // update DB
+    [currentEditingItem save]; // update DB
 
     [tableView reloadData];
 }
@@ -563,7 +563,7 @@
     for (Shelf *shelf in shelves) {
         [shelfNames addObject:shelf.name];
         NSLog(@"%@", shelf.name);
-        if (item.shelfId == shelf.pkey) {
+        if (item.shelfId == shelf.pid) {
             selectedIndex = i;
         }
         i++;
@@ -592,7 +592,7 @@
     DataModel *dm = [DataModel sharedDataModel];
     Shelf *shelf = [[dm normalShelves] objectAtIndex:selectedIndex];
     for (Item *item in itemArray) {
-        [dm changeShelf:item withShelf:shelf.pkey];	
+        [dm changeShelf:item withShelf:shelf.pid];	
     }
 
     if (IS_IPAD) {

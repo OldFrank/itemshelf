@@ -209,7 +209,7 @@
 
     } else {
         // save to DB directly
-        filename = [[Database instance] dbPath];
+        filename = [[Database instance] dbPath:@"itemshelf.db"]; // TODO: filename
     }
     NSLog(@"restore file:%@", filename);
     f = open([filename UTF8String], O_CREAT|O_WRONLY, 0644);
