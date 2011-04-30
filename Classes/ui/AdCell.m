@@ -16,9 +16,18 @@
 
 #define REUSE_IDENTIFIER @"AdCell"
 
+static CGSize getAdSize() {
+    if (IS_IPAD) {
+        return GAD_SIZE_468x60;
+    } else {
+        return GAD_SIZE_320x50;
+    }
+}
+
 + (CGFloat)adCellHeight
 {
-    return 50; // AdMob
+    CGSize size = getAdSize();
+    return size.height;
 }
 
 + (AdCell *)adCell:(UITableView *)tableView parentViewController:(UIViewController *)parentViewController
@@ -36,7 +45,9 @@
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER];
 
     // 広告を作成する
-    CGRect frame = CGRectMake(0, 0, 320, 50);
+    CGSize size = getAdSize();
+    CGRect frame = CGRectMake(0, 0, size.width, size.height);
+    
     mAdBannerView = [[[GADBannerView alloc] initWithFrame:frame] autorelease];
     mAdBannerView.adUnitID = ADMOB_PUBLISHER_ID;
     mAdBannerView.delegate = self;
@@ -50,7 +61,9 @@
     [self.contentView addSubview:mAdBannerView];
 
     // リクエスト開始
-    [mAdBannerView loadRequest:[GADRequest request]];
+    GADRequest *request = [GADRequest request];
+    [request setTesting:YES];
+    [mAdBannerView loadRequest:request];
     
     return self;
 }
