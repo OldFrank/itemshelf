@@ -6,7 +6,13 @@
 
 @implementation BackupUtil
 
-#define BACKUP_FILE_NAME  @"itemshelf-backup.zip"
+/**
+ * バックアップ Zip ファイル名を返す (パス含まず)
+ */
++ (NSString *)backupFileName
+{
+    return BACKUP_FILE_NAME;
+}
 
 /**
  * バックアップ Zip ファイルのフルパス名を取得

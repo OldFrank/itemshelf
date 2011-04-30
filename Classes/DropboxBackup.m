@@ -8,9 +8,7 @@
 #import "DropboxBackup.h"
 #import "Database.h"
 #import "AppDelegate.h"
-
-#define DBNAME @"itemshelf.db"
-#define	BACKUP_FILENAME	DBNAME
+#import "BackupUtil.h"
 
 #define MODE_BACKUP 0
 #define MODE_RESTORE 1
@@ -34,6 +32,12 @@
 
 - (void)doBackup:(UIViewController *)viewController
 {
+    // create backup archive
+    if (![BackupUtil zipBackupFile]) {
+        NSLog(@"zipBackupFile failed...");
+        return;
+    }
+    
     mMode = MODE_BACKUP;
     mViewController = viewController;
     [self _login];
@@ -74,21 +78,23 @@
 
 - (void)_exec
 {
-    NSString *dbPath = [[Database instance] dbPath:DBNAME];
-
+    NSString *fileName = [BackupUtil backupFileName];
+    NSString *localPath = [BackupUtil backupFilePath];
+    NSString *remotePath = [NSString stringWithFormat:@"/%@", fileName];
+    
     switch (mMode) {
         case MODE_BACKUP:
             [self.restClient
-             uploadFile:BACKUP_FILENAME
+             uploadFile:fileName
              toPath:@"/"
-             fromPath:dbPath];
+             fromPath:localPath];
             [mDelegate dropboxBackupStarted:NO];
             break;
 
         case MODE_RESTORE:
             // shutdown database
             [DataModel finalize];
-            [self.restClient loadFile:@"/" BACKUP_FILENAME intoPath:dbPath];
+            [self.restClient loadFile:remotePath intoPath:localPath];
             [mDelegate dropboxBackupStarted:YES];
             break;
     }
@@ -123,6 +129,8 @@
 - (void)restClient:(DBRestClient*)client loadedFile:(NSString*)destPath
 {
     [self _showResult:@"Restore done."];
+    [BackupUtil unzipBackupFile];
+    
     [[DataModel sharedDataModel] loadDB];
     [mDelegate dropboxBackupFinished];
 }
