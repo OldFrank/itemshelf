@@ -360,6 +360,8 @@
 		3EDC560E136B234E00A4BBDE /* BackupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC560C136B234E00A4BBDE /* BackupVC.m */; };
 		3EDC5610136B27E700A4BBDE /* BackupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC560F136B27E700A4BBDE /* BackupView.xib */; };
 		3EDC5611136B27E700A4BBDE /* BackupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC560F136B27E700A4BBDE /* BackupView.xib */; };
+		3EDC56BC136BF5E000A4BBDE /* BackupUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC56BB136BF5E000A4BBDE /* BackupUtil.m */; };
+		3EDC56BD136BF5E000A4BBDE /* BackupUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC56BB136BF5E000A4BBDE /* BackupUtil.m */; };
 		3EDCFFFC11684765009D99C2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDCFFFB11684765009D99C2 /* SystemConfiguration.framework */; };
 		3EE8374E11564EFD00F64764 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8374D11564EFD00F64764 /* MainWindow-iPad.xib */; };
 		3EE8374F11564EFD00F64764 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8374D11564EFD00F64764 /* MainWindow-iPad.xib */; };
@@ -669,6 +671,8 @@
 		3EDC560B136B234E00A4BBDE /* BackupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupVC.h; sourceTree = "<group>"; };
 		3EDC560C136B234E00A4BBDE /* BackupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupVC.m; sourceTree = "<group>"; };
 		3EDC560F136B27E700A4BBDE /* BackupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackupView.xib; sourceTree = "<group>"; };
+		3EDC56BA136BF5E000A4BBDE /* BackupUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupUtil.h; sourceTree = "<group>"; };
+		3EDC56BB136BF5E000A4BBDE /* BackupUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupUtil.m; sourceTree = "<group>"; };
 		3EDCFFFB11684765009D99C2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3EE8374D11564EFD00F64764 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
@@ -1051,6 +1055,8 @@
 				3EC9ABB5105E582B0096AB90 /* AppDelegate.m */,
 				3EC9ABB6105E582B0096AB90 /* BackupServer.h */,
 				3EC9ABB7105E582B0096AB90 /* BackupServer.m */,
+				3EDC56BA136BF5E000A4BBDE /* BackupUtil.h */,
+				3EDC56BB136BF5E000A4BBDE /* BackupUtil.m */,
 				3EC9ABBA105E582B0096AB90 /* Common.h */,
 				3EC9ABBB105E582B0096AB90 /* Common.m */,
 				3EC9ABBC105E582B0096AB90 /* Edition.h */,
@@ -1559,6 +1565,7 @@
 				3EDC55EA136B1F3200A4BBDE /* NSString+Dropbox.m in Sources */,
 				3EDC5605136B208C00A4BBDE /* DropboxBackup.m in Sources */,
 				3EDC560D136B234E00A4BBDE /* BackupVC.m in Sources */,
+				3EDC56BC136BF5E000A4BBDE /* BackupUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1654,6 +1661,7 @@
 				3EDC55EB136B1F3200A4BBDE /* NSString+Dropbox.m in Sources */,
 				3EDC5606136B208C00A4BBDE /* DropboxBackup.m in Sources */,
 				3EDC560E136B234E00A4BBDE /* BackupVC.m in Sources */,
+				3EDC56BD136BF5E000A4BBDE /* BackupUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
