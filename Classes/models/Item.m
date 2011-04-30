@@ -76,6 +76,8 @@
     [super dealloc];
 }
 
+#pragma mark - Utility functions
+
 /**
    Check if the item is equal.
 
@@ -124,6 +126,24 @@
 
 ////////////////////////////////////////////////////////////////////
 
+#pragma mark - ItemBase override
+
+- (void)_insert
+{
+    [super _insert];
+    
+    self.sorder = self.pid;  // 初期並び順は Primary Key と同じにしておく(最大値)
+    [self save];
+}
+
+- (void)_loadRow:(dbstmt *)stmt
+{
+    [super _loadRow:stmt];
+    
+    // 棚登録済み
+    self.registeredWithShelf = YES;
+}
+
 /**
    @name Database operation
 */
@@ -153,6 +173,8 @@
 //@}
 
 ////////////////////////////////////////////////////////////////////
+
+#pragma mark - Image operations
 
 /**
    @name Image operation
