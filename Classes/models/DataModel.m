@@ -34,12 +34,13 @@
 
 #import <UIKit/UIKit.h>
 #import "DataModel.h"
+#import "ItemshelfDatabase.h"
 #import "StringArray.h"
 #import "Edition.h"
 
 @implementation DataModel
 
-@synthesize shelves;
+@synthesize shelves = mShelves;
 
 static DataModel *theDataModel = nil; // singleton
 
@@ -54,11 +55,19 @@ static DataModel *theDataModel = nil; // singleton
     return theDataModel;
 }
 
++ (void)finalize
+{
+    if (theDataModel) {
+        [theDataModel release];
+        theDataModel = nil;
+    }
+}
+
 - (id)init
 {
     self = [super init];
     if (self) {
-        shelves = [[NSMutableArray alloc] initWithCapacity:10];
+        mShelves = [[NSMutableArray alloc] initWithCapacity:10];
     }
 	
 //    countries = [[NSArray arrayWithObjects:@"US", @"UK", @"CA", @"FR", @"DE", @"JP", nil] retain];
@@ -77,7 +86,7 @@ static DataModel *theDataModel = nil; // singleton
 
 - (void)dealloc
 {
-    [shelves release];
+    [mShelves release];
     //[currentCountry release];
     //[countries release];
 
@@ -95,8 +104,8 @@ static DataModel *theDataModel = nil; // singleton
 */
 - (Shelf *)shelf:(int)shelfId
 {
-    for (Shelf *shelf in shelves) {
-        if (shelf.pkey == shelfId) {
+    for (Shelf *shelf in mShelves) {
+        if (shelf.pid == shelfId) {
             return shelf;
         }
     }
@@ -111,8 +120,8 @@ static DataModel *theDataModel = nil; // singleton
 */
 - (Shelf *)shelfAtIndex:(int)index
 {
-    ASSERT(index < shelves.count);
-    return [shelves objectAtIndex:index];
+    ASSERT(index < mShelves.count);
+    return [mShelves objectAtIndex:index];
 }
 
 /**
@@ -120,7 +129,7 @@ static DataModel *theDataModel = nil; // singleton
 */
 - (int)shelvesCount
 {
-    return [shelves count];
+    return [mShelves count];
 }
 
 /**
@@ -129,8 +138,8 @@ static DataModel *theDataModel = nil; // singleton
 */
 - (void)addShelf:(Shelf *)shelf
 {
-    [shelves addObject:shelf];
-    [shelf insert];
+    [mShelves addObject:shelf];
+    [shelf save];
 }
 
 /**
@@ -142,7 +151,7 @@ static DataModel *theDataModel = nil; // singleton
 - (void)removeShelf:(Shelf *)shelf
 {
     [shelf delete];
-    [shelves removeObject:shelf];
+    [mShelves removeObject:shelf];
 
     [self updateSmartShelves];
 }
@@ -155,9 +164,9 @@ static DataModel *theDataModel = nil; // singleton
 */
 - (void)reorderShelf:(int)from to:(int)to
 {
-    Shelf *shelf = [[shelves objectAtIndex:from] retain];
-    [shelves removeObjectAtIndex:from];
-    [shelves insertObject:shelf atIndex:to];
+    Shelf *shelf = [[mShelves objectAtIndex:from] retain];
+    [mShelves removeObjectAtIndex:from];
+    [mShelves insertObject:shelf atIndex:to];
     [shelf release];
 	
     // renumber sorder
@@ -165,12 +174,12 @@ static DataModel *theDataModel = nil; // singleton
     [db beginTransaction];
 
     int n = 0;
-    for (int i = 0; i < shelves.count; i++) {
-        shelf = [shelves objectAtIndex:i];
-        if (shelf.pkey != SHELF_ALL_PKEY) {
+    for (int i = 0; i < mShelves.count; i++) {
+        shelf = [mShelves objectAtIndex:i];
+        if (shelf.pid != SHELF_ALL_PKEY) {
             if (shelf.sorder != n) {
                 shelf.sorder = n;
-                [shelf updateSorder];
+                [shelf save];
             }
             n++;
         }
@@ -184,7 +193,7 @@ static DataModel *theDataModel = nil; // singleton
 - (NSMutableArray *)normalShelves
 {
     NSMutableArray *ary = [[[NSMutableArray alloc] initWithCapacity:10] autorelease];
-    for (Shelf *shelf in shelves) {
+    for (Shelf *shelf in mShelves) {
         if (shelf.shelfType == ShelfTypeNormal) {
             [ary addObject:shelf];
         }
@@ -199,9 +208,9 @@ static DataModel *theDataModel = nil; // singleton
 */
 - (void)updateSmartShelves
 {
-    for (Shelf *shelf in shelves) {
+    for (Shelf *shelf in mShelves) {
         if (shelf.shelfType != ShelfTypeNormal) {
-            [shelf updateSmartShelf:shelves];
+            [shelf updateSmartShelf:mShelves];
         }
     }
 }
@@ -218,7 +227,7 @@ static DataModel *theDataModel = nil; // singleton
 {
     int count = 0;
 
-    for (Shelf *shelf in shelves) {
+    for (Shelf *shelf in mShelves) {
         if (shelf.shelfType == ShelfTypeNormal) {
             count += [shelf itemCount];
         }
@@ -247,7 +256,7 @@ static DataModel *theDataModel = nil; // singleton
     ASSERT(shelf.shelfType == ShelfTypeNormal);
 	
     [shelf addItem:item];
-    [item insert]; // add database
+    [item save]; // add database
 	
     item.registeredWithShelf = YES;
 
@@ -265,8 +274,8 @@ static DataModel *theDataModel = nil; // singleton
 {
     [item delete];
 
-    for (int i = 0; i < shelves.count; i++) {
-        Shelf *shelf = [shelves objectAtIndex:i];
+    for (int i = 0; i < mShelves.count; i++) {
+        Shelf *shelf = [mShelves objectAtIndex:i];
         if ([shelf containsItem:item]) {
             [shelf removeItem:item];
         }
@@ -335,8 +344,8 @@ static DataModel *theDataModel = nil; // singleton
 */
 - (Item *)findSameItem:(Item*)item
 {
-    for (int i = 0; i < shelves.count; i++) {
-        Shelf *shelf = [shelves objectAtIndex:i];
+    for (int i = 0; i < mShelves.count; i++) {
+        Shelf *shelf = [mShelves objectAtIndex:i];
         if (shelf.shelfType != ShelfTypeNormal) continue;
 
         for (Item *x in shelf) {
@@ -356,7 +365,7 @@ static DataModel *theDataModel = nil; // singleton
     NSMutableArray *tags = [[[NSMutableArray alloc] initWithCapacity:10] autorelease];
 
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    for (Shelf *shelf in shelves) {
+    for (Shelf *shelf in mShelves) {
         if (shelf.shelfType != ShelfTypeNormal) continue;
 
         for (Item *item in shelf) {
@@ -406,38 +415,34 @@ static DataModel *theDataModel = nil; // singleton
 */
 - (void)loadDB
 {
-    Database *db = [Database instance];
+    Database *db = [ItemshelfDatabase instance];
+    [db open:@"itemshelf.db"];
 
-    dbstmt *stmt;
+    // migration
+    [Shelf migrate];
+    [Item migrate];
 
-    // All Shelf を追加しておく
+    // All Shelf を追加しておく (DBには入れない)
     Shelf *shelf;
     shelf = [[Shelf alloc] init];
-    shelf.pkey = SHELF_ALL_PKEY;
+    shelf.pid = SHELF_ALL_PKEY;
     shelf.name = NSLocalizedString(@"All", @"");
     shelf.shelfType = ShelfTypeSmart;
     shelf.sorder = -1;
-    [shelves addObject:shelf];
+    [mShelves addObject:shelf];
     [shelf release];
 
     // load shelves
-    stmt = [db prepare:"SELECT * FROM Shelf ORDER BY sorder;"];
-    while ([stmt step] == SQLITE_ROW) {
-        shelf = [[Shelf alloc] init];
-        [shelf loadRow:stmt];
-        [shelves addObject:shelf];
-        [shelf release];
+    NSMutableArray *shelves = [Shelf find_all:@"ORDER BY sorder"];
+    for (Shelf *shelf in shelves) {
+        [mShelves addObject:shelf];
     }
 
     // load items
-    stmt = [db prepare:"SELECT * FROM Item ORDER BY sorder,date;"];
-    while ([stmt step] == SQLITE_ROW) {
-        Item *item = [[Item alloc] init];
-        [item loadRow:stmt];
-
-        Shelf *shelf = [self shelf:item.shelfId];
+    NSMutableArray *items = [Item find_all:@"ORDER BY sorder, date"];
+    for (Item *item in items) {
+        shelf = [self shelf:item.shelfId];
         [shelf addItem:item];
-        [item release];
     }
 
     [self updateSmartShelves];

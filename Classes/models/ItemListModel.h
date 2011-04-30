@@ -49,12 +49,12 @@
 */
 @interface ItemListModel : NSObject
 {
-    Shelf *shelf;		///< Shelf
+    Shelf *mShelf;		///< Shelf
 	
-    NSString *filter;		///< Filter string (if nil, no filter)
-    NSString *searchText;	///< Search string
+    NSString *mFilter;		///< Filter string (if nil, no filter)
+    NSString *mSearchText;	///< Search string
 
-    NSMutableArray *filteredList; ///< Filtered array of items.
+    NSMutableArray *mFilteredList; ///< Filtered array of items.
 }
 
 @property(nonatomic,readonly) Shelf *shelf;

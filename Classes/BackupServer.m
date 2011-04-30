@@ -36,12 +36,14 @@
 #import <fcntl.h>
 #import <sys/types.h>
 #import <sys/stat.h>
+#import <sys/uio.h>
+#import <unistd.h>
 
 #import "TmiWebServer.h"
 #import "BackupServer.h"
 #import "Item.h"
 #import "AppDelegate.h"
-#import "ZipArchive.h"
+#import "BackupUtil.h"
 
 @implementation BackupServer
 //@synthesize filePath;
@@ -121,11 +123,11 @@
     int f = open([filePath UTF8String], O_RDONLY);
 #else
     // ZIP
-    if (![self _zipArchive]) {
+    if (![BackupUtil zipBackupFile]) {
         // TBD
         return;
     }
-    int f = open([[self _zipFileName] UTF8String], O_RDONLY);
+    int f = open([[BackupUtil backupFilePath] UTF8String], O_RDONLY);
 #endif
 
     if (f < 0) {
@@ -203,11 +205,11 @@
     NSString *filename;
     if (isZip) {
         // save to zip file
-        filename = [self _zipFileName];
+        filename = [BackupUtil backupFilePath];
 
     } else {
         // save to DB directly
-        filename = [[Database instance] dbPath];
+        filename = [[Database instance] dbPath:@"itemshelf.db"]; // TODO: filename
     }
     NSLog(@"restore file:%@", filename);
     f = open([filename UTF8String], O_CREAT|O_WRONLY, 0644);
@@ -230,8 +232,8 @@
     [Item deleteAllImageCache];
     
     if (isZip) {
-        BOOL result = [self _unzipArchive];
-        [[NSFileManager defaultManager] removeItemAtPath:filename error:NULL];
+        BOOL result = [BackupUtil unzipBackupFile];
+        [BackupUtil deleteBackupFile];
         if (!result) {
             [self sendString:@"HTTP/1.0 200 OK\r\nContent-Type:text/html\r\n\r\n"];
             [self sendString:@"Restoration failed. Try again..."];
@@ -246,49 +248,6 @@
     // terminate application ...
     //[[UIApplication sharedApplication] terminate];
     exit(0);
-}
-
-- (NSString *)_zipFileName
-{
-    return [AppDelegate pathOfDataFile:@"Backup.zip"];
-}
-
-- (BOOL)_zipArchive
-{
-    NSString *dir = [AppDelegate pathOfDataFile:nil];
-
-    // ファイル一覧取得
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *files = [fileManager subpathsAtPath:dir];
-    
-    ZipArchive *zip = [[[ZipArchive alloc] init] autorelease];
-    [zip CreateZipFile2:[self _zipFileName]];
-
-    for (NSString *file in files) {
-        if ([file hasSuffix:@"db"] || [file hasSuffix:@"jpg"]) {
-            NSString *fullpath = [dir stringByAppendingPathComponent:file];
-            [zip addFileToZip:fullpath newname:file];
-        }
-    }
-
-    BOOL result = [zip CloseZipFile2];
-    return result;
-}
-
-- (BOOL)_unzipArchive
-{
-    NSString *dir = [AppDelegate pathOfDataFile:nil];
-
-    ZipArchive *zip = [[[ZipArchive alloc] init] autorelease];
-    if (![zip UnzipOpenFile:[self _zipFileName]]) {
-        // no file
-        return NO;
-    }
-
-    [zip UnzipFileTo:dir overWrite:YES];
-    [zip UnzipCloseFile];
-    
-    return YES;
 }
 
 @end

@@ -1,0 +1,29 @@
+PKEY = pkey
+
+Shelf:ShelfBase
+        name :TEXT
+        sorder :INTEGER
+        shelfType => type :INTEGER
+        titleFilter :TEXT
+        authorFilter :TEXT
+        manufacturerFilter :TEXT
+        tagsFilter :TEXT
+        starFilter :INTEGER
+
+Item:ItemBase
+	date :DATE
+	shelfId => itemState :INTEGER
+	serviceId => idType :INTEGER
+	idString :TEXT
+	asin :TEXT
+	name :TEXT
+	author :TEXT
+	manufacturer :TEXT
+	category => productGroup :TEXT
+	detailURL :TEXT
+	price :TEXT
+	tags :TEXT
+	memo :TEXT
+	imageURL :TEXT
+	sorder :INTEGER
+	star :INTEGER

@@ -132,7 +132,7 @@
         if (selectedShelf == nil) {
             item.shelfId = 0; // 未分類
         } else {
-            item.shelfId = selectedShelf.pkey;
+            item.shelfId = selectedShelf.pid;
         }
 		
         // 重複チェック

@@ -51,8 +51,4 @@
 - (void)parseBody:(char*)body bodylen:(int)bodylen;
 - (void)restore:(char*)data datalen:(int)datalen;
 
-- (NSString *)_zipFileName;
-- (BOOL)_zipArchive;
-- (BOOL)_unzipArchive;
-
 @end

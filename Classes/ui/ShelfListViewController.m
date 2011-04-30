@@ -172,7 +172,7 @@
         Shelf *shelf = [dm shelfAtIndex:row];
         cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)", shelf.name, shelf.array.count];
 
-        if (shelf.pkey == SHELF_ALL_PKEY) {
+        if (shelf.pid == SHELF_ALL_PKEY) {
             // All 棚は名称変更しない
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else {
@@ -327,7 +327,7 @@
         return UITableViewCellEditingStyleInsert;
     }
     Shelf *shelf = [dm shelfAtIndex:row];
-    if (shelf.pkey == SHELF_ALL_PKEY || shelf.pkey == 0) {
+    if (shelf.pid == SHELF_ALL_PKEY || shelf.pid == 0) {
         // All棚と未分類棚(pkey==0)は消さない
         return UITableViewCellEditingStyleNone;
     }
@@ -372,7 +372,7 @@
         return NO; // 新規追加行
     }
     Shelf *shelf = [dm shelfAtIndex:row];
-    if (shelf.pkey == SHELF_ALL_PKEY) {
+    if (shelf.pid == SHELF_ALL_PKEY) {
         return NO;	// All 棚は移動させない
     }
     return YES;

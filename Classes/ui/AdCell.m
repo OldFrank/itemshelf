@@ -4,7 +4,7 @@
 //
 
 // Note:
-//   AdSense : size = 320x50
+//   AdMob : size = 320x50
 
 #import "AdCell.h"
 #import "Common.h"
@@ -14,107 +14,80 @@
 
 @implementation AdCell
 
-@synthesize parentViewController;
+#define REUSE_IDENTIFIER @"AdCell"
+
+static CGSize getAdSize() {
+    if (IS_IPAD) {
+        return GAD_SIZE_468x60;
+    } else {
+        return GAD_SIZE_320x50;
+    }
+}
 
 + (CGFloat)adCellHeight
 {
-    return 50; // AdSense
+    CGSize size = getAdSize();
+    return size.height;
 }
 
 + (AdCell *)adCell:(UITableView *)tableView parentViewController:(UIViewController *)parentViewController
 {
-    NSString *identifier = @"AdCell";
-
-    AdCell *cell = (AdCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
+    AdCell *cell = (AdCell*)[tableView dequeueReusableCellWithIdentifier:REUSE_IDENTIFIER];
     if (cell == nil) {
-        cell = [[[AdCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+        cell = [[[AdCell alloc] init:parentViewController] autorelease];
     }
-    cell.parentViewController = parentViewController;
 
     return cell;
 }
 
-+ (NSDictionary *)adAttributes
+- (id)init:(UIViewController *)rootViewController
 {
-    NSDictionary *attributes = 
-        [NSDictionary dictionaryWithObjectsAndKeys:
-         AFMA_CLIENT_ID, kGADAdSenseClientID,
-         @"Takuya Murakami", kGADAdSenseCompanyName,
-         @"ItemShelf Lite", kGADAdSenseAppName,
-         AFMA_APPID, kGADAdSenseApplicationAppleID,
-         AFMA_KEYWORDS, kGADAdSenseKeywords,
-         [NSNumber numberWithInt:AFMA_IS_TEST], kGADAdSenseIsTestAdRequest,
-         //[UIColor brownColor], kGADAdSenseAdBackgroundColor,
-         //[UIColor brownColor], kGADAdSenseAdTopBackgroundColor,
-         nil];
-
-    NSMutableDictionary *md = [[[NSMutableDictionary alloc] init] autorelease];
-    [md setDictionary:attributes];
-    
-    if (!IS_IPAD) {
-        [md setObject:[NSArray arrayWithObjects:AFMA_CHANNEL_IDS, nil] forKey:kGADAdSenseChannelIDs];
-        //[md setObject:[UIColor colorWithRed:175/255.0 green:140/255.0 blue:105/256.0 alpha:0.0] forKey:kGADAdSenseAdBackgroundColor];
-        [md setObject:[UIColor whiteColor] forKey:kGADAdSenseAdBackgroundColor];         
-    } else {
-        [md setObject:[NSArray arrayWithObjects:AFMA_CHANNEL_IDS_IPAD, nil] forKey:kGADAdSenseChannelIDs];
-        [md setObject:[UIColor whiteColor] forKey:kGADAdSenseAdBackgroundColor];         
-    }
-        //[UIColor brownColor], kGADAdSenseAdBackgroundColor,
-        //[UIColor colorWithRed:235/255.0 green:205/255.0 blue:180/256.0 alpha:0], kGADAdSenseAdBackgroundColor,
-        //[UIColor colorWithRed:185/255.0 green:145/255.0 blue:113/256.0 alpha:0], kGADAdSenseAdBackgroundColor,
-
-        //[UIColor darkGrayColor], kGADAdSenseAdBackgroundColor,
-
-        //[UIColor lightGrayColor], kGADAdSenseAdBorderColor,
-         
-        //[UIColor blackColor], kGADAdSenseAdTextColor,
-        //[UIColor colorWithRed:0.0 green:0.0 blue:0.5 alpha:0], kGADAdSenseAdTextColor,
-          
-        //[UIColor colorWithRed:0.0 green:0.0 blue:0.5 alpha:0], kGADAdSenseAdLinkColor,
-        //[UIColor colorWithRed:0.0 green:0.4 blue:0.0 alpha:0], kGADAdSenseAdURLColor,
-
-    return md;
-}
-
-- (UITableViewCell *)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)identifier
-{
-    self = [super initWithStyle:style reuseIdentifier:identifier];
+    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSE_IDENTIFIER];
 
     // 広告を作成する
-    adViewController= [[GADAdViewController alloc] initWithDelegate:self];
-    adViewController.adSize = kGADAdSize320x50;
+    CGSize size = getAdSize();
+    CGRect frame = CGRectMake(0, 0, size.width, size.height);
     
-    NSDictionary *attributes = [AdCell adAttributes];
-    [adViewController loadGoogleAd:attributes];
-    
-    UIView *v = adViewController.view;
-    
-    CGRect frame = v.frame;
+    mAdBannerView = [[[GADBannerView alloc] initWithFrame:frame] autorelease];
+    mAdBannerView.adUnitID = ADMOB_PUBLISHER_ID;
+    mAdBannerView.delegate = self;
+    mAdBannerView.rootViewController = rootViewController;
+
+    frame = mAdBannerView.frame;
     frame.origin.x = (self.frame.size.width - frame.size.width) / 2;
     frame.origin.y = 0;
-    v.frame = frame;
-    v.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    [self.contentView addSubview:v];
+    mAdBannerView.frame = frame;
+    mAdBannerView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [self.contentView addSubview:mAdBannerView];
+
+    // リクエスト開始
+    GADRequest *request = [GADRequest request];
+    [request setTesting:YES];
+    [mAdBannerView loadRequest:request];
     
     return self;
 }
 
 - (void)dealloc {
-    [adViewController release];
+    mAdBannerView.delegate = nil;
     [super dealloc];
 }
 
+#pragma mark - AdMob : GADBannerViewDelegate
 
-#pragma mark GADAdViewControllerDelegate
-
-- (UIViewController *)viewControllerForModalPresentation:(GADAdViewController *)adController
+- (void)adViewDidReceiveAd:(GADBannerView *)view
 {
-    return self.parentViewController;
+    NSLog(@"AdMob loaded");
 }
 
-- (GADAdClickAction)adControllerActionModelForAdClick:(GADAdViewController *)adController
+- (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error
 {
-    return GAD_ACTION_DISPLAY_INTERNAL_WEBSITE_VIEW;
+    if (mAdBannerView.hasAutoRefreshed) {
+        // auto refresh failed, but previous ad is effective.
+        NSLog(@"AdMob auto refresh failed : %@", [error localizedDescription]);
+    } else {
+        NSLog(@"AdMob initial load failed : %@", [error localizedDescription]);
+    }
 }
 
 @end

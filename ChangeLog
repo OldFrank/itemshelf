@@ -1,3 +1,12 @@
+2011-04-30 : Takuya Murakami
+
+	* ver 3.2
+	* Retina アイコン対応
+	* バーコードリーダを ZBar に切り替え
+	* iOS3 でのバーコードリアルタイム認識使用不可
+	* Dropbox バックアップ対応
+	* 広告を AdMob に変更
+
 2010-09-05 : Takuya Murakami
 	* iOS4 multitask 対応
 

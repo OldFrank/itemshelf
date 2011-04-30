@@ -37,16 +37,17 @@
 #import "Item.h"
 #import "Shelf.h"
 
-
 @implementation Shelf
-@synthesize array, pkey, name, sorder, shelfType, titleFilter, authorFilter, manufacturerFilter, tagsFilter, starFilter;
+
+@synthesize array = mArray;
 
 - (id)init
 {
     self = [super init];
     if (self) {
+        self.array = [[[NSMutableArray alloc] initWithCapacity:30] autorelease];
+
         self.name = nil;
-        self.array = [[NSMutableArray alloc] initWithCapacity:30];
         self.shelfType = ShelfTypeNormal;
         self.titleFilter = @"";
         self.authorFilter = @"";
@@ -59,13 +60,7 @@
 
 - (void)dealloc
 {
-    [array release];
-    [name release];
-    [titleFilter release];
-    [authorFilter release];
-    [manufacturerFilter release];
-    [tagsFilter release];
-
+    [mArray release];
     [super dealloc];
 }
 
@@ -74,7 +69,7 @@
 */
 - (void)addItem:(Item*)item
 {
-    [array addObject:item];
+    [mArray addObject:item];
 }
 
 /**
@@ -82,7 +77,7 @@
 */
 - (void)removeItem:(Item*)item
 {
-    [array removeObject:item];
+    [mArray removeObject:item];
 }
 
 /**
@@ -92,7 +87,7 @@
 */
 - (BOOL)containsItem:(Item*)item
 {
-    return [array containsObject:item];
+    return [mArray containsObject:item];
 }
 
 /**
@@ -100,7 +95,7 @@
 */
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id *)stackbuf count:(NSUInteger)len
 {
-    return [array countByEnumeratingWithState:state objects:stackbuf count:len];
+    return [mArray countByEnumeratingWithState:state objects:stackbuf count:len];
 }
 
 /**
@@ -108,9 +103,8 @@
 */
 - (int)itemCount
 {
-    return array.count;
+    return mArray.count;
 }
-
  
 /**
    Used from sortBySorder (private)
@@ -131,7 +125,7 @@ static int compareBySorder(Item *t1, Item *t2, void *context)
 */
 - (void)sortBySorder
 {
-    [array sortUsingFunction:compareBySorder context:NULL];
+    [mArray sortUsingFunction:compareBySorder context:NULL];
 }
 
 ///////////////////////////////////////////////////////////////
@@ -141,136 +135,36 @@ static int compareBySorder(Item *t1, Item *t2, void *context)
 */
 //@{
 
-/**
-   Create/upgrade Shelf table in the database.
-
-   If no table exist, create now.
-   If the table is old format, upgrade it.
-*/
-+ (void)checkTable
+//
+// Database operations
+//
++ (BOOL)migrate
 {
-    Database *db = [Database instance];
-    dbstmt *stmt;
+    BOOL ret = [super migrate];
 
-    // テーブルの scheme をチェック
-    // sqlite_master テーブルから table 一覧と schema をチェックする
-    BOOL isNew = NO;
-    stmt = [db prepare:"SELECT sql FROM sqlite_master WHERE type='table' AND name='Shelf';"];
-    if ([stmt step] != SQLITE_ROW) {
-        isNew = YES;
-    } else {
-        /* upgrade check */
-        NSString *tablesql = [stmt colString:0];
+    if (ret) {
+        // 初期データを入れる
+        for (int i = 0; i < 3; i++) {
+            NSString *name;
+            switch (i) {
+            case 0:
+                name = @"Unclassified";
+                break;
+            case 1:
+                name = @"Wishlist";
+                break;
+            case 2:
+                name = @"ItemShelf";
+                break;
+            }
 
-        // Ver 1.1 からの upgrade
-        NSRange range;
-        range = [tablesql rangeOfString:@"titleFilter"];
-        if (range.location == NSNotFound) {
-            [db exec:"ALTER TABLE Shelf ADD COLUMN type INTEGER;"];
-            [db exec:"ALTER TABLE Shelf ADD COLUMN titleFilter TEXT;"];
-            [db exec:"ALTER TABLE Shelf ADD COLUMN authorFilter TEXT;"];
-            [db exec:"ALTER TABLE Shelf ADD COLUMN manufacturerFilter TEXT;"];
-
-            [db exec:"UPDATE Shelf SET type = 0;"];
-        }
-
-        // Ver 1.3 からの upgrade
-        range = [tablesql rangeOfString:@"tagsFilter"];
-        if (range.location == NSNotFound) {
-            [db exec:"ALTER TABLE Shelf ADD COLUMN tagsFilter TEXT;"];
-        }
-
-        // Ver 1.6 -> 2.0 upgrade
-        range = [tablesql rangeOfString:@"starFilter"];
-        if (range.location == NSNotFound) {
-            [db exec:"ALTER TABLE Shelf ADD COLUMN starFilter INTEGER;"];
-            [db exec:"UPDATE Shelf SET starFilter = 0;"];
+            Shelf *shelf = [[[Shelf alloc] init] autorelease];
+            shelf.name = NSLocalizedString(name, @"");
+            shelf.sorder = i;
+            [shelf save];
         }
     }
-
-    if (!isNew) return;
-
-    // テーブル新規作成
-    [db exec:"CREATE TABLE Shelf ("
-        "pkey INTEGER PRIMARY KEY,"
-        "name TEXT,"
-        "sorder INTEGER,"
-        "type INTEGER,"
-        "titleFilter TEXT,"
-        "authorFilter TEXT,"
-        "manufacturerFilter TEXT,"
-        "tagsFilter TEXT,"
-        "starFilter INTEGER"
-        ");"
-     ];
-
-    // 初期データを入れる
-    for (int i = 0; i < 3; i++) {
-        NSString *name;
-        switch (i) {
-        case 0:
-            name = @"Unclassified";
-            break;
-        case 1:
-            name = @"Wishlist";
-            break;
-        case 2:
-            name = @"ItemShelf";
-            break;
-        }
-
-        stmt = [db prepare:"INSERT INTO Shelf VALUES(?, ?, ?, 0, NULL, NULL, NULL, NULL, 0);"];
-        [stmt bindInt:0 val:i];
-        [stmt bindString:1 val:NSLocalizedString(name, @"")];
-        [stmt bindInt:2 val:i];
-        [stmt step];
-    }
-}
-
-/**
-   Load row of shelf table of the database.
-*/
-- (void)loadRow:(dbstmt *)stmt
-{
-    self.pkey   = [stmt colInt:0];
-    self.name   = [stmt colString:1];
-    self.sorder = [stmt colInt:2];
-    self.shelfType   = [stmt colInt:3];
-    self.titleFilter        = [stmt colString:4];
-    self.authorFilter       = [stmt colString:5];
-    self.manufacturerFilter = [stmt colString:6];
-    self.tagsFilter         = [stmt colString:7];
-    self.starFilter         = [stmt colInt:8];
-
-    NSLog(@"%d %@ %d %d %@ %@ %@ %@ %d", self.pkey, self.name, self.sorder,
-          self.shelfType, self.titleFilter, self.authorFilter, self.manufacturerFilter, self.tagsFilter, self.starFilter);
-}
-
-/**
-   Insert row to shelf table of the database.
-*/
-- (void)insert
-{
-    Database *db = [Database instance];
-	
-    [db beginTransaction];
-	
-    dbstmt *stmt = [db prepare:"INSERT INTO Shelf VALUES(NULL, ?, -1, ?, ?, ?, ?, ?, ?);"];
-    [stmt bindString:0 val:name];
-    [stmt bindInt:1    val:shelfType];
-    [stmt bindString:2 val:titleFilter];
-    [stmt bindString:3 val:authorFilter];
-    [stmt bindString:4 val:manufacturerFilter];
-    [stmt bindString:5 val:tagsFilter];
-    [stmt bindInt:6    val:starFilter];
-
-    [stmt step];
-
-    self.pkey = [db	lastInsertRowId];
-    self.sorder = pkey;  // 初期並び順は Primary Key と同じにしておく(最大値)
-    [self updateSorder];
-	
-    [db commitTransaction];
+    return ret;
 }
 
 /**
@@ -279,66 +173,17 @@ static int compareBySorder(Item *t1, Item *t2, void *context)
 - (void)delete
 {
     Database *db = [Database instance];
-
     [db beginTransaction];
+    [super delete];
 
-    const char *sql = "DELETE FROM Shelf WHERE pkey = ?;";
-    dbstmt *stmt = [db prepare:sql];
-
-    [stmt bindInt:0 val:pkey];
-    [stmt step];
-	
     // この棚にあるアイテムも全部消す
-    if (shelfType == ShelfTypeNormal) {
-        for (Item *item in array) {
+    if (self.shelfType == ShelfTypeNormal) {
+        for (Item *item in mArray) {
             [item delete];
         }
     }
 
     [db commitTransaction];
-}
-
-/**
-   Update shelf name of the database.
-*/
-- (void)updateName
-{
-    const char *sql = "UPDATE Shelf SET name = ? WHERE pkey = ?;";
-    dbstmt *stmt = [[Database instance] prepare:sql];
-	
-    [stmt bindString:0 val:name];
-    [stmt bindInt:1 val:pkey];
-    [stmt step];
-}
-
-/**
-   Update sorder name of the database.
-*/
-- (void)updateSorder
-{
-    const char *sql = "UPDATE Shelf SET sorder = ? WHERE pkey = ?;";
-    dbstmt *stmt = [[Database instance] prepare:sql];
-	
-    [stmt bindInt:0 val:sorder];
-    [stmt bindInt:1 val:pkey];
-    [stmt step];
-}
-
-/**
-   Update smart filters of the database.
-*/
-- (void)updateSmartFilters
-{
-    const char *sql = "UPDATE Shelf SET titleFilter = ?, authorFilter = ?, manufacturerFilter = ?, tagsFilter = ?, starFilter = ? WHERE pkey = ?;";
-    dbstmt *stmt = [[Database instance] prepare:sql];
-	
-    [stmt bindString:0 val:titleFilter];
-    [stmt bindString:1 val:authorFilter];
-    [stmt bindString:2 val:manufacturerFilter];
-    [stmt bindString:3 val:tagsFilter];
-    [stmt bindInt:4    val:starFilter];
-    [stmt bindInt:5 val:pkey];
-    [stmt step];
 }
 
 //@}
