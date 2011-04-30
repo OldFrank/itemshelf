@@ -115,6 +115,8 @@
 - (void)restClient:(DBRestClient*)client uploadedFile:(NSString*)destPath from:(NSString*)srcPath
 {
     [self _showResult:@"Backup done."];
+
+    [BackupUtil deleteBackupFile];
     [mDelegate dropboxBackupFinished];
 }
 
@@ -124,6 +126,7 @@
     [self _showResult:@"Backup failed!"];
     NSLog(@"backup failed: @%", [error description]);
     
+    [BackupUtil deleteBackupFile];
     [mDelegate dropboxBackupFinished];
 }
 
@@ -134,6 +137,7 @@
     
     [Item deleteAllImageCache];
     [BackupUtil unzipBackupFile];
+    [BackupUtil deleteBackupFile];
     
     [[DataModel sharedDataModel] loadDB];
     [mDelegate dropboxBackupFinished];

@@ -9,6 +9,7 @@
 
 + (BOOL)zipBackupFile;
 + (BOOL)unzipBackupFile;
++ (void)deleteBackupFile;
 
 + (NSString *)backupFileName;
 + (NSString *)backupFilePath;

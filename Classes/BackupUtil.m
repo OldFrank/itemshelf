@@ -66,4 +66,10 @@
     return YES;
 }
 
++ (void)deleteBackupFile
+{
+    NSString *filepath = [self backupFilePath];
+    [[NSFileManager defaultManager] removeItemAtPath:filepath error:NULL];
+}
+
 @end

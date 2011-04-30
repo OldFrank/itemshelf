@@ -233,7 +233,7 @@
     
     if (isZip) {
         BOOL result = [BackupUtil unzipBackupFile];
-        [[NSFileManager defaultManager] removeItemAtPath:filename error:NULL];
+        [BackupUtil deleteBackupFile];
         if (!result) {
             [self sendString:@"HTTP/1.0 200 OK\r\nContent-Type:text/html\r\n\r\n"];
             [self sendString:@"Restoration failed. Try again..."];
