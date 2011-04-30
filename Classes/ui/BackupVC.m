@@ -68,7 +68,7 @@
 {
     switch (section) {
         case 0:
-            return _L("The backup data will be stored as ItemShelfBackup.zip in root folder of Dropbox.");
+            return _L(@"The backup data will be stored as ItemShelfBackup.zip in root folder of Dropbox.");
     }
     return nil;
 }
