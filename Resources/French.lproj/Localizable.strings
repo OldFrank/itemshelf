@@ -86,7 +86,11 @@
 "Cannot start web server." = "Impossible de démarrer le serveur Web.";
 
 "Backup" = "Backup";
+"Restore" = "Restore";
 "Backup and restore" = "Backup and restore";
+"Warning" = "Warning";
+"RestoreWarning" = "This will overwrite all current data.";
+"The backup data will be stored as ItemShelfBackup.zip in root folder of Dropbox." = "The backup data will be stored as ItemShelfBackup.zip in root folder of Dropbox.";
 
 "Sort" = "Sort";
 

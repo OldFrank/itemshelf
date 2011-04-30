@@ -84,7 +84,11 @@
 "Cannot start web server." = "Webサーバを起動できませんでした";
 
 "Backup" = "バックアップ";
+"Restore" = "リストア";
 "Backup and restore" = "バックアップ/リストア";
+"Warning" = "警告";
+"RestoreWarning" = "リストアにより全データが上書きされます";
+"The backup data will be stored as ItemShelfBackup.zip in root folder of Dropbox." = "バックアップはDropboxのルートフォルダにItemShelfBackup.zipというファイル名で作成されます";
 
 "Sort" = "並び替え";
 
