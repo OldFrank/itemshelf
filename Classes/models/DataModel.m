@@ -55,6 +55,14 @@ static DataModel *theDataModel = nil; // singleton
     return theDataModel;
 }
 
++ (void)finalize
+{
+    if (theDataModel) {
+        [theDataModel release];
+        theDataModel = nil;
+    }
+}
+
 - (id)init
 {
     self = [super init];

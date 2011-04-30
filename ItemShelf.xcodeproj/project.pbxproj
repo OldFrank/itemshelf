@@ -362,6 +362,18 @@
 		3EDC5611136B27E700A4BBDE /* BackupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC560F136B27E700A4BBDE /* BackupView.xib */; };
 		3EDC56BC136BF5E000A4BBDE /* BackupUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC56BB136BF5E000A4BBDE /* BackupUtil.m */; };
 		3EDC56BD136BF5E000A4BBDE /* BackupUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC56BB136BF5E000A4BBDE /* BackupUtil.m */; };
+		3EDC56C4136C013300A4BBDE /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56BE136C013300A4BBDE /* dropbox.png */; };
+		3EDC56C5136C013300A4BBDE /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56BE136C013300A4BBDE /* dropbox.png */; };
+		3EDC56C6136C013300A4BBDE /* dropbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56BF136C013300A4BBDE /* dropbox@2x.png */; };
+		3EDC56C7136C013300A4BBDE /* dropbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56BF136C013300A4BBDE /* dropbox@2x.png */; };
+		3EDC56C8136C013300A4BBDE /* dropboxBackup.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56C0136C013300A4BBDE /* dropboxBackup.png */; };
+		3EDC56C9136C013300A4BBDE /* dropboxBackup.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56C0136C013300A4BBDE /* dropboxBackup.png */; };
+		3EDC56CA136C013300A4BBDE /* dropboxBackup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56C1136C013300A4BBDE /* dropboxBackup@2x.png */; };
+		3EDC56CB136C013300A4BBDE /* dropboxBackup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56C1136C013300A4BBDE /* dropboxBackup@2x.png */; };
+		3EDC56CC136C013300A4BBDE /* dropboxRestore.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56C2136C013300A4BBDE /* dropboxRestore.png */; };
+		3EDC56CD136C013300A4BBDE /* dropboxRestore.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56C2136C013300A4BBDE /* dropboxRestore.png */; };
+		3EDC56CE136C013300A4BBDE /* dropboxRestore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56C3136C013300A4BBDE /* dropboxRestore@2x.png */; };
+		3EDC56CF136C013300A4BBDE /* dropboxRestore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC56C3136C013300A4BBDE /* dropboxRestore@2x.png */; };
 		3EDCFFFC11684765009D99C2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDCFFFB11684765009D99C2 /* SystemConfiguration.framework */; };
 		3EE8374E11564EFD00F64764 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8374D11564EFD00F64764 /* MainWindow-iPad.xib */; };
 		3EE8374F11564EFD00F64764 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8374D11564EFD00F64764 /* MainWindow-iPad.xib */; };
@@ -673,6 +685,12 @@
 		3EDC560F136B27E700A4BBDE /* BackupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackupView.xib; sourceTree = "<group>"; };
 		3EDC56BA136BF5E000A4BBDE /* BackupUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackupUtil.h; sourceTree = "<group>"; };
 		3EDC56BB136BF5E000A4BBDE /* BackupUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackupUtil.m; sourceTree = "<group>"; };
+		3EDC56BE136C013300A4BBDE /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
+		3EDC56BF136C013300A4BBDE /* dropbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropbox@2x.png"; sourceTree = "<group>"; };
+		3EDC56C0136C013300A4BBDE /* dropboxBackup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropboxBackup.png; sourceTree = "<group>"; };
+		3EDC56C1136C013300A4BBDE /* dropboxBackup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropboxBackup@2x.png"; sourceTree = "<group>"; };
+		3EDC56C2136C013300A4BBDE /* dropboxRestore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropboxRestore.png; sourceTree = "<group>"; };
+		3EDC56C3136C013300A4BBDE /* dropboxRestore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropboxRestore@2x.png"; sourceTree = "<group>"; };
 		3EDCFFFB11684765009D99C2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3EE8374D11564EFD00F64764 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
@@ -853,6 +871,12 @@
 				3E0C0D76101AD45800F18D86 /* Star4.png */,
 				3E0C0D77101AD45800F18D86 /* Star5.png */,
 				3EA62D250EE98F7600A4694B /* Default.png */,
+				3EDC56BE136C013300A4BBDE /* dropbox.png */,
+				3EDC56BF136C013300A4BBDE /* dropbox@2x.png */,
+				3EDC56C0136C013300A4BBDE /* dropboxBackup.png */,
+				3EDC56C1136C013300A4BBDE /* dropboxBackup@2x.png */,
+				3EDC56C2136C013300A4BBDE /* dropboxRestore.png */,
+				3EDC56C3136C013300A4BBDE /* dropboxRestore@2x.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -1388,6 +1412,12 @@
 				3EDC55FE136B1F3200A4BBDE /* db_logo.png in Resources */,
 				3EDC5600136B1F3200A4BBDE /* db_logo@2x.png in Resources */,
 				3EDC5610136B27E700A4BBDE /* BackupView.xib in Resources */,
+				3EDC56C4136C013300A4BBDE /* dropbox.png in Resources */,
+				3EDC56C6136C013300A4BBDE /* dropbox@2x.png in Resources */,
+				3EDC56C8136C013300A4BBDE /* dropboxBackup.png in Resources */,
+				3EDC56CA136C013300A4BBDE /* dropboxBackup@2x.png in Resources */,
+				3EDC56CC136C013300A4BBDE /* dropboxRestore.png in Resources */,
+				3EDC56CE136C013300A4BBDE /* dropboxRestore@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1467,6 +1497,12 @@
 				3EDC55FF136B1F3200A4BBDE /* db_logo.png in Resources */,
 				3EDC5601136B1F3200A4BBDE /* db_logo@2x.png in Resources */,
 				3EDC5611136B27E700A4BBDE /* BackupView.xib in Resources */,
+				3EDC56C5136C013300A4BBDE /* dropbox.png in Resources */,
+				3EDC56C7136C013300A4BBDE /* dropbox@2x.png in Resources */,
+				3EDC56C9136C013300A4BBDE /* dropboxBackup.png in Resources */,
+				3EDC56CB136C013300A4BBDE /* dropboxBackup@2x.png in Resources */,
+				3EDC56CD136C013300A4BBDE /* dropboxRestore.png in Resources */,
+				3EDC56CF136C013300A4BBDE /* dropboxRestore@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

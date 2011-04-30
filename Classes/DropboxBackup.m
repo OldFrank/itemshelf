@@ -122,6 +122,8 @@
 - (void)restClient:(DBRestClient*)client uploadFileFailedWithError:(NSError*)error
 {
     [self _showResult:@"Backup failed!"];
+    NSLog(@"backup failed: @%", [error description]);
+    
     [mDelegate dropboxBackupFinished];
 }
 
@@ -129,6 +131,8 @@
 - (void)restClient:(DBRestClient*)client loadedFile:(NSString*)destPath
 {
     [self _showResult:@"Restore done."];
+    
+    [Item deleteAllImageCache];
     [BackupUtil unzipBackupFile];
     
     [[DataModel sharedDataModel] loadDB];
@@ -139,6 +143,8 @@
 - (void)restClient:(DBRestClient*)client loadFileFailedWithError:(NSError*)error
 {
     [self _showResult:@"Restore failed!"];
+    NSLog(@"restore failed: @%", [error description]);
+    
     [[DataModel sharedDataModel] loadDB];
     [mDelegate dropboxBackupFinished];
 }

@@ -50,7 +50,7 @@
 /**
  * バックアップファイルを復元する
  */
-+ (BOOL)uzipBackupFile
++ (BOOL)unzipBackupFile
 {
     NSString *dir = [AppDelegate pathOfDataFile:nil];
 
