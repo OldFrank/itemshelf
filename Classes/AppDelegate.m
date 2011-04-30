@@ -38,6 +38,9 @@
 #import "SearchController.h"
 #import "Edition.h"
 
+#import "DropboxSDK.h"
+#import "DropboxSecret.h"
+
 @implementation AppDelegate
 
 @synthesize window;
@@ -56,6 +59,15 @@ static AppDelegate *sharedAppDelegate;
 {
     srand(time(nil));
 	
+    // Dropbox config
+    DBSession *dbSession =
+    [[[DBSession alloc]
+      initWithConsumerKey:DROPBOX_CONSUMER_KEY
+      consumerSecret:DROPBOX_CONSUMER_SECRET]
+     autorelease];
+    dbSession.delegate = self;
+    [DBSession setSharedSession:dbSession];
+    
     // データをロードする
     DataModel *dm = [DataModel sharedDataModel];
     [dm loadDB];
@@ -209,6 +221,18 @@ static AppDelegate *sharedAppDelegate;
         }
     }
     [pool release];
+}
+
+#pragma mark - DBSessionDelegate (Dropbox)
+
+- (void)sessionDidReceiveAuthorizationFailure:(DBSession*)session
+{
+    DBLoginController* loginController = [[DBLoginController new] autorelease];
+    if (IS_IPAD) {
+        [loginController presentFromController:splitViewController]; // # TBD
+    } else {
+        [loginController presentFromController:navigationController];
+    }        
 }
 
 @end

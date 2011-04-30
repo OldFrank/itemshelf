@@ -56,6 +56,7 @@
 @property(nonatomic,retain) NSMutableArray *shelves;
 
 + (DataModel*)sharedDataModel;
++ (void)finalize;
 
 - (void)loadDB;
 

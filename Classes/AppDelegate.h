@@ -40,10 +40,12 @@
 #import "ShelfListViewController.h"
 #import "ItemListViewController.h"
 
+#import "DropboxSDK.h"
+
 /**
    Application delegate
 */
-@interface AppDelegate : NSObject <UIApplicationDelegate, SearchControllerDelegate>
+@interface AppDelegate : NSObject <UIApplicationDelegate, SearchControllerDelegate, DBSessionDelegate>
 {
     IBOutlet UIWindow *window;
     IBOutlet UINavigationController *navigationController;
