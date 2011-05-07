@@ -56,6 +56,8 @@ ZBarReaderDelegate>
 	
     BOOL autoRegisterShelf;
     BOOL isCameraAvailable;
+    
+    UIPopoverController *mPopoverController;
 }
 
 @property(nonatomic,retain) Shelf *selectedShelf;

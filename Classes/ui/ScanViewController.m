@@ -85,6 +85,10 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
 
 - (void)dealloc {
     [selectedShelf release];
+    if (mPopoverController != nil) {
+        [mPopoverController dismissPopoverAnimated:YES];
+        [mPopoverController release];
+    }
 
     [super dealloc];
 }
@@ -98,9 +102,6 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (IS_IPAD) {
-        return 4; // no camera, no photo library
-    }
     if (!isCameraAvailable) {
         return 5;
     }
@@ -176,9 +177,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
 #endif
 
     int row = indexPath.row;
-    if (IS_IPAD) {
-        row+=2;
-    } else if (!isCameraAvailable) {
+    if (!isCameraAvailable) {
         row++;
     }
     
@@ -224,9 +223,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     [tv deselectRowAtIndexPath:indexPath animated:NO];
 	
     int row = indexPath.row;
-    if (IS_IPAD) {
-        row += 2;
-    } else if (!isCameraAvailable) {
+    if (!isCameraAvailable) {
         row++;
     }
     
@@ -297,7 +294,22 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     ZBarReaderController *reader = [ZBarReaderController new];
     reader.readerDelegate = self;
     reader.sourceType = type;
-    [self presentModalViewController:reader animated:YES];
+    if (IS_IPAD) {
+        // iPad の場合は、popover で表示する必要がある
+        if (mPopoverController != nil) {
+            [mPopoverController dismissPopoverAnimated:YES];
+            [mPopoverController release];
+        }
+        mPopoverController = [[UIPopoverController alloc] initWithContentViewController:reader];
+        NSIndexPath *idx = [NSIndexPath indexPathForRow:0 inSection:0];
+        [mPopoverController
+            presentPopoverFromRect:[self.tableView cellForRowAtIndexPath:idx].frame
+                            inView:self.tableView
+          permittedArrowDirections:UIPopoverArrowDirectionAny
+                          animated:YES];
+    } else {
+        [self presentModalViewController:reader animated:YES];
+    }
     [reader release];
     return YES;
 }
