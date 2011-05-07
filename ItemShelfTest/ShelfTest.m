@@ -26,6 +26,7 @@
     [Database shutdown];
 
     // 再度オープンする (ここでテーブルができるはず）
+    [[DataModel sharedDataModel] loadDB];
     db = [Database instance];
 	
     // テーブル定義確認
@@ -47,6 +48,7 @@
     [Database shutdown];
 
     // 再ロード
+    [[DataModel sharedDataModel] loadDB];
     db = [Database instance];
 
     // テーブル定義確認

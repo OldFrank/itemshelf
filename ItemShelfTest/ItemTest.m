@@ -32,8 +32,9 @@
     [db release];
 
     // 再度オープンする (ここでテーブルができるはず）
+    [[DataModel sharedDataModel] loadDb];
     db = [Database instance];
-
+    
     dbstmt *stmt = [db prepare:"SELECT sql FROM sqlite_master WHERE type='table' AND name='Item';"];
     STAssertEquals(SQLITE_ROW, [stmt step], @"No item table");
     NSString *sql = [stmt colString:0];

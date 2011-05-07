@@ -13,7 +13,7 @@
 
 - (void)setUp
 {
-    db = [Database instance];
+    //db = [Database instance];
     //	[TestUtility initializeTestDatabase];
     dm = [DataModel sharedDataModel];
 }
