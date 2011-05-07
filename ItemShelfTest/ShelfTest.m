@@ -51,13 +51,13 @@
 
     // テーブル定義確認
     dbstmt *stmt = [db prepare:@"SELECT sql FROM sqlite_master WHERE type='table' AND name='Shelf';"];
-    ASSERT(SQLITE_ROW == [stmt step]);
+    Assert(SQLITE_ROW == [stmt step]);
     NSString *sql = [stmt colString:0];
 
     // ここでテーブル定義をチェック
     NSLog(@"%@", sql);
     NSRange range = [sql rangeOfString:@"manufacturerFilter"];
-    ASSERT(range.location != NSNotFound);
+    Assert(range.location != NSNotFound);
 }	
 
 - (void)assertShelfEquals:(Shelf*)i with:(Shelf*)j

@@ -68,6 +68,108 @@
 		3E27D61C1375A3470013B485 /* ItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E27D6171375A3470013B485 /* ItemTest.m */; };
 		3E27D61D1375A3470013B485 /* ShelfTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E27D6181375A3470013B485 /* ShelfTest.m */; };
 		3E27D61E1375A3470013B485 /* TestUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E27D6191375A3470013B485 /* TestUtility.m */; };
+		3E27D65C1375B26A0013B485 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C27136B18EF00E18F81 /* Database.m */; };
+		3E27D65D1375B26A0013B485 /* Dbstmt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C29136B18EF00E18F81 /* Dbstmt.m */; };
+		3E27D65E1375B26A0013B485 /* ItemBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C2B136B18EF00E18F81 /* ItemBase.m */; };
+		3E27D65F1375B26A0013B485 /* ORRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C2D136B18EF00E18F81 /* ORRecord.m */; };
+		3E27D6601375B26A0013B485 /* ShelfBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C2F136B18EF00E18F81 /* ShelfBase.m */; };
+		3E27D6611375B26A0013B485 /* ItemshelfDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E764C3A136B192200E18F81 /* ItemshelfDatabase.m */; };
+		3E27D6621375B26A0013B485 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB09105E57B30096AB90 /* DataModel.m */; };
+		3E27D6631375B26A0013B485 /* DateFormatter2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB0B105E57B30096AB90 /* DateFormatter2.m */; };
+		3E27D6641375B26A0013B485 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB0D105E57B30096AB90 /* Item.m */; };
+		3E27D6651375B26A0013B485 /* ItemListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB0F105E57B30096AB90 /* ItemListModel.m */; };
+		3E27D6661375B26A0013B485 /* Shelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB11105E57B30096AB90 /* Shelf.m */; };
+		3E27D6671375B26A0013B485 /* SmartShelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB12105E57B30096AB90 /* SmartShelf.m */; };
+		3E27D6681375B26A0013B485 /* StringArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB14105E57B30096AB90 /* StringArray.m */; };
+		3E27D6691375B26A0013B485 /* ShelfListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB52105E57D30096AB90 /* ShelfListViewController.m */; };
+		3E27D66A1375B26A0013B485 /* EditShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB38105E57D30096AB90 /* EditShelfViewController.m */; };
+		3E27D66B1375B26A0013B485 /* ItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB46105E57D30096AB90 /* ItemListViewController.m */; };
+		3E27D66C1375B26A0013B485 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB48105E57D30096AB90 /* ItemViewController.m */; };
+		3E27D66D1375B26A0013B485 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB42105E57D30096AB90 /* ItemCell.m */; };
+		3E27D66E1375B26A0013B485 /* ItemCell4.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB44105E57D30096AB90 /* ItemCell4.m */; };
+		3E27D6701375B2970013B485 /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E45FF53136AF8A00029ABEC /* CaptureSessionManager.m */; };
+		3E27D6711375B2970013B485 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB2E105E57D30096AB90 /* AboutViewController.m */; };
+		3E27D6721375B2970013B485 /* AdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB30105E57D30096AB90 /* AdCell.m */; };
+		3E27D6731375B2970013B485 /* ConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB34105E57D30096AB90 /* ConfigViewController.m */; };
+		3E27D6741375B2970013B485 /* EditMemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB36105E57D30096AB90 /* EditMemoVC.m */; };
+		3E27D6751375B2970013B485 /* EditStarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB3A105E57D30096AB90 /* EditStarViewController.m */; };
+		3E27D6761375B2970013B485 /* EditTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB3C105E57D30096AB90 /* EditTagsViewController.m */; };
+		3E27D6771375B2970013B485 /* GenEditTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB3E105E57D30096AB90 /* GenEditTextViewController.m */; };
+		3E27D6781375B2970013B485 /* GenSelectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB40105E57D30096AB90 /* GenSelectListViewController.m */; };
+		3E27D6791375B2970013B485 /* KeywordViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB4A105E57D30096AB90 /* KeywordViewController2.m */; };
+		3E27D67A1375B2970013B485 /* NumPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB4C105E57D30096AB90 /* NumPadViewController.m */; };
+		3E27D67B1375B2970013B485 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB4E105E57D30096AB90 /* ScanViewController.m */; };
+		3E27D67C1375B2970013B485 /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB50105E57D30096AB90 /* SearchController.m */; };
+		3E27D67D1375B2970013B485 /* StarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB54105E57D30096AB90 /* StarCell.m */; };
+		3E27D67E1375B2970013B485 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB56105E57D30096AB90 /* WebViewController.m */; };
+		3E27D67F1375B2970013B485 /* BackupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC560C136B234E00A4BBDE /* BackupVC.m */; };
+		3E27D6801375B2970013B485 /* AmazonApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB97105E57FF0096AB90 /* AmazonApi.m */; };
+		3E27D6811375B2970013B485 /* dom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB99105E57FF0096AB90 /* dom.m */; };
+		3E27D6821375B2970013B485 /* KakakuCom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB9B105E57FF0096AB90 /* KakakuCom.m */; };
+		3E27D6831375B2970013B485 /* RakutenApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB9D105E57FF0096AB90 /* RakutenApi.m */; };
+		3E27D6841375B2970013B485 /* WebApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9AB9F105E57FF0096AB90 /* WebApi.m */; };
+		3E27D6851375B2970013B485 /* Yahoo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABA1105E57FF0096AB90 /* Yahoo.m */; };
+		3E27D6861375B2970013B485 /* DropboxBackup.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5603136B208C00A4BBDE /* DropboxBackup.m */; };
+		3E27D6871375B2970013B485 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABB5105E582B0096AB90 /* AppDelegate.m */; };
+		3E27D6881375B2970013B485 /* BackupServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABB7105E582B0096AB90 /* BackupServer.m */; };
+		3E27D6891375B2970013B485 /* BackupUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC56BB136BF5E000A4BBDE /* BackupUtil.m */; };
+		3E27D68A1375B2970013B485 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABBB105E582B0096AB90 /* Common.m */; };
+		3E27D68B1375B2970013B485 /* Edition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABBD105E582B0096AB90 /* Edition.m */; };
+		3E27D68C1375B2970013B485 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABBF105E582B0096AB90 /* HttpClient.m */; };
+		3E27D68D1375B2970013B485 /* TmiWebServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABC1105E582B0096AB90 /* TmiWebServer.m */; };
+		3E27D68E1375B2970013B485 /* URLComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABC3105E582B0096AB90 /* URLComponent.m */; };
+		3E27D6AD1375B4110013B485 /* DBAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5555136B1F3200A4BBDE /* DBAccountInfo.m */; };
+		3E27D6AE1375B4110013B485 /* DBCreateAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5557136B1F3200A4BBDE /* DBCreateAccountController.m */; };
+		3E27D6AF1375B4110013B485 /* DBError.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5559136B1F3200A4BBDE /* DBError.m */; };
+		3E27D6B01375B4110013B485 /* DBLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC555B136B1F3200A4BBDE /* DBLoadingView.m */; };
+		3E27D6B11375B4110013B485 /* DBLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC555D136B1F3200A4BBDE /* DBLoginController.m */; };
+		3E27D6B21375B4110013B485 /* DBMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC555F136B1F3200A4BBDE /* DBMetadata.m */; };
+		3E27D6B31375B4110013B485 /* DBQuota.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5561136B1F3200A4BBDE /* DBQuota.m */; };
+		3E27D6B41375B4110013B485 /* DBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5563136B1F3200A4BBDE /* DBRequest.m */; };
+		3E27D6B51375B4110013B485 /* DBRestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5565136B1F3200A4BBDE /* DBRestClient.m */; };
+		3E27D6B61375B4110013B485 /* DBSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5567136B1F3200A4BBDE /* DBSession.m */; };
+		3E27D6B71375B4110013B485 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC556C136B1F3200A4BBDE /* NSObject+SBJSON.m */; };
+		3E27D6B81375B4110013B485 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC556E136B1F3200A4BBDE /* NSString+SBJSON.m */; };
+		3E27D6B91375B4110013B485 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5570136B1F3200A4BBDE /* SBJSON.m */; };
+		3E27D6BA1375B4110013B485 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5572136B1F3200A4BBDE /* SBJsonBase.m */; };
+		3E27D6BB1375B4110013B485 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5574136B1F3200A4BBDE /* SBJsonParser.m */; };
+		3E27D6BC1375B4110013B485 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5576136B1F3200A4BBDE /* SBJsonWriter.m */; };
+		3E27D6BD1375B4110013B485 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5579136B1F3200A4BBDE /* Base64Transcoder.c */; };
+		3E27D6BE1375B4110013B485 /* MPOAuthAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC557E136B1F3200A4BBDE /* MPOAuthAPI.m */; };
+		3E27D6BF1375B4110013B485 /* MPOAuthAPIRequestLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5580136B1F3200A4BBDE /* MPOAuthAPIRequestLoader.m */; };
+		3E27D6C01375B4110013B485 /* MPOAuthAuthenticationMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5582136B1F3200A4BBDE /* MPOAuthAuthenticationMethod.m */; };
+		3E27D6C11375B4110013B485 /* MPOAuthAuthenticationMethodOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5584136B1F3200A4BBDE /* MPOAuthAuthenticationMethodOAuth.m */; };
+		3E27D6C21375B4110013B485 /* MPOAuthConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5586136B1F3200A4BBDE /* MPOAuthConnection.m */; };
+		3E27D6C31375B4110013B485 /* MPOAuthCredentiaIConcreteStore+KeychainAdditionsMac.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5587136B1F3200A4BBDE /* MPOAuthCredentiaIConcreteStore+KeychainAdditionsMac.m */; };
+		3E27D6C41375B4120013B485 /* MPOAuthCredentialConcreteStore+KeychainAdditionsiPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5589136B1F3200A4BBDE /* MPOAuthCredentialConcreteStore+KeychainAdditionsiPhone.m */; };
+		3E27D6C51375B4120013B485 /* MPOAuthCredentialConcreteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC558B136B1F3200A4BBDE /* MPOAuthCredentialConcreteStore.m */; };
+		3E27D6C61375B4120013B485 /* MPOAuthSignatureParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC558F136B1F3200A4BBDE /* MPOAuthSignatureParameter.m */; };
+		3E27D6C71375B4120013B485 /* MPOAuthURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5591136B1F3200A4BBDE /* MPOAuthURLRequest.m */; };
+		3E27D6C81375B4120013B485 /* MPOAuthURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5593136B1F3200A4BBDE /* MPOAuthURLResponse.m */; };
+		3E27D6C91375B4120013B485 /* MPURLRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5595136B1F3200A4BBDE /* MPURLRequestParameter.m */; };
+		3E27D6CA1375B4120013B485 /* NSString+URLEscapingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5597136B1F3200A4BBDE /* NSString+URLEscapingAdditions.m */; };
+		3E27D6CB1375B4120013B485 /* NSURL+MPURLParameterAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC5599136B1F3200A4BBDE /* NSURL+MPURLParameterAdditions.m */; };
+		3E27D6CC1375B4120013B485 /* NSURLResponse+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC559B136B1F3200A4BBDE /* NSURLResponse+Encoding.m */; };
+		3E27D6CD1375B4120013B485 /* NSString+Dropbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC559D136B1F3200A4BBDE /* NSString+Dropbox.m */; };
+		3E27D6CE1375B44A0013B485 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FFAF136B0F4D0029ABEC /* libsqlite3.dylib */; };
+		3E27D6CF1375B44A0013B485 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E45FF87136B054B0029ABEC /* libiconv.dylib */; };
+		3E27D6D01375B44A0013B485 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9935B811465BD1005386D0 /* libz.dylib */; };
+		3E27D6D11375B4500013B485 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB6F10C114505F000C859C7 /* MessageUI.framework */; };
+		3E27D6D21375B4500013B485 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EAE110649BAC006F9FF7 /* AddressBook.framework */; };
+		3E27D6D31375B4500013B485 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EB9710649CD2006F9FF7 /* QuartzCore.framework */; };
+		3E27D6D41375B4500013B485 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7F60171084CABA0040A615 /* CoreLocation.framework */; };
+		3E27D6D51375B4500013B485 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB779D211429519001C3F1F /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3E27D6D61375B4500013B485 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDCFFFB11684765009D99C2 /* SystemConfiguration.framework */; };
+		3E27D6D71375B4500013B485 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1CC99B131BD43E00AB59BA /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3E27D6D81375B4500013B485 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1CC99F131BD44900AB59BA /* CoreVideo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3E27D6D91375B4500013B485 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E764C84136B1BF300E18F81 /* AudioToolbox.framework */; };
+		3E27D6DA1375B4500013B485 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDC5607136B22BF00A4BBDE /* Security.framework */; };
+		3E27D6DB1375B4960013B485 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E764C7E136B1B5F00E18F81 /* libGoogleAdMobAds.a */; };
+		3E27D6DC1375B4A90013B485 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3E9935A911465B5F005386D0 /* ZipArchive.mm */; };
+		3E27D6DD1375B4AC0013B485 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E99359811465B54005386D0 /* ioapi.c */; };
+		3E27D6DE1375B4B20013B485 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E99359A11465B54005386D0 /* mztools.c */; };
+		3E27D6DF1375B4B20013B485 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E99359C11465B54005386D0 /* unzip.c */; };
+		3E27D6E01375B4B20013B485 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E99359E11465B54005386D0 /* zip.c */; };
 		3E28EABD10649A87006F9FF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EABC10649A87006F9FF7 /* Foundation.framework */; };
 		3E28EACA10649B87006F9FF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EAC910649B87006F9FF7 /* CoreGraphics.framework */; };
 		3E28EAE210649BAC006F9FF7 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EAE110649BAC006F9FF7 /* AddressBook.framework */; };
@@ -264,12 +366,10 @@
 		3EC9ABDD105E58640096AB90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABDC105E58640096AB90 /* main.m */; };
 		3EC9ABDE105E58640096AB90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9ABDC105E58640096AB90 /* main.m */; };
 		3ECD3DD10ED06434001A775F /* backward.png in Resources */ = {isa = PBXBuildFile; fileRef = 3ECD3DD00ED06434001A775F /* backward.png */; };
-		3ECE830E13759EAB00A29C67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EB9410649C6C006F9FF7 /* UIKit.framework */; };
+		3ECE830E13759EAB00A29C67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EB9410649C6C006F9FF7 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3ECE830F13759EAB00A29C67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EABC10649A87006F9FF7 /* Foundation.framework */; };
 		3ECE831013759EAB00A29C67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E28EAC910649B87006F9FF7 /* CoreGraphics.framework */; };
 		3ECE831613759EAB00A29C67 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3ECE831413759EAB00A29C67 /* InfoPlist.strings */; };
-		3ECE831913759EAC00A29C67 /* ItemShelfTest.h in Resources */ = {isa = PBXBuildFile; fileRef = 3ECE831813759EAC00A29C67 /* ItemShelfTest.h */; };
-		3ECE831B13759EAC00A29C67 /* ItemShelfTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECE831A13759EAC00A29C67 /* ItemShelfTest.m */; };
 		3ED0696A0F545CBA006D932B /* KeywordView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED069690F545CBA006D932B /* KeywordView2.xib */; };
 		3ED0696B0F545CBA006D932B /* KeywordView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED069690F545CBA006D932B /* KeywordView2.xib */; };
 		3ED6BE110ED588CB00F4C7EE /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3ED6BE100ED588CB00F4C7EE /* whiteButton.png */; };
@@ -611,8 +711,6 @@
 		3ECE831313759EAB00A29C67 /* ItemShelfTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ItemShelfTest-Info.plist"; sourceTree = "<group>"; };
 		3ECE831513759EAB00A29C67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3ECE831713759EAC00A29C67 /* ItemShelfTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ItemShelfTest-Prefix.pch"; sourceTree = "<group>"; };
-		3ECE831813759EAC00A29C67 /* ItemShelfTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemShelfTest.h; sourceTree = "<group>"; };
-		3ECE831A13759EAC00A29C67 /* ItemShelfTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemShelfTest.m; sourceTree = "<group>"; };
 		3ED069690F545CBA006D932B /* KeywordView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordView2.xib; sourceTree = "<group>"; };
 		3ED6BE100ED588CB00F4C7EE /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
 		3EDA86A70EFA7DE300C4D226 /* PlusItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlusItem.png; sourceTree = "<group>"; };
@@ -774,9 +872,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ECE830E13759EAB00A29C67 /* UIKit.framework in Frameworks */,
 				3ECE830F13759EAB00A29C67 /* Foundation.framework in Frameworks */,
 				3ECE831013759EAB00A29C67 /* CoreGraphics.framework in Frameworks */,
+				3ECE830E13759EAB00A29C67 /* UIKit.framework in Frameworks */,
+				3E27D6CE1375B44A0013B485 /* libsqlite3.dylib in Frameworks */,
+				3E27D6CF1375B44A0013B485 /* libiconv.dylib in Frameworks */,
+				3E27D6D01375B44A0013B485 /* libz.dylib in Frameworks */,
+				3E27D6D11375B4500013B485 /* MessageUI.framework in Frameworks */,
+				3E27D6D21375B4500013B485 /* AddressBook.framework in Frameworks */,
+				3E27D6D31375B4500013B485 /* QuartzCore.framework in Frameworks */,
+				3E27D6D41375B4500013B485 /* CoreLocation.framework in Frameworks */,
+				3E27D6D51375B4500013B485 /* AVFoundation.framework in Frameworks */,
+				3E27D6D61375B4500013B485 /* SystemConfiguration.framework in Frameworks */,
+				3E27D6D71375B4500013B485 /* CoreMedia.framework in Frameworks */,
+				3E27D6D81375B4500013B485 /* CoreVideo.framework in Frameworks */,
+				3E27D6D91375B4500013B485 /* AudioToolbox.framework in Frameworks */,
+				3E27D6DA1375B4500013B485 /* Security.framework in Frameworks */,
+				3E27D6DB1375B4960013B485 /* libGoogleAdMobAds.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1193,8 +1305,6 @@
 				3E27D6171375A3470013B485 /* ItemTest.m */,
 				3E27D6181375A3470013B485 /* ShelfTest.m */,
 				3E27D6191375A3470013B485 /* TestUtility.m */,
-				3ECE831813759EAC00A29C67 /* ItemShelfTest.h */,
-				3ECE831A13759EAC00A29C67 /* ItemShelfTest.m */,
 				3ECE831213759EAB00A29C67 /* Supporting Files */,
 			);
 			path = ItemShelfTest;
@@ -1592,7 +1702,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ECE831613759EAB00A29C67 /* InfoPlist.strings in Resources */,
-				3ECE831913759EAC00A29C67 /* ItemShelfTest.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1811,12 +1920,99 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ECE831B13759EAC00A29C67 /* ItemShelfTest.m in Sources */,
+				3E27D6AD1375B4110013B485 /* DBAccountInfo.m in Sources */,
+				3E27D6AE1375B4110013B485 /* DBCreateAccountController.m in Sources */,
+				3E27D6AF1375B4110013B485 /* DBError.m in Sources */,
+				3E27D6B01375B4110013B485 /* DBLoadingView.m in Sources */,
+				3E27D6B11375B4110013B485 /* DBLoginController.m in Sources */,
+				3E27D6B21375B4110013B485 /* DBMetadata.m in Sources */,
+				3E27D6B31375B4110013B485 /* DBQuota.m in Sources */,
+				3E27D6B41375B4110013B485 /* DBRequest.m in Sources */,
+				3E27D6B51375B4110013B485 /* DBRestClient.m in Sources */,
+				3E27D6B61375B4110013B485 /* DBSession.m in Sources */,
+				3E27D6B71375B4110013B485 /* NSObject+SBJSON.m in Sources */,
+				3E27D6B81375B4110013B485 /* NSString+SBJSON.m in Sources */,
+				3E27D6B91375B4110013B485 /* SBJSON.m in Sources */,
+				3E27D6BA1375B4110013B485 /* SBJsonBase.m in Sources */,
+				3E27D6BB1375B4110013B485 /* SBJsonParser.m in Sources */,
+				3E27D6BC1375B4110013B485 /* SBJsonWriter.m in Sources */,
+				3E27D6BD1375B4110013B485 /* Base64Transcoder.c in Sources */,
+				3E27D6BE1375B4110013B485 /* MPOAuthAPI.m in Sources */,
+				3E27D6BF1375B4110013B485 /* MPOAuthAPIRequestLoader.m in Sources */,
+				3E27D6C01375B4110013B485 /* MPOAuthAuthenticationMethod.m in Sources */,
+				3E27D6C11375B4110013B485 /* MPOAuthAuthenticationMethodOAuth.m in Sources */,
+				3E27D6C21375B4110013B485 /* MPOAuthConnection.m in Sources */,
+				3E27D6C31375B4110013B485 /* MPOAuthCredentiaIConcreteStore+KeychainAdditionsMac.m in Sources */,
+				3E27D6C41375B4120013B485 /* MPOAuthCredentialConcreteStore+KeychainAdditionsiPhone.m in Sources */,
+				3E27D6C51375B4120013B485 /* MPOAuthCredentialConcreteStore.m in Sources */,
+				3E27D6C61375B4120013B485 /* MPOAuthSignatureParameter.m in Sources */,
+				3E27D6C71375B4120013B485 /* MPOAuthURLRequest.m in Sources */,
+				3E27D6C81375B4120013B485 /* MPOAuthURLResponse.m in Sources */,
+				3E27D6C91375B4120013B485 /* MPURLRequestParameter.m in Sources */,
+				3E27D6CA1375B4120013B485 /* NSString+URLEscapingAdditions.m in Sources */,
+				3E27D6CB1375B4120013B485 /* NSURL+MPURLParameterAdditions.m in Sources */,
+				3E27D6CC1375B4120013B485 /* NSURLResponse+Encoding.m in Sources */,
+				3E27D6CD1375B4120013B485 /* NSString+Dropbox.m in Sources */,
+				3E27D6701375B2970013B485 /* CaptureSessionManager.m in Sources */,
+				3E27D6711375B2970013B485 /* AboutViewController.m in Sources */,
+				3E27D6721375B2970013B485 /* AdCell.m in Sources */,
+				3E27D6731375B2970013B485 /* ConfigViewController.m in Sources */,
+				3E27D6741375B2970013B485 /* EditMemoVC.m in Sources */,
+				3E27D6751375B2970013B485 /* EditStarViewController.m in Sources */,
+				3E27D6761375B2970013B485 /* EditTagsViewController.m in Sources */,
+				3E27D6771375B2970013B485 /* GenEditTextViewController.m in Sources */,
+				3E27D6781375B2970013B485 /* GenSelectListViewController.m in Sources */,
+				3E27D6791375B2970013B485 /* KeywordViewController2.m in Sources */,
+				3E27D67A1375B2970013B485 /* NumPadViewController.m in Sources */,
+				3E27D67B1375B2970013B485 /* ScanViewController.m in Sources */,
+				3E27D67C1375B2970013B485 /* SearchController.m in Sources */,
+				3E27D67D1375B2970013B485 /* StarCell.m in Sources */,
+				3E27D67E1375B2970013B485 /* WebViewController.m in Sources */,
+				3E27D67F1375B2970013B485 /* BackupVC.m in Sources */,
+				3E27D6801375B2970013B485 /* AmazonApi.m in Sources */,
+				3E27D6811375B2970013B485 /* dom.m in Sources */,
+				3E27D6821375B2970013B485 /* KakakuCom.m in Sources */,
+				3E27D6831375B2970013B485 /* RakutenApi.m in Sources */,
+				3E27D6841375B2970013B485 /* WebApi.m in Sources */,
+				3E27D6851375B2970013B485 /* Yahoo.m in Sources */,
+				3E27D6861375B2970013B485 /* DropboxBackup.m in Sources */,
+				3E27D6871375B2970013B485 /* AppDelegate.m in Sources */,
+				3E27D6881375B2970013B485 /* BackupServer.m in Sources */,
+				3E27D6891375B2970013B485 /* BackupUtil.m in Sources */,
+				3E27D68A1375B2970013B485 /* Common.m in Sources */,
+				3E27D68B1375B2970013B485 /* Edition.m in Sources */,
+				3E27D68C1375B2970013B485 /* HttpClient.m in Sources */,
+				3E27D68D1375B2970013B485 /* TmiWebServer.m in Sources */,
+				3E27D68E1375B2970013B485 /* URLComponent.m in Sources */,
+				3E27D65C1375B26A0013B485 /* Database.m in Sources */,
+				3E27D65D1375B26A0013B485 /* Dbstmt.m in Sources */,
+				3E27D65E1375B26A0013B485 /* ItemBase.m in Sources */,
+				3E27D65F1375B26A0013B485 /* ORRecord.m in Sources */,
+				3E27D6601375B26A0013B485 /* ShelfBase.m in Sources */,
+				3E27D6611375B26A0013B485 /* ItemshelfDatabase.m in Sources */,
+				3E27D6621375B26A0013B485 /* DataModel.m in Sources */,
+				3E27D6631375B26A0013B485 /* DateFormatter2.m in Sources */,
+				3E27D6641375B26A0013B485 /* Item.m in Sources */,
+				3E27D6651375B26A0013B485 /* ItemListModel.m in Sources */,
+				3E27D6661375B26A0013B485 /* Shelf.m in Sources */,
+				3E27D6671375B26A0013B485 /* SmartShelf.m in Sources */,
+				3E27D6681375B26A0013B485 /* StringArray.m in Sources */,
+				3E27D6691375B26A0013B485 /* ShelfListViewController.m in Sources */,
+				3E27D66A1375B26A0013B485 /* EditShelfViewController.m in Sources */,
+				3E27D66B1375B26A0013B485 /* ItemListViewController.m in Sources */,
+				3E27D66C1375B26A0013B485 /* ItemViewController.m in Sources */,
+				3E27D66D1375B26A0013B485 /* ItemCell.m in Sources */,
+				3E27D66E1375B26A0013B485 /* ItemCell4.m in Sources */,
 				3E27D61A1375A3470013B485 /* AmazonApiTest.m in Sources */,
 				3E27D61B1375A3470013B485 /* DataModelTest.m in Sources */,
 				3E27D61C1375A3470013B485 /* ItemTest.m in Sources */,
 				3E27D61D1375A3470013B485 /* ShelfTest.m in Sources */,
 				3E27D61E1375A3470013B485 /* TestUtility.m in Sources */,
+				3E27D6DC1375B4A90013B485 /* ZipArchive.mm in Sources */,
+				3E27D6DD1375B4AC0013B485 /* ioapi.c in Sources */,
+				3E27D6DE1375B4B20013B485 /* mztools.c in Sources */,
+				3E27D6DF1375B4B20013B485 /* unzip.c in Sources */,
+				3E27D6E01375B4B20013B485 /* zip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1957,6 +2153,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ItemShelfLite.app/ItemShelfLite";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
@@ -1967,12 +2164,17 @@
 				GCC_PREFIX_HEADER = "ItemShelfTest/ItemShelfTest-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "ItemShelfTest/ItemShelfTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ZBarSDK\"",
+					"\"$(SRCROOT)/AdMob\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					SenTestingKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1981,6 +2183,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ItemShelfLite.app/ItemShelfLite";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
@@ -1989,12 +2192,17 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ItemShelfTest/ItemShelfTest-Prefix.pch";
 				INFOPLIST_FILE = "ItemShelfTest/ItemShelfTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ZBarSDK\"",
+					"\"$(SRCROOT)/AdMob\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					SenTestingKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

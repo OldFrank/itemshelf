@@ -28,9 +28,9 @@
     [dm loadDB];
 
     // 先頭に All Shelf があることを確認する
-    ASSERT([dm shelvesCount] >= 1); // TBD
+    Assert([dm shelvesCount] >= 1); // TBD
     Shelf *shelf = [dm shelfAtIndex:0];
-    ASSERT(shelf != nil);
+    AssertNotNil(shelf);
 }
 
 @end
