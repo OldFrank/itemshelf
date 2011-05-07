@@ -95,7 +95,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark TableViewDataSource
+#pragma mark - TableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -120,7 +120,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     UILabel *nameLabel, *descLabel;
 	
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:SCAN_CELL_ID];
-#if 1
+
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:SCAN_CELL_ID] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -135,46 +135,6 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     descLabel = cell.detailTextLabel;
     descLabel.font = [UIFont systemFontOfSize:10.0];
     descLabel.lineBreakMode = UILineBreakModeWordWrap;
-
-#else
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SCAN_CELL_ID] autorelease];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
-        // アイコン
-        imgView = [[[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 58, 58)] autorelease];
-        imgView.tag = TAG_IMAGE;
-        imgView.autoresizingMask = 0;
-        imgView.contentMode = UIViewContentModeScaleAspectFit; // 画像のアスペクト比を変えないようにする。
-        [cell.contentView addSubview:imgView];
-		
-        // 名称
-        nameLabel = [[[UILabel alloc] initWithFrame:CGRectMake(70, 10, 240, 18)] autorelease];
-        nameLabel.tag = TAG_NAME;
-        nameLabel.font = [UIFont boldSystemFontOfSize:14.0];
-        nameLabel.textColor = [UIColor blackColor];
-        nameLabel.backgroundColor = [UIColor clearColor];
-        nameLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        [cell.contentView addSubview:nameLabel];
-
-        // 説明
-        descLabel = [[[UILabel alloc] initWithFrame:CGRectMake(70, 30, 240, 30)] autorelease];
-        descLabel.tag = TAG_DESC;
-        descLabel.font = [UIFont systemFontOfSize:12.0];
-        descLabel.textColor = [UIColor grayColor];
-        descLabel.backgroundColor = [UIColor clearColor];
-        descLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        descLabel.lineBreakMode = UILineBreakModeWordWrap;
-        descLabel.numberOfLines = 0;
-        descLabel.contentMode = UIViewContentModeTop;
-        [cell.contentView addSubview:descLabel];
-    } else {
-        imgView = (UIImageView *)[cell.contentView viewWithTag:TAG_IMAGE];
-        nameLabel = (UILabel *)[cell.contentView viewWithTag:TAG_NAME];
-        descLabel = (UILabel *)[cell.contentView viewWithTag:TAG_DESC];
-    }		
-#endif
 
     int row = indexPath.row;
     if (!isCameraAvailable) {
@@ -252,6 +212,8 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
 ////////////////////////////////////////////////////////////////////////////////////////////
 // 画像取り込み処理
 
+#pragma mark - Scan
+
 - (IBAction)scanWithCamera:(id)sender
 {
     if (!isCameraAvailable) {
@@ -314,7 +276,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     return YES;
 }
 
-#pragma mark UIImagePickerControllerDelegate
+#pragma mark - UIImagePickerControllerDelegate
 
 // ZBarReader 認識完了
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -362,7 +324,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     [[picker parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark SearchControllerDelegate
+#pragma mark - SearchControllerDelegate
 
 - (void)searchControllerFinish:(SearchController*)controller result:(BOOL)result
 {
@@ -373,7 +335,7 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
 ////////////////////////////////////////////////////////////////////////////////////////////
 // マニュアル入力処理
 
-#pragma mark -
+#pragma mark - Manual input
 
 // コード入力
 - (void)enterIdentifier:(id)sender
@@ -420,6 +382,8 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
 ////////////////////////////////////////////////////////////////////////////////////////////
 // サービス選択
 
+#pragma mark - Service selection
+
 - (void)selectService
 {
     WebApiFactory *wf = [WebApiFactory webApiFactory];
@@ -443,6 +407,8 @@ static UIImage *cameraIcon = nil, *libraryIcon = nil, *numpadIcon = nil, *keywor
     wf.serviceId = serviceId;
     [wf saveDefaults];
 }
+
+#pragma mark - rotation etc
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return [Common isSupportedOrientation:interfaceOrientation];

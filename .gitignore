@@ -4,3 +4,5 @@
 *.mode1v3
 *.xcworkspace
 xcuserdata/
+
+/Classes/DropboxSecret.h.template
