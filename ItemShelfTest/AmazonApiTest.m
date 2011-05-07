@@ -1,5 +1,7 @@
 // -*-  Mode:ObjC; c-basic-offset:4; tab-width:8; indent-tabs-mode:nil -*-
 
+#if 0 // NOT YET
+
 #import "TestUtility.h"
 #import "AmazonApi.h"
 
@@ -48,3 +50,6 @@
 }
 
 @end
+
+#endif
+

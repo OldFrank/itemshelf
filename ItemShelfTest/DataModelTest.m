@@ -3,7 +3,7 @@
 #import "TestUtility.h"
 #import "DataModel.h"
 
-@interface DataModelTest : IUTTest {
+@interface DataModelTest : SenTestCase {
     Database *db;
     DataModel *dm;
 }

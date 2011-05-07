@@ -11,8 +11,8 @@
     Database *db = [Database instance];
     // ここでデータベースが初期化されている(はず)
 
-    [db exec:"DELETE FROM Item;"];
-    [db exec:"DELETE FROM Shelf;"];
+    [db exec:@"DELETE FROM Item;"];
+    [db exec:@"DELETE FROM Shelf;"];
 }
 
 // テストデータを作成する
@@ -26,11 +26,11 @@
     int i;
     dbstmt *stmt;
 
-    stmt = [db prepare:"INSERT INTO Shelf VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);"];
+    stmt = [db prepare:@"INSERT INTO Shelf VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);"];
     for (i = 1; i <= NUM_TEST_SHELF; i++) {
         Shelf *shelf = [TestUtility createTestShelf:i];
 
-        [stmt bindInt:0 val:shelf.pkey];
+        [stmt bindInt:0 val:shelf.pid];
         [stmt bindString:1 val:shelf.name];
         [stmt bindInt:2 val:shelf.sorder];
         [stmt bindInt:3 val:shelf.shelfType];
@@ -45,11 +45,11 @@
         [shelf release];
     }
 
-    stmt = [db prepare:"INSERT INTO Item VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"];
+    stmt = [db prepare:@"INSERT INTO Item VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"];
     for (i = 1; i <= NUM_TEST_ITEM; i++) {
         Item *item = [TestUtility createTestItem:i];
 
-        [stmt bindInt:0 val:item.pkey];
+        [stmt bindInt:0 val:item.pid];
         [stmt bindDate:1 val:item.date];
         [stmt bindInt:2 val:item.shelfId];
         [stmt bindInt:3 val:item.serviceId];
@@ -79,7 +79,7 @@
 {
     Shelf *shelf = [[Shelf alloc] init];
 
-    shelf.pkey = id;
+    shelf.pid = id;
     shelf.sorder = id;
     shelf.name = [NSString stringWithFormat:@"棚%d", id];
     switch ((id - 1) % 5) {
@@ -110,7 +110,7 @@
 {
     Item *item = [[Item alloc] init];
 
-    item.pkey = id;
+    item.pid = id;
     item.date = [NSDate dateWithTimeIntervalSince1970:id*10000.0 * 60.0];
     item.shelfId = (id % NUM_TEST_SHELF) + 1;
     item.serviceId = -1;

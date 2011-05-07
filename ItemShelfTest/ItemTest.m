@@ -1,8 +1,10 @@
 // -*-  Mode:ObjC; c-basic-offset:4; tab-width:8; indent-tabs-mode:nil -*-
 
+#if 0 // NOT YET
+
 #import "TestUtility.h"
 
-@interface ItemTest : IUTTest {
+@interface ItemTest : SenTestCase {
     Database *db;
 }
 
@@ -356,3 +358,6 @@
 // cancelDownload
 
 @end
+
+#endif
+
