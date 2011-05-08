@@ -67,38 +67,26 @@
     AssertEqualInt(j.pid, i.pid);
     AssertEqualInt(j.shelfType, i.shelfType);
     AssertEqualInt(j.sorder, i.sorder);
-    AssertEquals(j.name, i.name);
-    AssertEquals(j.titleFilter, i.titleFilter);
-    AssertEquals(j.authorFilter, i.authorFilter);
-    AssertEquals(j.manufacturerFilter, i.manufacturerFilter);
+    AssertEqualString(j.name, i.name);
+    AssertEqualString(j.titleFilter, i.titleFilter);
+    AssertEqualString(j.authorFilter, i.authorFilter);
+    AssertEqualString(j.manufacturerFilter, i.manufacturerFilter);
 }
 
-// loadRow テスト
-#if 0
-- (void)testLoadRow
+- (void)testInitialDatabase
 {
     [TestUtility initializeTestDatabase];
 
-    dbstmt *stmt = [db prepare:@"SELECT * FROM Shelf WHERE pkey = ?;"];
     for (int i = 1; i <= NUM_TEST_SHELF; i++) {
-        [stmt bindInt:0 val:i];
-        ASSERT(SQLITE_ROW == [stmt step]);
-
-        Shelf *shelf = [[Shelf alloc] init];
-        [shelf loadRow:stmt];
+        Shelf *shelf = [Shelf find:i];
+        AssertNotNil(shelf);
 
         // 比較対象データ
-        Shelf *testShelf = [TestUtility createTestShelf:i];
+        Shelf *testShelf = [TestUtility getTestShelf:i];
 
         [self assertShelfEquals:shelf with:testShelf];
-
-        [shelf release];
-        [testShelf release];
-
-        [stmt reset];	
     }
 }
-#endif
 
 // insert テスト
 // delete テスト

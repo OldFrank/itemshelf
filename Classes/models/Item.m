@@ -421,7 +421,7 @@ static NSMutableArray *agingArray = nil;
     NSDirectoryEnumerator *de = [fm enumeratorAtPath:dataDir];
 
     NSString *name;
-    while (name = [de nextObject]) {
+    while ((name = [de nextObject]) != nil) {
         if ([[name substringToIndex:4] isEqualToString:@"img-"]) {
             NSString *path = [dataDir stringByAppendingPathComponent:name];
             [fm removeItemAtPath:path error:NULL];
