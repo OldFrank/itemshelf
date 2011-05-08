@@ -15,11 +15,15 @@
 {
     ItemCell *cell = (ItemCell*)[tableView dequeueReusableCellWithIdentifier:REUSE_CELL_ID];
     if (cell == nil) {
-        cell = [[[ItemCell alloc] init] autorelease];
+        UIViewController *vc = [[UIViewController alloc] initWithNibName:@"ItemCell" bundle:nil];
+        cell = (ItemCell *)vc.view;
+        [[cell retain] autorelease];
+        [vc release];
     }
     return cell;
 }
 
+#if 0 // Old code...
 
 #define TAG_IMAGE   1
 #define TAG_DESC    2
@@ -84,7 +88,7 @@
     [self.contentView addSubview:dateLabel];
     
     // スター
-    UILabel *starLabel = [[[UILabel alloc] initWithFrame:CGRectMake(320 - 70, 65, 70, 18)] autorelease];
+    UILabel *starLabel = [[[UILabel alloc] initWithFrame:CGRectMake(320 - 80, 65, 80, 18)] autorelease];
     starLabel.tag = TAG_STAR;
     starLabel.font = [UIFont systemFontOfSize:16.0];
     starLabel.textColor = [UIColor orangeColor];
@@ -94,6 +98,8 @@
 	
     return self;
 }
+
+#endif
 
 - (void)setItem:(Item *)item
 {
@@ -105,13 +111,8 @@
         [df setTimeStyle:NSDateFormatterShortStyle];
     }
 
-    UILabel *descLabel = (UILabel *)[self.contentView viewWithTag:TAG_DESC];
-    UILabel *dateLabel = (UILabel *)[self.contentView viewWithTag:TAG_DATE];
-    UILabel *starLabel = (UILabel *)[self.contentView viewWithTag:TAG_STAR];
-    UIImageView *imgView = (UIImageView *)[self.contentView viewWithTag:TAG_IMAGE];
-
-    descLabel.text = item.name;
-    dateLabel.text = [df stringFromDate:item.date];
+    mDescLabel.text = item.name;
+    mDateLabel.text = [df stringFromDate:item.date];
 
     NSString *starText = @"☆☆☆☆☆";
     switch (item.star) {
@@ -121,11 +122,11 @@
     case 4: starText = @"★★★★☆"; break;
     case 5: starText = @"★★★★★"; break;
     }
-    starLabel.text = starText;
+    mStarLabel.text = starText;
 
     // resize image
     UIImage *image = [item getImage:nil];
-    imgView.image = image;
+    mImageView.image = image;
 #if 0
     imgView.image = [Common resizeImageWithin:image
                             width:ITEM_IMAGE_WIDTH - ITEM_IMAGE_WIDTH_PADDING

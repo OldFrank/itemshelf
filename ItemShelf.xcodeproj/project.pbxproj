@@ -491,6 +491,8 @@
 		3EF2FE7A13768AF000292191 /* ItemListModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF2FE7913768AF000292191 /* ItemListModelTest.m */; };
 		3EF2FE7D13768D1600292191 /* SmartShelfTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF2FE7C13768D1600292191 /* SmartShelfTest.m */; };
 		3EF2FE7F13768D5200292191 /* StringArrayTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF2FE7E13768D5200292191 /* StringArrayTest.m */; };
+		3EF2FE8213768F6B00292191 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EF2FE8113768F6B00292191 /* ItemCell.xib */; };
+		3EF2FE8313768F6B00292191 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EF2FE8113768F6B00292191 /* ItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -830,6 +832,7 @@
 		3EF2FE7913768AF000292191 /* ItemListModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemListModelTest.m; sourceTree = "<group>"; };
 		3EF2FE7C13768D1600292191 /* SmartShelfTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartShelfTest.m; sourceTree = "<group>"; };
 		3EF2FE7E13768D5200292191 /* StringArrayTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringArrayTest.m; sourceTree = "<group>"; };
+		3EF2FE8113768F6B00292191 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1270,6 +1273,7 @@
 				3E7FFEBB0ECC487B000164D4 /* ScanView.xib */,
 				282CCBFD0DB6C98000C4EA27 /* ItemListView.xib */,
 				3E6CE73011872E1900221C66 /* ItemListView-ipad.xib */,
+				3EF2FE8113768F6B00292191 /* ItemCell.xib */,
 				3E6F530F0ECFBE7D00E68A4B /* ItemView.xib */,
 				3E6CE7501187303400221C66 /* ItemView-ipad.xib */,
 				3EC639D00EE544C30057FAC2 /* WebView.xib */,
@@ -1645,6 +1649,7 @@
 				3EDC56CA136C013300A4BBDE /* dropboxBackup@2x.png in Resources */,
 				3EDC56CC136C013300A4BBDE /* dropboxRestore.png in Resources */,
 				3EDC56CE136C013300A4BBDE /* dropboxRestore@2x.png in Resources */,
+				3EF2FE8213768F6B00292191 /* ItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1730,6 +1735,7 @@
 				3EDC56CB136C013300A4BBDE /* dropboxBackup@2x.png in Resources */,
 				3EDC56CD136C013300A4BBDE /* dropboxRestore.png in Resources */,
 				3EDC56CF136C013300A4BBDE /* dropboxRestore@2x.png in Resources */,
+				3EF2FE8313768F6B00292191 /* ItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,10 @@
 
 @interface ItemCell : UITableViewCell
 {
+    IBOutlet UIImageView *mImageView;
+    IBOutlet UILabel *mDescLabel;
+    IBOutlet UILabel *mDateLabel;
+    IBOutlet UILabel *mStarLabel;
 }
 
 + (ItemCell *)getCell:(UITableView *)tableView;
