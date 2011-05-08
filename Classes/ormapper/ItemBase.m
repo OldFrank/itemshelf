@@ -83,7 +83,7 @@
   @param pid Primary key of the record
   @return record
 */
-+ (ItemBase *)find:(int)pid
++ (Item *)find:(int)pid
 {
     Database *db = [Database instance];
 
@@ -101,7 +101,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_date:(NSDate*)key cond:(NSString *)cond
++ (Item*)find_by_date:(NSDate*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE date = ? LIMIT 1";
@@ -113,7 +113,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_date:(NSDate*)key
++ (Item*)find_by_date:(NSDate*)key
 {
     return [self find_by_date:key cond:nil];
 }
@@ -125,7 +125,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_itemState:(int)key cond:(NSString *)cond
++ (Item*)find_by_itemState:(int)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE itemState = ? LIMIT 1";
@@ -137,7 +137,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_itemState:(int)key
++ (Item*)find_by_itemState:(int)key
 {
     return [self find_by_itemState:key cond:nil];
 }
@@ -149,7 +149,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_idType:(int)key cond:(NSString *)cond
++ (Item*)find_by_idType:(int)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE idType = ? LIMIT 1";
@@ -161,7 +161,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_idType:(int)key
++ (Item*)find_by_idType:(int)key
 {
     return [self find_by_idType:key cond:nil];
 }
@@ -173,7 +173,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_idString:(NSString*)key cond:(NSString *)cond
++ (Item*)find_by_idString:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE idString = ? LIMIT 1";
@@ -185,7 +185,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_idString:(NSString*)key
++ (Item*)find_by_idString:(NSString*)key
 {
     return [self find_by_idString:key cond:nil];
 }
@@ -197,7 +197,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_asin:(NSString*)key cond:(NSString *)cond
++ (Item*)find_by_asin:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE asin = ? LIMIT 1";
@@ -209,7 +209,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_asin:(NSString*)key
++ (Item*)find_by_asin:(NSString*)key
 {
     return [self find_by_asin:key cond:nil];
 }
@@ -221,7 +221,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_name:(NSString*)key cond:(NSString *)cond
++ (Item*)find_by_name:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE name = ? LIMIT 1";
@@ -233,7 +233,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_name:(NSString*)key
++ (Item*)find_by_name:(NSString*)key
 {
     return [self find_by_name:key cond:nil];
 }
@@ -245,7 +245,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_author:(NSString*)key cond:(NSString *)cond
++ (Item*)find_by_author:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE author = ? LIMIT 1";
@@ -257,7 +257,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_author:(NSString*)key
++ (Item*)find_by_author:(NSString*)key
 {
     return [self find_by_author:key cond:nil];
 }
@@ -269,7 +269,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_manufacturer:(NSString*)key cond:(NSString *)cond
++ (Item*)find_by_manufacturer:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE manufacturer = ? LIMIT 1";
@@ -281,7 +281,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_manufacturer:(NSString*)key
++ (Item*)find_by_manufacturer:(NSString*)key
 {
     return [self find_by_manufacturer:key cond:nil];
 }
@@ -293,7 +293,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_productGroup:(NSString*)key cond:(NSString *)cond
++ (Item*)find_by_productGroup:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE productGroup = ? LIMIT 1";
@@ -305,7 +305,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_productGroup:(NSString*)key
++ (Item*)find_by_productGroup:(NSString*)key
 {
     return [self find_by_productGroup:key cond:nil];
 }
@@ -317,7 +317,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_detailURL:(NSString*)key cond:(NSString *)cond
++ (Item*)find_by_detailURL:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE detailURL = ? LIMIT 1";
@@ -329,7 +329,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_detailURL:(NSString*)key
++ (Item*)find_by_detailURL:(NSString*)key
 {
     return [self find_by_detailURL:key cond:nil];
 }
@@ -341,7 +341,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_price:(NSString*)key cond:(NSString *)cond
++ (Item*)find_by_price:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE price = ? LIMIT 1";
@@ -353,7 +353,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_price:(NSString*)key
++ (Item*)find_by_price:(NSString*)key
 {
     return [self find_by_price:key cond:nil];
 }
@@ -365,7 +365,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_tags:(NSString*)key cond:(NSString *)cond
++ (Item*)find_by_tags:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE tags = ? LIMIT 1";
@@ -377,7 +377,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_tags:(NSString*)key
++ (Item*)find_by_tags:(NSString*)key
 {
     return [self find_by_tags:key cond:nil];
 }
@@ -389,7 +389,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_memo:(NSString*)key cond:(NSString *)cond
++ (Item*)find_by_memo:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE memo = ? LIMIT 1";
@@ -401,7 +401,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_memo:(NSString*)key
++ (Item*)find_by_memo:(NSString*)key
 {
     return [self find_by_memo:key cond:nil];
 }
@@ -413,7 +413,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_imageURL:(NSString*)key cond:(NSString *)cond
++ (Item*)find_by_imageURL:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE imageURL = ? LIMIT 1";
@@ -425,7 +425,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_imageURL:(NSString*)key
++ (Item*)find_by_imageURL:(NSString*)key
 {
     return [self find_by_imageURL:key cond:nil];
 }
@@ -437,7 +437,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_sorder:(int)key cond:(NSString *)cond
++ (Item*)find_by_sorder:(int)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE sorder = ? LIMIT 1";
@@ -449,7 +449,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_sorder:(int)key
++ (Item*)find_by_sorder:(int)key
 {
     return [self find_by_sorder:key cond:nil];
 }
@@ -461,7 +461,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ItemBase*)find_by_star:(int)key cond:(NSString *)cond
++ (Item*)find_by_star:(int)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE star = ? LIMIT 1";
@@ -473,7 +473,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ItemBase*)find_by_star:(int)key
++ (Item*)find_by_star:(int)key
 {
     return [self find_by_star:key cond:nil];
 }
@@ -483,7 +483,7 @@
   @param cond Conditions (WHERE phrase and so on)
   @return array of records
 */
-+ (ItemBase *)find_first:(NSString *)cond
++ (Item *)find_first:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"LIMIT 1";
@@ -530,12 +530,12 @@
   @param stmt Statement
   @return array of records
 */
-+ (ItemBase *)find_first_stmt:(dbstmt *)stmt
++ (Item *)find_first_stmt:(dbstmt *)stmt
 {
     if ([stmt step] == SQLITE_ROW) {
         ItemBase *e = [[[[self class] alloc] init] autorelease];
         [e _loadRow:stmt];
-        return (ItemBase *)e;
+        return (Item *)e;
     }
     return nil;
 }
