@@ -65,6 +65,50 @@
     AssertEqualString(j.imageURL, i.imageURL);
 }
 
+#pragma mark - Fundamental tests
+
+// initialize test
+- (void)testInitItem
+{
+    Item *item = [[Item new] autorelease];
+    AssertNotNil(item.date);
+    Assert([item.date isKindOfClass:[NSDate class]]);
+    AssertEqualInt(0, item.shelfId);
+    AssertEqualInt(-1, item.sorder);
+    AssertEqualInt(0, item.star);
+    AssertFalse(item.registeredWithShelf);
+}
+
+- (void)testEqualToItem
+{
+    Item *item = [[Item new] autorelease];
+    Item *item2 = [[Item new] autorelease];
+    
+    // no ASIN/idString
+    AssertFalse([item isEqualToItem:item2]);
+    
+    // has ASIN
+    item2.asin = @"xxx";
+
+    item.asin = @"xxx";
+    Assert([item isEqualToItem:item2]);
+    
+    item.asin = @"yyy";
+    AssertFalse([item isEqualToItem:item2]);
+    
+    // has idString
+    item2.idString = @"xxx";
+    item.asin = nil;
+    
+    item.idString = @"xxx";
+    Assert([item isEqualToItem:item2]);
+    
+    item.idString = @"yyy";
+    AssertFalse([item isEqualToItem:item2]);
+}
+
+#pragma mark - Database tests
+
 // initial db test
 - (void)testInitialTestDatabase
 {
@@ -198,6 +242,8 @@
 //////////////////////////////////////////////////////////////////
 // イメージ取得テスト
 
+#pragma mark - Image tests
+
 // getImage : imageURL が空のときに NoImage が返ること
 - (void)testGetImageNoImage
 {
@@ -301,6 +347,72 @@
 // fetchImage : キャッシュがない場合は、ネットワークからダウンロードすること (テスト不能？）
 
 // cancelDownload
+
+#pragma mark - Additional Info tests
+
+- (void)testNumberOfAdditionalInfo
+{
+    Item *item = [[Item new] autorelease];
+    AssertEqualInt(7, [item numberOfAdditionalInfo]);
+}
+
+- (void)testAdditionalInfoKeyAtIndex
+{
+    Item *item = [[Item new] autorelease];
+    AssertEqualString(@"Title", [item additionalInfoKeyAtIndex:0]);
+    AssertEqualString(@"Author", [item additionalInfoKeyAtIndex:1]);
+    AssertEqualString(@"Manufacturer", [item additionalInfoKeyAtIndex:2]);
+    AssertEqualString(@"Category", [item additionalInfoKeyAtIndex:3]);
+    AssertEqualString(@"Price", [item additionalInfoKeyAtIndex:4]);
+    AssertEqualString(@"Code", [item additionalInfoKeyAtIndex:5]);
+    AssertEqualString(@"ASIN", [item additionalInfoKeyAtIndex:6]);
+    AssertNil([item additionalInfoKeyAtIndex:7]);
+    
+}
+
+- (void)testAdditionalInfoValueAtIndex
+{
+    Item *item = [[Item new] autorelease];
+    
+    item.name = @"A";
+    item.author = @"B";
+    item.manufacturer = @"C";
+    item.category = @"D";
+    item.price = @"E";
+    item.idString = @"F";
+    item.asin = @"G";
+    
+    AssertEqualString(@"A", [item additionalInfoValueAtIndex:0]);
+    AssertEqualString(@"B", [item additionalInfoValueAtIndex:1]);
+    AssertEqualString(@"C", [item additionalInfoValueAtIndex:2]);
+    AssertEqualString(@"D", [item additionalInfoValueAtIndex:3]);
+    AssertEqualString(@"E", [item additionalInfoValueAtIndex:4]);
+    AssertEqualString(@"F", [item additionalInfoValueAtIndex:5]);
+    AssertEqualString(@"G", [item additionalInfoValueAtIndex:6]);
+    AssertNil([item additionalInfoKeyAtIndex:7]);
+}
+
+- (void)testSetAdditionalInfoValueAtIndex
+{
+    Item *item = [[Item new] autorelease];
+    
+    [item setAdditionalInfoValueAtIndex:0 withValue:@"A"];
+    [item setAdditionalInfoValueAtIndex:1 withValue:@"B"];
+    [item setAdditionalInfoValueAtIndex:2 withValue:@"C"];
+    [item setAdditionalInfoValueAtIndex:3 withValue:@"D"];
+    [item setAdditionalInfoValueAtIndex:4 withValue:@"E"];
+    [item setAdditionalInfoValueAtIndex:5 withValue:@"F"];
+    [item setAdditionalInfoValueAtIndex:6 withValue:@"G"];
+    [item setAdditionalInfoValueAtIndex:7 withValue:@"H"]; // dummy
+    
+    AssertEqualString(@"A", item.name);
+    AssertEqualString(@"B", item.author);
+    AssertEqualString(@"C", item.manufacturer);
+    AssertEqualString(@"D", item.category);
+    AssertEqualString(@"E", item.price);
+    AssertEqualString(@"F", item.idString);
+    AssertEqualString(@"G", item.asin);
+}
 
 @end
 
