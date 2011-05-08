@@ -488,6 +488,9 @@
 		3EDCFFFC11684765009D99C2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDCFFFB11684765009D99C2 /* SystemConfiguration.framework */; };
 		3EE8374E11564EFD00F64764 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8374D11564EFD00F64764 /* MainWindow-iPad.xib */; };
 		3EE8374F11564EFD00F64764 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8374D11564EFD00F64764 /* MainWindow-iPad.xib */; };
+		3EF2FE7A13768AF000292191 /* ItemListModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF2FE7913768AF000292191 /* ItemListModelTest.m */; };
+		3EF2FE7D13768D1600292191 /* SmartShelfTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF2FE7C13768D1600292191 /* SmartShelfTest.m */; };
+		3EF2FE7F13768D5200292191 /* StringArrayTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF2FE7E13768D5200292191 /* StringArrayTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -824,6 +827,9 @@
 		3EDC56C3136C013300A4BBDE /* dropboxRestore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropboxRestore@2x.png"; sourceTree = "<group>"; };
 		3EDCFFFB11684765009D99C2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3EE8374D11564EFD00F64764 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		3EF2FE7913768AF000292191 /* ItemListModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemListModelTest.m; sourceTree = "<group>"; };
+		3EF2FE7C13768D1600292191 /* SmartShelfTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartShelfTest.m; sourceTree = "<group>"; };
+		3EF2FE7E13768D5200292191 /* StringArrayTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringArrayTest.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1311,10 +1317,9 @@
 			children = (
 				3E27D61F1375A3F00013B485 /* TestUtility.h */,
 				3E27D6151375A3470013B485 /* AmazonApiTest.m */,
-				3E27D6161375A3470013B485 /* DataModelTest.m */,
-				3E27D6171375A3470013B485 /* ItemTest.m */,
-				3E27D6181375A3470013B485 /* ShelfTest.m */,
 				3E27D6191375A3470013B485 /* TestUtility.m */,
+				3EF2FE7B13768CEE00292191 /* model tests */,
+				3EF2FE8013768D5D00292191 /* ui tests */,
 				3ECE831213759EAB00A29C67 /* Supporting Files */,
 			);
 			path = ItemShelfTest;
@@ -1452,6 +1457,26 @@
 			);
 			name = Resources;
 			path = DropboxSDK/Resources;
+			sourceTree = "<group>";
+		};
+		3EF2FE7B13768CEE00292191 /* model tests */ = {
+			isa = PBXGroup;
+			children = (
+				3E27D6161375A3470013B485 /* DataModelTest.m */,
+				3E27D6181375A3470013B485 /* ShelfTest.m */,
+				3E27D6171375A3470013B485 /* ItemTest.m */,
+				3EF2FE7913768AF000292191 /* ItemListModelTest.m */,
+				3EF2FE7C13768D1600292191 /* SmartShelfTest.m */,
+				3EF2FE7E13768D5200292191 /* StringArrayTest.m */,
+			);
+			name = "model tests";
+			sourceTree = "<group>";
+		};
+		3EF2FE8013768D5D00292191 /* ui tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "ui tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2024,6 +2049,9 @@
 				3E27D6DE1375B4B20013B485 /* mztools.c in Sources */,
 				3E27D6DF1375B4B20013B485 /* unzip.c in Sources */,
 				3E27D6E01375B4B20013B485 /* zip.c in Sources */,
+				3EF2FE7A13768AF000292191 /* ItemListModelTest.m in Sources */,
+				3EF2FE7D13768D1600292191 /* SmartShelfTest.m in Sources */,
+				3EF2FE7F13768D5200292191 /* StringArrayTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
