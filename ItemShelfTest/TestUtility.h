@@ -15,8 +15,8 @@
 
 + (void)clearDatabase;
 + (void)initializeTestDatabase;
-+ (Shelf *)createTestShelf:(int)id;
-+ (Item *)createTestItem:(int)id;
++ (Shelf *)getTestShelf:(int)id;
++ (Item *)getTestItem:(int)id;
 
 #define NOTYET STFail(@"not yet")
 
@@ -30,6 +30,7 @@
 #define AssertEquals(a, b) STAssertEquals(a, b, @"")
 #define AssertEqualInt(a, b) STAssertEquals((int)(a), (int)(b), @"")
 #define AssertEqualDouble(a, b) STAssertEquals((double)(a), (double)(b), @"")
+#define AssertEqualString(a, b) STAssertEqualObjects(a, b, @"")
 #define AssertEqualObjects(a, b) STAssertEqualObjects(a, b, @"")
 
 @end

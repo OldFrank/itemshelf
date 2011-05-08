@@ -28,7 +28,7 @@
 
     stmt = [db prepare:@"INSERT INTO Shelf VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);"];
     for (i = 1; i <= NUM_TEST_SHELF; i++) {
-        Shelf *shelf = [TestUtility createTestShelf:i];
+        Shelf *shelf = [TestUtility getTestShelf:i];
 
         [stmt bindInt:0 val:shelf.pid];
         [stmt bindString:1 val:shelf.name];
@@ -41,13 +41,11 @@
         [stmt bindInt:8 val:shelf.starFilter];
         [stmt step];
         [stmt reset];
-
-        [shelf release];
     }
 
     stmt = [db prepare:@"INSERT INTO Item VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"];
     for (i = 1; i <= NUM_TEST_ITEM; i++) {
-        Item *item = [TestUtility createTestItem:i];
+        Item *item = [TestUtility getTestItem:i];
 
         [stmt bindInt:0 val:item.pid];
         [stmt bindDate:1 val:item.date];
@@ -68,16 +66,14 @@
         [stmt bindInt:16 val:item.star];
         [stmt step];
         [stmt reset];
-
-        [item release];
     }
     [db commitTransaction];
 }
 
 // テストデータ生成 (Shelf)
-+ (Shelf *)createTestShelf:(int)id
++ (Shelf *)getTestShelf:(int)id
 {
-    Shelf *shelf = [[Shelf alloc] init];
+    Shelf *shelf = [[[Shelf alloc] init] autorelease];;
 
     shelf.pid = id;
     shelf.sorder = id;
@@ -106,9 +102,9 @@
 }
 
 // テストデータ生成 (Item)
-+ (Item *)createTestItem:(int)id
++ (Item *)getTestItem:(int)id
 {
-    Item *item = [[Item alloc] init];
+    Item *item = [[[Item alloc] init] autorelease];
 
     item.pid = id;
     item.date = [NSDate dateWithTimeIntervalSince1970:id*10000.0 * 60.0];

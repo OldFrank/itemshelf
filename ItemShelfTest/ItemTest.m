@@ -1,7 +1,5 @@
 // -*-  Mode:ObjC; c-basic-offset:4; tab-width:8; indent-tabs-mode:nil -*-
 
-#if 0 // NOT YET
-
 #import "TestUtility.h"
 
 @interface ItemTest : SenTestCase {
@@ -28,14 +26,14 @@
 - (void)testInitDb
 {
     // テーブルを削除する
-    [db exec:"DROP TABLE Item;"];
-    [db release];
+    [db exec:@"DROP TABLE Item;"];
+    [Database shutdown];
 
     // 再度オープンする (ここでテーブルができるはず）
-    [[DataModel sharedDataModel] loadDb];
+    [[DataModel sharedDataModel] loadDB];
     db = [Database instance];
     
-    dbstmt *stmt = [db prepare:"SELECT sql FROM sqlite_master WHERE type='table' AND name='Item';"];
+    dbstmt *stmt = [db prepare:@"SELECT sql FROM sqlite_master WHERE type='table' AND name='Item';"];
     STAssertEquals(SQLITE_ROW, [stmt step], @"No item table");
     NSString *sql = [stmt colString:0];
 
@@ -49,50 +47,39 @@
 // Utility : Item の同一性確認
 - (void)assertItemEquals:(Item *)i with:(Item *)j
 {
-    ASSERT_EQUAL_INT(j.pkey, i.pkey);
-    ASSERT_EQUAL_INT(j.shelfId, i.shelfId);
-    ASSERT_EQUAL_INT(j.serviceId, i.serviceId);
-    ASSERT_EQUAL_INT(j.sorder, i.sorder);
-    ASSERT([i.date isEqualToDate:j.date]);
-    ASSERT_EQUAL(j.idString, i.idString);
-    ASSERT_EQUAL(j.asin, i.asin);
-    ASSERT_EQUAL(j.name, i.name);
-    ASSERT_EQUAL(j.author, i.author);
-    ASSERT_EQUAL(j.manufacturer, i.manufacturer);
-    ASSERT_EQUAL(j.category, i.category);
-    ASSERT_EQUAL(j.detailURL, i.detailURL);
-    ASSERT_EQUAL(j.price, i.price);
-    ASSERT_EQUAL(j.tags, i.tags);
-    ASSERT_EQUAL(j.memo, i.memo);
-    ASSERT_EQUAL(j.imageURL, i.imageURL);
+    AssertEqualInt(j.pid, i.pid);
+    AssertEqualInt(j.shelfId, i.shelfId);
+    AssertEqualInt(j.serviceId, i.serviceId);
+    AssertEqualInt(j.sorder, i.sorder);
+    Assert([i.date isEqualToDate:j.date]);
+    AssertEqualString(j.idString, i.idString);
+    AssertEqualString(j.asin, i.asin);
+    AssertEqualString(j.name, i.name);
+    AssertEqualString(j.author, i.author);
+    AssertEqualString(j.manufacturer, i.manufacturer);
+    AssertEqualString(j.category, i.category);
+    AssertEqualString(j.detailURL, i.detailURL);
+    AssertEqualString(j.price, i.price);
+    AssertEqualString(j.tags, i.tags);
+    AssertEqualString(j.memo, i.memo);
+    AssertEqualString(j.imageURL, i.imageURL);
 }
 
-// loadRow テスト
-- (void)testLoadRow
+// initial db test
+- (void)testInitialTestDatabase
 {
     [TestUtility initializeTestDatabase];
 
-    dbstmt *stmt = [db prepare:"SELECT * FROM Item WHERE pkey = ?;"];
     for (int i = 1; i <= NUM_TEST_ITEM; i++) {
-        [stmt bindInt:0 val:i];
-        ASSERT(SQLITE_ROW == [stmt step]);
+        Item *item = [Item find:i];
+        AssertNotNil(item);
 
-        Item *item = [[Item alloc] init];
-        ASSERT(!item.registeredWithShelf);
-        [item loadRow:stmt];
-
+        Assert(item.registeredWithShelf);
+        AssertNil(item.imageCache);
+        
         // 比較対象データ
-        Item *testItem = [TestUtility createTestItem:i];
-
+        Item *testItem = [TestUtility getTestItem:i];
         [self assertItemEquals:item with:testItem];
-
-        ASSERT(item.registeredWithShelf);
-        ASSERT_EQUAL(item.imageCache, nil);
-
-        [item release];
-        [testItem release];
-
-        [stmt reset];	
     }
 }
 
@@ -105,39 +92,29 @@
 
     // 逆順で挿入
     for (int i = NUM_TEST_ITEM; i >= 1; i--) {
-        item = [TestUtility createTestItem:i];
+        item = [TestUtility getTestItem:i];
 
         // primary key と sorder をつぶしておく
-        item.pkey = -1; 
+        item.pid = -1; 
         item.sorder = -1;
 
-        [item insert];
-        [item release];
+        [item save];
     }
 
     // 読み込みテスト
-    dbstmt *stmt = [db prepare:"SELECT * FROM Item WHERE pkey = ?;"];
     for (int i = 1; i <= NUM_TEST_ITEM; i++) {
         int pkey = NUM_TEST_ITEM - i + 1;
-		
-        [stmt bindInt:0 val:pkey];
-        STAssertTrue(SQLITE_ROW == [stmt step], nil);
-
-        Item* item = [[Item alloc] init];
-        [item loadRow:stmt];
+	
+        item = [Item find:pkey];
+        AssertNotNil(item);
 
         // 比較対象データ
-        Item *testItem = [TestUtility createTestItem:i];
-        testItem.pkey = pkey;
+        Item *testItem = [TestUtility getTestItem:i];
+        testItem.pid = pkey;
         testItem.sorder = pkey;
 
         // チェック
         [self assertItemEquals:item with:testItem];
-
-        [item release];
-        [testItem release];
-
-        [stmt reset];	
     }
 }
 
@@ -147,27 +124,19 @@
     [TestUtility initializeTestDatabase];
 
     [db beginTransaction];
-    dbstmt *stmt = [db prepare:"SELECT * FROM Item WHERE pkey = ?;"];
     for (int i = 1; i <= NUM_TEST_ITEM; i++) {
-        [stmt bindInt:0 val:i];
-        STAssertTrue(SQLITE_ROW == [stmt step], nil);
-
-        Item *item = [[Item alloc] init];
-        [item loadRow:stmt];
+        Item *item = [Item find:i];
+        AssertNotNil(item);
 
         // 削除する
         [item delete];
-        [item release];
-        [stmt reset];
 
         // データが消えていることを確認する。
-        [stmt bindInt:0 val:i];
-        STAssertTrue(SQLITE_DONE == [stmt step], nil);
+        item = [Item find:i];
+        AssertNil(item);
 
         // イメージファイルも消去されていることを確認する
         // TBD
-
-        [stmt reset];
     }
     [db commitTransaction];
 }	
@@ -178,35 +147,26 @@
     [TestUtility initializeTestDatabase];
 
     [db beginTransaction];
-    dbstmt *stmt = [db prepare:"SELECT * FROM Item WHERE pkey = ?;"];
     for (int i = 1; i <= NUM_TEST_ITEM; i++) {
         // item 読み込み
-        [stmt bindInt:0 val:i];
-        STAssertTrue(SQLITE_ROW == [stmt step], nil);
-        Item *item = [[Item alloc] init];
-        [item loadRow:stmt];
+        Item *item = [Item find:i];
+        AssertNotNil(item);
 
         // shelf 変更しない場合でも大丈夫なことを確認する
         int origShelfId = item.shelfId;
         [item changeShelf:origShelfId];
-        STAssertEquals(origShelfId, item.shelfId, nil);
+        AssertEquals(origShelfId, item.shelfId);
 
         // shelf 変更
         int newShelfId = (origShelfId + 1) % 3;
         [item changeShelf:newShelfId];
-        STAssertEquals(newShelfId, item.shelfId, nil);
+        AssertEquals(newShelfId, item.shelfId);
 		
         // データベースが書き変わっていることを確認する
-        [item release];
-        [stmt reset];
-        [stmt bindInt:0 val:i];
-        STAssertTrue(SQLITE_ROW == [stmt step], nil);
-        item = [[Item alloc] init];
-        [item loadRow:stmt];
+        item = [Item find:i];
+        AssertNotNil(item);
 
-        STAssertTrue(newShelfId == item.shelfId, nil);
-        [item release];
-        [stmt reset];
+        AssertEqualInt(newShelfId, item.shelfId);
     }
 }
 
@@ -216,31 +176,23 @@
     [TestUtility initializeTestDatabase];
 
     [db beginTransaction];
-    dbstmt *stmt = [db prepare:"SELECT * FROM Item WHERE pkey = ?;"];
     for (int i = 1; i <= NUM_TEST_ITEM; i++) {
         // item 読み込み
-        [stmt bindInt:0 val:i];
-        STAssertTrue(SQLITE_ROW == [stmt step], nil);
-        Item *item = [[Item alloc] init];
-        [item loadRow:stmt];
+        Item *item = [Item find:i];
+        AssertNotNil(item);
 
         // 逆順に並び替える
         int newSorder = NUM_TEST_ITEM - i + 1;
         item.sorder = newSorder;
-        [item updateSorder];
+        [item save];
 		
         // データベースが書き変わっていることを確認する
-        [item release];
-        [stmt reset];
-        [stmt bindInt:0 val:i];
-        STAssertTrue(SQLITE_ROW == [stmt step], nil);
-        item = [[Item alloc] init];
-        [item loadRow:stmt];
+        item = [Item find:i];
+        AssertNotNil(item);
 
-        STAssertTrue(newSorder == item.sorder, nil);
-        [item release];
-        [stmt reset];
+        AssertEqualInt(newSorder, item.sorder);
     }
+    [db commitTransaction];
 }
 
 //////////////////////////////////////////////////////////////////
@@ -249,7 +201,7 @@
 // getImage : imageURL が空のときに NoImage が返ること
 - (void)testGetImageNoImage
 {
-    Item *item = [TestUtility createTestItem:1];
+    Item *item = [TestUtility getTestItem:1];
 
     // nil でテスト
     item.imageURL = nil;
@@ -263,17 +215,15 @@
 	
     // 空文字列でテスト
     item.imageURL = @"";
-    ASSERT_EQUAL(noImage, [item getImage:nil]);
-    ASSERT_EQUAL(item.imageCache, nil);
-
-    [item release];
+    AssertEquals(noImage, [item getImage:nil]);
+    AssertNil(item.imageCache);
 }
 
 // getImage : メモリ上にキャッシュされている場合はこれを返すこと
 // また、イメージキャッシュをクリアすると消えること
 - (void)testGetImageOnCache
 {
-    Item *item = [TestUtility createTestItem:1];
+    Item *item = [TestUtility getTestItem:1];
 	
     item.imageURL = @"DUMMY";
     UIImage *cached = [[UIImage alloc] init];
@@ -282,36 +232,33 @@
     // テスト
     //   image cache の refresh の確認をこめて回数回す
     for (int i = 0; i < 100; i++) {
-        ASSERT_EQUAL(cached, [item getImage:nil]);
+        AssertEquals(cached, [item getImage:nil]);
     }
 
     [Item clearAllImageCache];
     STAssertNil([item getImage:nil], nil);
 
     [cached release];
-    [item release];
 }
 
 // イメージキャッシュテスト
 - (void)testImageCache
 {
     int i;
-    NSMutableArray *items = [[NSMutableArray alloc] init];
-    UIImage *testImage = [[UIImage alloc] init];
+    NSMutableArray *items = [[[NSMutableArray alloc] init] autorelease];
+    UIImage *testImage = [[[UIImage alloc] init] autorelease];
 
     [Item clearAllImageCache];
 
     for (i = 1; i <= MAX_IMAGE_CACHE_AGE * 2; i++) {
         // item 生成
-        Item *item = [TestUtility createTestItem:i];
+        Item *item = [TestUtility getTestItem:i];
         [items addObject:item];
 
         // キャッシュに入れる
         item.imageURL = @"DUMMY";
         item.imageCache = testImage;
         [item _putImageCache];
-
-        [item release];
     }
 
     // testImage のリファレンスカウンタ確認
@@ -325,7 +272,7 @@
     }
     for (i = MAX_IMAGE_CACHE_AGE + 1; i <= MAX_IMAGE_CACHE_AGE * 2; i++) {
         Item *item = [items objectAtIndex:i-1];
-        ASSERT_EQUAL(testImage, item.imageCache);
+        AssertEquals(testImage, item.imageCache);
     }
 
     // キャッシュ全クリア
@@ -333,10 +280,7 @@
 
     // testImage のリファレンスカウンタが 1 に戻っていることを確認
     r = [testImage retainCount];
-    ASSERT_EQUAL_INT(1, r);
-
-    [items release];
-    [testImage release];
+    AssertEqualInt(1, r);
 }
 
 // getImage: ファイルキャッシュからイメージがロードされることを確認する
@@ -360,5 +304,4 @@
 
 @end
 
-#endif
 
