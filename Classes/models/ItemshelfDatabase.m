@@ -6,9 +6,6 @@
  */
 
 #import "Database.h"
-#import "AppDelegate.h"
-#import "Item.h"
-#import "Shelf.h"
 #import "DateFormatter2.h"
 #import "ItemshelfDatabase.h"
 

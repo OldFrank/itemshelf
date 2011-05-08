@@ -24,29 +24,6 @@
 // Item 情報
 @interface Item : ItemBase
 {
-/*
-    NSDate *date;	///< Registered date
-    int shelfId;	///< Shelf ID (SHELF_*)
-
-    int serviceId;	///< serviceId (same as service ID of WebApi) (old: idType)
-    NSString *idString;	///< ID string (Barcode or other uniq item ID of each service)
-    NSString *asin;	///< ASIN: Amazon Standard Identification Number
-
-    NSString *name;	///< Item name
-    NSString *author;	///< Author
-    NSString *manufacturer;	///< Manufacturer name
-    NSString *category;	///< Category (old:productGroup)
-    NSString *detailURL;	///< URL of detail page of the item
-    NSString *price;	///< Price info
-    NSString *tags;	///< Tag info (reserved)
-
-    NSString *memo;	///< User defined memo (reserved)
-    NSString *imageURL;	///< URL of image
-	
-    int sorder;		///< Sort order
-    int star;           ///< Star
-*/
-
     UIImage *mImageCache; ///< Image cache
 	
     // image download 用
