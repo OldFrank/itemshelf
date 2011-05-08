@@ -3,7 +3,7 @@
 #import <UIKit/UIKit.h>
 #import "ORRecord.h"
 
-@class ItemBase;
+@class Item;
 
 @interface ItemBase : ORRecord {
     NSDate* mDate;
@@ -51,44 +51,44 @@
 - (void)_update;
 
 // Read operations (Finder)
-+ (ItemBase *)find:(int)pid;
-+ (ItemBase *)find_by_date:(NSDate*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_date:(NSDate*)key;
-+ (ItemBase *)find_by_itemState:(int)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_itemState:(int)key;
-+ (ItemBase *)find_by_idType:(int)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_idType:(int)key;
-+ (ItemBase *)find_by_idString:(NSString*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_idString:(NSString*)key;
-+ (ItemBase *)find_by_asin:(NSString*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_asin:(NSString*)key;
-+ (ItemBase *)find_by_name:(NSString*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_name:(NSString*)key;
-+ (ItemBase *)find_by_author:(NSString*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_author:(NSString*)key;
-+ (ItemBase *)find_by_manufacturer:(NSString*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_manufacturer:(NSString*)key;
-+ (ItemBase *)find_by_productGroup:(NSString*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_productGroup:(NSString*)key;
-+ (ItemBase *)find_by_detailURL:(NSString*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_detailURL:(NSString*)key;
-+ (ItemBase *)find_by_price:(NSString*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_price:(NSString*)key;
-+ (ItemBase *)find_by_tags:(NSString*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_tags:(NSString*)key;
-+ (ItemBase *)find_by_memo:(NSString*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_memo:(NSString*)key;
-+ (ItemBase *)find_by_imageURL:(NSString*)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_imageURL:(NSString*)key;
-+ (ItemBase *)find_by_sorder:(int)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_sorder:(int)key;
-+ (ItemBase *)find_by_star:(int)key cond:(NSString*)cond;
-+ (ItemBase *)find_by_star:(int)key;
++ (Item *)find:(int)pid;
++ (Item *)find_by_date:(NSDate*)key cond:(NSString*)cond;
++ (Item *)find_by_date:(NSDate*)key;
++ (Item *)find_by_itemState:(int)key cond:(NSString*)cond;
++ (Item *)find_by_itemState:(int)key;
++ (Item *)find_by_idType:(int)key cond:(NSString*)cond;
++ (Item *)find_by_idType:(int)key;
++ (Item *)find_by_idString:(NSString*)key cond:(NSString*)cond;
++ (Item *)find_by_idString:(NSString*)key;
++ (Item *)find_by_asin:(NSString*)key cond:(NSString*)cond;
++ (Item *)find_by_asin:(NSString*)key;
++ (Item *)find_by_name:(NSString*)key cond:(NSString*)cond;
++ (Item *)find_by_name:(NSString*)key;
++ (Item *)find_by_author:(NSString*)key cond:(NSString*)cond;
++ (Item *)find_by_author:(NSString*)key;
++ (Item *)find_by_manufacturer:(NSString*)key cond:(NSString*)cond;
++ (Item *)find_by_manufacturer:(NSString*)key;
++ (Item *)find_by_productGroup:(NSString*)key cond:(NSString*)cond;
++ (Item *)find_by_productGroup:(NSString*)key;
++ (Item *)find_by_detailURL:(NSString*)key cond:(NSString*)cond;
++ (Item *)find_by_detailURL:(NSString*)key;
++ (Item *)find_by_price:(NSString*)key cond:(NSString*)cond;
++ (Item *)find_by_price:(NSString*)key;
++ (Item *)find_by_tags:(NSString*)key cond:(NSString*)cond;
++ (Item *)find_by_tags:(NSString*)key;
++ (Item *)find_by_memo:(NSString*)key cond:(NSString*)cond;
++ (Item *)find_by_memo:(NSString*)key;
++ (Item *)find_by_imageURL:(NSString*)key cond:(NSString*)cond;
++ (Item *)find_by_imageURL:(NSString*)key;
++ (Item *)find_by_sorder:(int)key cond:(NSString*)cond;
++ (Item *)find_by_sorder:(int)key;
++ (Item *)find_by_star:(int)key cond:(NSString*)cond;
++ (Item *)find_by_star:(int)key;
 
 + (NSMutableArray *)find_all:(NSString *)cond;
 
 + (dbstmt *)gen_stmt:(NSString *)cond;
-+ (ItemBase *)find_first_stmt:(dbstmt *)stmt;
++ (Item *)find_first_stmt:(dbstmt *)stmt;
 + (NSMutableArray *)find_all_stmt:(dbstmt *)stmt;
 
 // Delete operations

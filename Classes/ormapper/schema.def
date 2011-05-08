@@ -1,6 +1,6 @@
 PKEY = pkey
 
-Shelf:ShelfBase
+Shelf: Shelf, ShelfBase
         name :TEXT
         sorder :INTEGER
         shelfType => type :INTEGER
@@ -10,7 +10,7 @@ Shelf:ShelfBase
         tagsFilter :TEXT
         starFilter :INTEGER
 
-Item:ItemBase
+Item: Item, ItemBase
 	date :DATE
 	shelfId => itemState :INTEGER
 	serviceId => idType :INTEGER

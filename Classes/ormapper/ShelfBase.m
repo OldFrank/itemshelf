@@ -60,7 +60,7 @@
   @param pid Primary key of the record
   @return record
 */
-+ (ShelfBase *)find:(int)pid
++ (Shelf *)find:(int)pid
 {
     Database *db = [Database instance];
 
@@ -78,7 +78,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ShelfBase*)find_by_name:(NSString*)key cond:(NSString *)cond
++ (Shelf*)find_by_name:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE name = ? LIMIT 1";
@@ -90,7 +90,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ShelfBase*)find_by_name:(NSString*)key
++ (Shelf*)find_by_name:(NSString*)key
 {
     return [self find_by_name:key cond:nil];
 }
@@ -102,7 +102,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ShelfBase*)find_by_sorder:(int)key cond:(NSString *)cond
++ (Shelf*)find_by_sorder:(int)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE sorder = ? LIMIT 1";
@@ -114,7 +114,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ShelfBase*)find_by_sorder:(int)key
++ (Shelf*)find_by_sorder:(int)key
 {
     return [self find_by_sorder:key cond:nil];
 }
@@ -126,7 +126,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ShelfBase*)find_by_type:(int)key cond:(NSString *)cond
++ (Shelf*)find_by_type:(int)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE type = ? LIMIT 1";
@@ -138,7 +138,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ShelfBase*)find_by_type:(int)key
++ (Shelf*)find_by_type:(int)key
 {
     return [self find_by_type:key cond:nil];
 }
@@ -150,7 +150,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ShelfBase*)find_by_titleFilter:(NSString*)key cond:(NSString *)cond
++ (Shelf*)find_by_titleFilter:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE titleFilter = ? LIMIT 1";
@@ -162,7 +162,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ShelfBase*)find_by_titleFilter:(NSString*)key
++ (Shelf*)find_by_titleFilter:(NSString*)key
 {
     return [self find_by_titleFilter:key cond:nil];
 }
@@ -174,7 +174,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ShelfBase*)find_by_authorFilter:(NSString*)key cond:(NSString *)cond
++ (Shelf*)find_by_authorFilter:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE authorFilter = ? LIMIT 1";
@@ -186,7 +186,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ShelfBase*)find_by_authorFilter:(NSString*)key
++ (Shelf*)find_by_authorFilter:(NSString*)key
 {
     return [self find_by_authorFilter:key cond:nil];
 }
@@ -198,7 +198,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ShelfBase*)find_by_manufacturerFilter:(NSString*)key cond:(NSString *)cond
++ (Shelf*)find_by_manufacturerFilter:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE manufacturerFilter = ? LIMIT 1";
@@ -210,7 +210,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ShelfBase*)find_by_manufacturerFilter:(NSString*)key
++ (Shelf*)find_by_manufacturerFilter:(NSString*)key
 {
     return [self find_by_manufacturerFilter:key cond:nil];
 }
@@ -222,7 +222,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ShelfBase*)find_by_tagsFilter:(NSString*)key cond:(NSString *)cond
++ (Shelf*)find_by_tagsFilter:(NSString*)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE tagsFilter = ? LIMIT 1";
@@ -234,7 +234,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ShelfBase*)find_by_tagsFilter:(NSString*)key
++ (Shelf*)find_by_tagsFilter:(NSString*)key
 {
     return [self find_by_tagsFilter:key cond:nil];
 }
@@ -246,7 +246,7 @@
   @param cond Conditions (ORDER BY etc)
   @note If you specify WHERE conditions, you must start cond with "AND" keyword.
 */
-+ (ShelfBase*)find_by_starFilter:(int)key cond:(NSString *)cond
++ (Shelf*)find_by_starFilter:(int)key cond:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"WHERE starFilter = ? LIMIT 1";
@@ -258,7 +258,7 @@
     return [self find_first_stmt:stmt];
 }
 
-+ (ShelfBase*)find_by_starFilter:(int)key
++ (Shelf*)find_by_starFilter:(int)key
 {
     return [self find_by_starFilter:key cond:nil];
 }
@@ -268,7 +268,7 @@
   @param cond Conditions (WHERE phrase and so on)
   @return array of records
 */
-+ (ShelfBase *)find_first:(NSString *)cond
++ (Shelf *)find_first:(NSString *)cond
 {
     if (cond == nil) {
         cond = @"LIMIT 1";
@@ -315,12 +315,12 @@
   @param stmt Statement
   @return array of records
 */
-+ (ShelfBase *)find_first_stmt:(dbstmt *)stmt
++ (Shelf *)find_first_stmt:(dbstmt *)stmt
 {
     if ([stmt step] == SQLITE_ROW) {
         ShelfBase *e = [[[[self class] alloc] init] autorelease];
         [e _loadRow:stmt];
-        return (ShelfBase *)e;
+        return (Shelf *)e;
     }
     return nil;
 }

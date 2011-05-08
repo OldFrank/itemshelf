@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <sqlite3.h>
 #import "Common.h"
+#import "Database.h"
 
 /**
    Wrapper class of sqlite3 database

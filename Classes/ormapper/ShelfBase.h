@@ -3,7 +3,7 @@
 #import <UIKit/UIKit.h>
 #import "ORRecord.h"
 
-@class ShelfBase;
+@class Shelf;
 
 @interface ShelfBase : ORRecord {
     NSString* mName;
@@ -35,28 +35,28 @@
 - (void)_update;
 
 // Read operations (Finder)
-+ (ShelfBase *)find:(int)pid;
-+ (ShelfBase *)find_by_name:(NSString*)key cond:(NSString*)cond;
-+ (ShelfBase *)find_by_name:(NSString*)key;
-+ (ShelfBase *)find_by_sorder:(int)key cond:(NSString*)cond;
-+ (ShelfBase *)find_by_sorder:(int)key;
-+ (ShelfBase *)find_by_type:(int)key cond:(NSString*)cond;
-+ (ShelfBase *)find_by_type:(int)key;
-+ (ShelfBase *)find_by_titleFilter:(NSString*)key cond:(NSString*)cond;
-+ (ShelfBase *)find_by_titleFilter:(NSString*)key;
-+ (ShelfBase *)find_by_authorFilter:(NSString*)key cond:(NSString*)cond;
-+ (ShelfBase *)find_by_authorFilter:(NSString*)key;
-+ (ShelfBase *)find_by_manufacturerFilter:(NSString*)key cond:(NSString*)cond;
-+ (ShelfBase *)find_by_manufacturerFilter:(NSString*)key;
-+ (ShelfBase *)find_by_tagsFilter:(NSString*)key cond:(NSString*)cond;
-+ (ShelfBase *)find_by_tagsFilter:(NSString*)key;
-+ (ShelfBase *)find_by_starFilter:(int)key cond:(NSString*)cond;
-+ (ShelfBase *)find_by_starFilter:(int)key;
++ (Shelf *)find:(int)pid;
++ (Shelf *)find_by_name:(NSString*)key cond:(NSString*)cond;
++ (Shelf *)find_by_name:(NSString*)key;
++ (Shelf *)find_by_sorder:(int)key cond:(NSString*)cond;
++ (Shelf *)find_by_sorder:(int)key;
++ (Shelf *)find_by_type:(int)key cond:(NSString*)cond;
++ (Shelf *)find_by_type:(int)key;
++ (Shelf *)find_by_titleFilter:(NSString*)key cond:(NSString*)cond;
++ (Shelf *)find_by_titleFilter:(NSString*)key;
++ (Shelf *)find_by_authorFilter:(NSString*)key cond:(NSString*)cond;
++ (Shelf *)find_by_authorFilter:(NSString*)key;
++ (Shelf *)find_by_manufacturerFilter:(NSString*)key cond:(NSString*)cond;
++ (Shelf *)find_by_manufacturerFilter:(NSString*)key;
++ (Shelf *)find_by_tagsFilter:(NSString*)key cond:(NSString*)cond;
++ (Shelf *)find_by_tagsFilter:(NSString*)key;
++ (Shelf *)find_by_starFilter:(int)key cond:(NSString*)cond;
++ (Shelf *)find_by_starFilter:(int)key;
 
 + (NSMutableArray *)find_all:(NSString *)cond;
 
 + (dbstmt *)gen_stmt:(NSString *)cond;
-+ (ShelfBase *)find_first_stmt:(dbstmt *)stmt;
++ (Shelf *)find_first_stmt:(dbstmt *)stmt;
 + (NSMutableArray *)find_all_stmt:(dbstmt *)stmt;
 
 // Delete operations
